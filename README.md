@@ -1,4 +1,4 @@
-# Signrequest.Client - the C# library for the SignRequest API
+# SignRequest - the C# library for the SignRequest API
 
 <a name="frameworks-supported"></a>
 
@@ -37,9 +37,9 @@ Run the following command to generate the DLL
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 
 ```csharp
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 ```
 
 <a name="packaging"></a>
@@ -51,7 +51,7 @@ A `.nuspec` is included with the project. You can follow the Nuget quickstart to
 This `.nuspec` uses placeholders from the `.csproj`, so build the `.csproj` directly:
 
 ```
-nuget pack -Build -OutputDirectory out Signrequest.Client.csproj
+nuget pack -Build -OutputDirectory out SignRequest.csproj
 ```
 
 Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) or [other host](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview) and consume the new package via Nuget as usual.
@@ -63,9 +63,9 @@ Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-p
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -76,7 +76,8 @@ namespace Example
 
             // Configure API key authorization: Token
             Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            Configuration.Default.ApiKeyPrefix.Add("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ApiTokensApi();
             var data = new AuthToken(); // AuthToken |

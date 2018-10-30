@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.SigningLog
+# SignRequest.Model.SigningLog
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.FileFromSf
+# SignRequest.Model.FileFromSf
 ## Properties
 
 Name | Type | Description | Notes

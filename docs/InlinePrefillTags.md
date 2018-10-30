@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.InlinePrefillTags
+# SignRequest.Model.InlinePrefillTags
 ## Properties
 
 Name | Type | Description | Notes

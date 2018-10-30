@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.WebhookSubscription
+# SignRequest.Model.WebhookSubscription
 ## Properties
 
 Name | Type | Description | Notes

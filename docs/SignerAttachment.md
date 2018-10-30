@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.SignerAttachment
+# SignRequest.Model.SignerAttachment
 ## Properties
 
 Name | Type | Description | Notes

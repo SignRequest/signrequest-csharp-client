@@ -40,7 +40,7 @@ if ! type nuget &>/dev/null; then
 fi
 
 mozroots --import --sync
-${nuget_cmd} install src/Signrequest.Client/packages.config -o packages;
+${nuget_cmd} install src/SignRequest/packages.config -o packages;
 
 echo "[INFO] Copy DLLs to the 'bin' folder"
 mkdir -p bin;
@@ -48,15 +48,15 @@ cp packages/Newtonsoft.Json.10.0.3/lib/net45/Newtonsoft.Json.dll bin/Newtonsoft.
 cp packages/RestSharp.105.1.0/lib/net45/RestSharp.dll bin/RestSharp.dll;
 cp packages/JsonSubTypes.1.2.0/lib/net45/JsonSubTypes.dll bin/JsonSubTypes.dll
 
-echo "[INFO] Run 'mcs' to build bin/Signrequest.Client.dll"
+echo "[INFO] Run 'mcs' to build bin/SignRequest.dll"
 mcs -langversion:${langversion} -sdk:${sdk} -r:bin/Newtonsoft.Json.dll,bin/JsonSubTypes.dll,\
 bin/RestSharp.dll,\
 System.ComponentModel.DataAnnotations.dll,\
 System.Runtime.Serialization.dll \
 -target:library \
--out:bin/Signrequest.Client.dll \
--recurse:'src/Signrequest.Client/*.cs' \
--doc:bin/Signrequest.Client.xml \
+-out:bin/SignRequest.dll \
+-recurse:'src/SignRequest/*.cs' \
+-doc:bin/SignRequest.xml \
 -platform:anycpu
 
 if [ $? -ne 0 ]
@@ -64,5 +64,5 @@ then
   echo "[ERROR] Compilation failed with exit code $?"
   exit 1
 else
-  echo "[INFO] bin/Signrequest.Client.dll was created successfully"
+  echo "[INFO] bin/SignRequest.dll was created successfully"
 fi

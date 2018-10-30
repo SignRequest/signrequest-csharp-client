@@ -1,4 +1,4 @@
-# Signrequest.Client.Api.SignrequestQuickCreateApi
+# SignRequest.Api.SignrequestQuickCreateApi
 
 All URIs are relative to *https://signrequest.com/api/v1*
 
@@ -17,9 +17,9 @@ Quick create a SignRequest
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -29,7 +29,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new SignrequestQuickCreateApi();
             var data = new SignRequestQuickCreate(); // SignRequestQuickCreate | 

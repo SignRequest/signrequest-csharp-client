@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.InlineDocumentSignerIntegrationData
+# SignRequest.Model.InlineDocumentSignerIntegrationData
 ## Properties
 
 Name | Type | Description | Notes

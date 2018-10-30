@@ -1,4 +1,4 @@
-# Signrequest.Client.Api.WebhooksApi
+# SignRequest.Api.WebhooksApi
 
 All URIs are relative to *https://signrequest.com/api/v1*
 
@@ -22,9 +22,9 @@ Create a Webhook
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -34,7 +34,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
             var data = new WebhookSubscription(); // WebhookSubscription | 
@@ -85,9 +86,9 @@ Delete a Webhook
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -97,7 +98,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
             var uuid = uuid_example;  // string | 
@@ -147,9 +149,9 @@ Retrieve a list of Webhooks
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -159,7 +161,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
             var page = 56;  // int? | A page number within the paginated result set. (optional) 
@@ -212,9 +215,9 @@ Partially update a Webhook
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -224,7 +227,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
             var uuid = uuid_example;  // string | 
@@ -277,9 +281,9 @@ Retrieve a Webhook
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -289,7 +293,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
             var uuid = uuid_example;  // string | 
@@ -340,9 +345,9 @@ Update a Webhook
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -352,7 +357,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new WebhooksApi();
             var uuid = uuid_example;  // string | 

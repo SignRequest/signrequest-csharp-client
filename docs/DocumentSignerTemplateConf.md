@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.DocumentSignerTemplateConf
+# SignRequest.Model.DocumentSignerTemplateConf
 ## Properties
 
 Name | Type | Description | Notes

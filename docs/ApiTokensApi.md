@@ -1,4 +1,4 @@
-# Signrequest.Client.Api.ApiTokensApi
+# SignRequest.Api.ApiTokensApi
 
 All URIs are relative to *https://signrequest.com/api/v1*
 
@@ -22,9 +22,9 @@ You can create an API token in the [team api settings page](/#/teams). It is als
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -34,7 +34,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ApiTokensApi();
             var data = new AuthToken(); // AuthToken | 
@@ -85,9 +86,9 @@ Delete an API token
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -97,7 +98,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ApiTokensApi();
             var key = key_example;  // string | A unique value identifying this api token.
@@ -147,9 +149,9 @@ Retrieve a list of API tokens
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -159,7 +161,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ApiTokensApi();
             var page = 56;  // int? | A page number within the paginated result set. (optional) 
@@ -212,9 +215,9 @@ Retrieve an API token
 ```csharp
 using System;
 using System.Diagnostics;
-using Signrequest.Client.Api;
-using Signrequest.Client.Client;
-using Signrequest.Client.Model;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
 
 namespace Example
 {
@@ -224,7 +227,8 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ApiTokensApi();
             var key = key_example;  // string | A unique value identifying this api token.

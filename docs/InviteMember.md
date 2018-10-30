@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.InviteMember
+# SignRequest.Model.InviteMember
 ## Properties
 
 Name | Type | Description | Notes

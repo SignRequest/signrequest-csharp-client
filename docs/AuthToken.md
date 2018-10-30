@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.AuthToken
+# SignRequest.Model.AuthToken
 ## Properties
 
 Name | Type | Description | Notes

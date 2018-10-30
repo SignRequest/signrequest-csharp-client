@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.InlineResponse2008
+# SignRequest.Model.InlineResponse2008
 ## Properties
 
 Name | Type | Description | Notes

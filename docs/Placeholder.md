@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.Placeholder
+# SignRequest.Model.Placeholder
 ## Properties
 
 Name | Type | Description | Notes

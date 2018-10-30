@@ -1,4 +1,4 @@
-# Signrequest.Client.Model.Signrequest
+# SignRequest.Model.Signrequest
 ## Properties
 
 Name | Type | Description | Notes
