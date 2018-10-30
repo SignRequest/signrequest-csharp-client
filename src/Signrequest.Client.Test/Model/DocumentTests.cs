@@ -75,6 +75,14 @@ namespace Signrequest.Client.Test
             // TODO unit test for the property 'Url'
         }
         /// <summary>
+        /// Test the property 'Team'
+        /// </summary>
+        [Test]
+        public void TeamTest()
+        {
+            // TODO unit test for the property 'Team'
+        }
+        /// <summary>
         /// Test the property 'Uuid'
         /// </summary>
         [Test]
@@ -219,12 +227,28 @@ namespace Signrequest.Client.Test
             // TODO unit test for the property 'Status'
         }
         /// <summary>
+        /// Test the property 'Signrequest'
+        /// </summary>
+        [Test]
+        public void SignrequestTest()
+        {
+            // TODO unit test for the property 'Signrequest'
+        }
+        /// <summary>
         /// Test the property 'ApiUsed'
         /// </summary>
         [Test]
         public void ApiUsedTest()
         {
             // TODO unit test for the property 'ApiUsed'
+        }
+        /// <summary>
+        /// Test the property 'SigningLog'
+        /// </summary>
+        [Test]
+        public void SigningLogTest()
+        {
+            // TODO unit test for the property 'SigningLog'
         }
         /// <summary>
         /// Test the property 'SecurityHash'

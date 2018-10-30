@@ -12,7 +12,7 @@ Contact: tech-support@signrequest.com
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4283485B-D051-4D73-9A0D-79DB1DB90DF9}</ProjectGuid>
+    <ProjectGuid>{C45A5731-8AB3-4D7D-9209-B673A4B3480E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Signrequest.Client</RootNamespace>

@@ -115,6 +115,14 @@ namespace Signrequest.Client.Test
             // TODO unit test for the property 'Integration'
         }
         /// <summary>
+        /// Test the property 'Team'
+        /// </summary>
+        [Test]
+        public void TeamTest()
+        {
+            // TODO unit test for the property 'Team'
+        }
+        /// <summary>
         /// Test the property 'Created'
         /// </summary>
         [Test]

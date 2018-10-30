@@ -40,7 +40,8 @@ namespace Signrequest.Client.Model
         /// </summary>
         /// <param name="ObjectType">ObjectType (required).</param>
         /// <param name="ObjectId">ObjectId (required).</param>
-        public FileFromSf(string ObjectType = default(string), string ObjectId = default(string))
+        /// <param name="Uid">Uid.</param>
+        public FileFromSf(string ObjectType = default(string), string ObjectId = default(string), string Uid = default(string))
         {
             // to ensure "ObjectType" is required (not null)
             if (ObjectType == null)
@@ -60,6 +61,7 @@ namespace Signrequest.Client.Model
             {
                 this.ObjectId = ObjectId;
             }
+            this.Uid = Uid;
         }
         
         /// <summary>
@@ -75,6 +77,12 @@ namespace Signrequest.Client.Model
         public string ObjectId { get; set; }
 
         /// <summary>
+        /// Gets or Sets Uid
+        /// </summary>
+        [DataMember(Name="uid", EmitDefaultValue=false)]
+        public string Uid { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -84,6 +92,7 @@ namespace Signrequest.Client.Model
             sb.Append("class FileFromSf {\n");
             sb.Append("  ObjectType: ").Append(ObjectType).Append("\n");
             sb.Append("  ObjectId: ").Append(ObjectId).Append("\n");
+            sb.Append("  Uid: ").Append(Uid).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -127,6 +136,11 @@ namespace Signrequest.Client.Model
                     this.ObjectId == input.ObjectId ||
                     (this.ObjectId != null &&
                     this.ObjectId.Equals(input.ObjectId))
+                ) && 
+                (
+                    this.Uid == input.Uid ||
+                    (this.Uid != null &&
+                    this.Uid.Equals(input.Uid))
                 );
         }
 
@@ -143,6 +157,8 @@ namespace Signrequest.Client.Model
                     hashCode = hashCode * 59 + this.ObjectType.GetHashCode();
                 if (this.ObjectId != null)
                     hashCode = hashCode * 59 + this.ObjectId.GetHashCode();
+                if (this.Uid != null)
+                    hashCode = hashCode * 59 + this.Uid.GetHashCode();
                 return hashCode;
             }
         }
@@ -164,6 +180,12 @@ namespace Signrequest.Client.Model
             if(this.ObjectId != null && this.ObjectId.Length < 1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ObjectId, length must be greater than 1.", new [] { "ObjectId" });
+            }
+
+            // Uid (string) minLength
+            if(this.Uid != null && this.Uid.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Uid, length must be greater than 1.", new [] { "Uid" });
             }
 
             yield break;

@@ -82,6 +82,14 @@ namespace Signrequest.Client.Test
         {
             // TODO unit test for the property 'ObjectId'
         }
+        /// <summary>
+        /// Test the property 'Uid'
+        /// </summary>
+        [Test]
+        public void UidTest()
+        {
+            // TODO unit test for the property 'Uid'
+        }
 
     }
 

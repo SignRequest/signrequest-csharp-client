@@ -42,7 +42,7 @@ namespace Signrequest.Client.Model
         /// <param name="Next">Next.</param>
         /// <param name="Previous">Previous.</param>
         /// <param name="Results">Results (required).</param>
-        public InlineResponse2005(int? Count = default(int?), string Next = default(string), string Previous = default(string), List<SignRequest> Results = default(List<SignRequest>))
+        public InlineResponse2005(int? Count = default(int?), string Next = default(string), string Previous = default(string), List<Model.Signrequest> Results = default(List<Model.Signrequest>))
         {
             // to ensure "Count" is required (not null)
             if (Count == null)
@@ -88,7 +88,7 @@ namespace Signrequest.Client.Model
         /// Gets or Sets Results
         /// </summary>
         [DataMember(Name="results", EmitDefaultValue=false)]
-        public List<SignRequest> Results { get; set; }
+        public List<Signrequest> Results { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

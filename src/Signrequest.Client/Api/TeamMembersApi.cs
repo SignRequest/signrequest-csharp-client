@@ -40,7 +40,7 @@ namespace Signrequest.Client.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>InlineResponse2006</returns>
-        InlineResponse2006 TeamMembersList(string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null);
+        InlineResponse2006 TeamMembersList (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null);
 
         /// <summary>
         /// Retrieve a list of Team Members
@@ -58,7 +58,7 @@ namespace Signrequest.Client.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>ApiResponse of InlineResponse2006</returns>
-        ApiResponse<InlineResponse2006> TeamMembersListWithHttpInfo(string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null);
+        ApiResponse<InlineResponse2006> TeamMembersListWithHttpInfo (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null);
         /// <summary>
         /// Retrieve a Team Member
         /// </summary>
@@ -68,7 +68,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>TeamMember</returns>
-        TeamMember TeamMembersRead(string uuid);
+        TeamMember TeamMembersRead (string uuid);
 
         /// <summary>
         /// Retrieve a Team Member
@@ -79,7 +79,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>ApiResponse of TeamMember</returns>
-        ApiResponse<TeamMember> TeamMembersReadWithHttpInfo(string uuid);
+        ApiResponse<TeamMember> TeamMembersReadWithHttpInfo (string uuid);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -98,7 +98,7 @@ namespace Signrequest.Client.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>Task of InlineResponse2006</returns>
-        System.Threading.Tasks.Task<InlineResponse2006> TeamMembersListAsync(string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null);
+        System.Threading.Tasks.Task<InlineResponse2006> TeamMembersListAsync (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null);
 
         /// <summary>
         /// Retrieve a list of Team Members
@@ -116,7 +116,7 @@ namespace Signrequest.Client.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2006)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2006>> TeamMembersListAsyncWithHttpInfo(string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2006>> TeamMembersListAsyncWithHttpInfo (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null);
         /// <summary>
         /// Retrieve a Team Member
         /// </summary>
@@ -126,7 +126,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>Task of TeamMember</returns>
-        System.Threading.Tasks.Task<TeamMember> TeamMembersReadAsync(string uuid);
+        System.Threading.Tasks.Task<TeamMember> TeamMembersReadAsync (string uuid);
 
         /// <summary>
         /// Retrieve a Team Member
@@ -137,7 +137,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>Task of ApiResponse (TeamMember)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TeamMember>> TeamMembersReadAsyncWithHttpInfo(string uuid);
+        System.Threading.Tasks.Task<ApiResponse<TeamMember>> TeamMembersReadAsyncWithHttpInfo (string uuid);
         #endregion Asynchronous Operations
     }
 
@@ -198,7 +198,7 @@ namespace Signrequest.Client.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Configuration Configuration { get; set; }
+        public Configuration Configuration {get; set;}
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -251,10 +251,10 @@ namespace Signrequest.Client.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>InlineResponse2006</returns>
-        public InlineResponse2006 TeamMembersList(string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
+        public InlineResponse2006 TeamMembersList (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
         {
-            ApiResponse<InlineResponse2006> localVarResponse = TeamMembersListWithHttpInfo(isActive, isOwner, isAdmin, userEmail, userFirstName, userLastName, page, limit);
-            return localVarResponse.Data;
+             ApiResponse<InlineResponse2006> localVarResponse = TeamMembersListWithHttpInfo(isActive, isOwner, isAdmin, userEmail, userFirstName, userLastName, page, limit);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace Signrequest.Client.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>ApiResponse of InlineResponse2006</returns>
-        public ApiResponse<InlineResponse2006> TeamMembersListWithHttpInfo(string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
+        public ApiResponse< InlineResponse2006 > TeamMembersListWithHttpInfo (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
         {
 
             var localVarPath = "/team-members/";
@@ -311,11 +311,11 @@ namespace Signrequest.Client.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -325,7 +325,7 @@ namespace Signrequest.Client.Api
 
             return new ApiResponse<InlineResponse2006>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse2006)Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2006)));
+                (InlineResponse2006) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2006)));
         }
 
         /// <summary>
@@ -341,10 +341,10 @@ namespace Signrequest.Client.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>Task of InlineResponse2006</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2006> TeamMembersListAsync(string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
+        public async System.Threading.Tasks.Task<InlineResponse2006> TeamMembersListAsync (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
         {
-            ApiResponse<InlineResponse2006> localVarResponse = await TeamMembersListAsyncWithHttpInfo(isActive, isOwner, isAdmin, userEmail, userFirstName, userLastName, page, limit);
-            return localVarResponse.Data;
+             ApiResponse<InlineResponse2006> localVarResponse = await TeamMembersListAsyncWithHttpInfo(isActive, isOwner, isAdmin, userEmail, userFirstName, userLastName, page, limit);
+             return localVarResponse.Data;
 
         }
 
@@ -361,7 +361,7 @@ namespace Signrequest.Client.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2006)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2006>> TeamMembersListAsyncWithHttpInfo(string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2006>> TeamMembersListAsyncWithHttpInfo (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
         {
 
             var localVarPath = "/team-members/";
@@ -402,11 +402,11 @@ namespace Signrequest.Client.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -416,7 +416,7 @@ namespace Signrequest.Client.Api
 
             return new ApiResponse<InlineResponse2006>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse2006)Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2006)));
+                (InlineResponse2006) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2006)));
         }
 
         /// <summary>
@@ -425,10 +425,10 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>TeamMember</returns>
-        public TeamMember TeamMembersRead(string uuid)
+        public TeamMember TeamMembersRead (string uuid)
         {
-            ApiResponse<TeamMember> localVarResponse = TeamMembersReadWithHttpInfo(uuid);
-            return localVarResponse.Data;
+             ApiResponse<TeamMember> localVarResponse = TeamMembersReadWithHttpInfo(uuid);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -437,7 +437,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>ApiResponse of TeamMember</returns>
-        public ApiResponse<TeamMember> TeamMembersReadWithHttpInfo(string uuid)
+        public ApiResponse< TeamMember > TeamMembersReadWithHttpInfo (string uuid)
         {
             // verify the required parameter 'uuid' is set
             if (uuid == null)
@@ -474,11 +474,11 @@ namespace Signrequest.Client.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -488,7 +488,7 @@ namespace Signrequest.Client.Api
 
             return new ApiResponse<TeamMember>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (TeamMember)Configuration.ApiClient.Deserialize(localVarResponse, typeof(TeamMember)));
+                (TeamMember) Configuration.ApiClient.Deserialize(localVarResponse, typeof(TeamMember)));
         }
 
         /// <summary>
@@ -497,10 +497,10 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>Task of TeamMember</returns>
-        public async System.Threading.Tasks.Task<TeamMember> TeamMembersReadAsync(string uuid)
+        public async System.Threading.Tasks.Task<TeamMember> TeamMembersReadAsync (string uuid)
         {
-            ApiResponse<TeamMember> localVarResponse = await TeamMembersReadAsyncWithHttpInfo(uuid);
-            return localVarResponse.Data;
+             ApiResponse<TeamMember> localVarResponse = await TeamMembersReadAsyncWithHttpInfo(uuid);
+             return localVarResponse.Data;
 
         }
 
@@ -510,7 +510,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>Task of ApiResponse (TeamMember)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TeamMember>> TeamMembersReadAsyncWithHttpInfo(string uuid)
+        public async System.Threading.Tasks.Task<ApiResponse<TeamMember>> TeamMembersReadAsyncWithHttpInfo (string uuid)
         {
             // verify the required parameter 'uuid' is set
             if (uuid == null)
@@ -547,11 +547,11 @@ namespace Signrequest.Client.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse)await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int)localVarResponse.StatusCode;
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -561,7 +561,7 @@ namespace Signrequest.Client.Api
 
             return new ApiResponse<TeamMember>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (TeamMember)Configuration.ApiClient.Deserialize(localVarResponse, typeof(TeamMember)));
+                (TeamMember) Configuration.ApiClient.Deserialize(localVarResponse, typeof(TeamMember)));
         }
 
     }

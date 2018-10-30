@@ -54,7 +54,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
         /// <returns>SignRequest</returns>
-        SignRequest SignrequestsCreate (SignRequest data);
+        Model.Signrequest SignrequestsCreate (Model.Signrequest data);
 
         /// <summary>
         /// Create a SignRequest
@@ -65,7 +65,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
         /// <returns>ApiResponse of SignRequest</returns>
-        ApiResponse<SignRequest> SignrequestsCreateWithHttpInfo (SignRequest data);
+        ApiResponse<Model.Signrequest> SignrequestsCreateWithHttpInfo (Model.Signrequest data);
         /// <summary>
         /// Retrieve a list of SignRequests
         /// </summary>
@@ -102,7 +102,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>SignRequest</returns>
-        SignRequest SignrequestsRead (string uuid);
+        Model.Signrequest SignrequestsRead (string uuid);
 
         /// <summary>
         /// Retrieve a SignRequest
@@ -113,7 +113,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>ApiResponse of SignRequest</returns>
-        ApiResponse<SignRequest> SignrequestsReadWithHttpInfo (string uuid);
+        ApiResponse<Model.Signrequest> SignrequestsReadWithHttpInfo (string uuid);
         /// <summary>
         /// Resend a SignRequest
         /// </summary>
@@ -167,7 +167,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
         /// <returns>Task of SignRequest</returns>
-        System.Threading.Tasks.Task<SignRequest> SignrequestsCreateAsync (SignRequest data);
+        System.Threading.Tasks.Task<Model.Signrequest> SignrequestsCreateAsync (Model.Signrequest data);
 
         /// <summary>
         /// Create a SignRequest
@@ -178,7 +178,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
         /// <returns>Task of ApiResponse (SignRequest)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SignRequest>> SignrequestsCreateAsyncWithHttpInfo (SignRequest data);
+        System.Threading.Tasks.Task<ApiResponse<Model.Signrequest>> SignrequestsCreateAsyncWithHttpInfo (Model.Signrequest data);
         /// <summary>
         /// Retrieve a list of SignRequests
         /// </summary>
@@ -215,7 +215,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>Task of SignRequest</returns>
-        System.Threading.Tasks.Task<SignRequest> SignrequestsReadAsync (string uuid);
+        System.Threading.Tasks.Task<Model.Signrequest> SignrequestsReadAsync (string uuid);
 
         /// <summary>
         /// Retrieve a SignRequest
@@ -226,7 +226,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>Task of ApiResponse (SignRequest)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SignRequest>> SignrequestsReadAsyncWithHttpInfo (string uuid);
+        System.Threading.Tasks.Task<ApiResponse<Model.Signrequest>> SignrequestsReadAsyncWithHttpInfo (string uuid);
         /// <summary>
         /// Resend a SignRequest
         /// </summary>
@@ -499,9 +499,9 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
         /// <returns>SignRequest</returns>
-        public SignRequest SignrequestsCreate (SignRequest data)
+        public Model.Signrequest SignrequestsCreate (Model.Signrequest data)
         {
-             ApiResponse<SignRequest> localVarResponse = SignrequestsCreateWithHttpInfo(data);
+             ApiResponse<Model.Signrequest> localVarResponse = SignrequestsCreateWithHttpInfo(data);
              return localVarResponse.Data;
         }
 
@@ -511,7 +511,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
         /// <returns>ApiResponse of SignRequest</returns>
-        public ApiResponse< SignRequest > SignrequestsCreateWithHttpInfo (SignRequest data)
+        public ApiResponse<Model.Signrequest> SignrequestsCreateWithHttpInfo (Model.Signrequest data)
         {
             // verify the required parameter 'data' is set
             if (data == null)
@@ -567,9 +567,9 @@ namespace Signrequest.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SignRequest>(localVarStatusCode,
+            return new ApiResponse<Model.Signrequest>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (SignRequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SignRequest)));
+                (Model.Signrequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Model.Signrequest)));
         }
 
         /// <summary>
@@ -578,9 +578,9 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
         /// <returns>Task of SignRequest</returns>
-        public async System.Threading.Tasks.Task<SignRequest> SignrequestsCreateAsync (SignRequest data)
+        public async System.Threading.Tasks.Task<Model.Signrequest> SignrequestsCreateAsync (Model.Signrequest data)
         {
-             ApiResponse<SignRequest> localVarResponse = await SignrequestsCreateAsyncWithHttpInfo(data);
+             ApiResponse<Model.Signrequest> localVarResponse = await SignrequestsCreateAsyncWithHttpInfo(data);
              return localVarResponse.Data;
 
         }
@@ -591,7 +591,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
         /// <returns>Task of ApiResponse (SignRequest)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SignRequest>> SignrequestsCreateAsyncWithHttpInfo (SignRequest data)
+        public async System.Threading.Tasks.Task<ApiResponse<Model.Signrequest>> SignrequestsCreateAsyncWithHttpInfo (Model.Signrequest data)
         {
             // verify the required parameter 'data' is set
             if (data == null)
@@ -647,9 +647,9 @@ namespace Signrequest.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SignRequest>(localVarStatusCode,
+            return new ApiResponse<Model.Signrequest>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (SignRequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SignRequest)));
+                                                      (Model.Signrequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Model.Signrequest)));
         }
 
         /// <summary>
@@ -815,9 +815,9 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>SignRequest</returns>
-        public SignRequest SignrequestsRead (string uuid)
+        public Model.Signrequest SignrequestsRead (string uuid)
         {
-             ApiResponse<SignRequest> localVarResponse = SignrequestsReadWithHttpInfo(uuid);
+             ApiResponse<Model.Signrequest> localVarResponse = SignrequestsReadWithHttpInfo(uuid);
              return localVarResponse.Data;
         }
 
@@ -827,7 +827,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>ApiResponse of SignRequest</returns>
-        public ApiResponse< SignRequest > SignrequestsReadWithHttpInfo (string uuid)
+        public ApiResponse<Model.Signrequest> SignrequestsReadWithHttpInfo (string uuid)
         {
             // verify the required parameter 'uuid' is set
             if (uuid == null)
@@ -876,9 +876,9 @@ namespace Signrequest.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SignRequest>(localVarStatusCode,
+            return new ApiResponse<Model.Signrequest>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (SignRequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SignRequest)));
+                (Model.Signrequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Model.Signrequest)));
         }
 
         /// <summary>
@@ -887,9 +887,9 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>Task of SignRequest</returns>
-        public async System.Threading.Tasks.Task<SignRequest> SignrequestsReadAsync (string uuid)
+        public async System.Threading.Tasks.Task<Model.Signrequest> SignrequestsReadAsync (string uuid)
         {
-             ApiResponse<SignRequest> localVarResponse = await SignrequestsReadAsyncWithHttpInfo(uuid);
+             ApiResponse<Model.Signrequest> localVarResponse = await SignrequestsReadAsyncWithHttpInfo(uuid);
              return localVarResponse.Data;
 
         }
@@ -900,7 +900,7 @@ namespace Signrequest.Client.Api
         /// <exception cref="Signrequest.Client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
         /// <returns>Task of ApiResponse (SignRequest)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SignRequest>> SignrequestsReadAsyncWithHttpInfo (string uuid)
+        public async System.Threading.Tasks.Task<ApiResponse<Model.Signrequest>> SignrequestsReadAsyncWithHttpInfo (string uuid)
         {
             // verify the required parameter 'uuid' is set
             if (uuid == null)
@@ -949,9 +949,9 @@ namespace Signrequest.Client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SignRequest>(localVarStatusCode,
+            return new ApiResponse<Model.Signrequest>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (SignRequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SignRequest)));
+                (Model.Signrequest) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Model.Signrequest)));
         }
 
         /// <summary>
