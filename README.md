@@ -1,4 +1,4 @@
-# SignRequest - the C# library for the SignRequest API
+# SignRequest - the C# library for [SignRequest.com](https://signrequest.com/)
 
 <a name="frameworks-supported"></a>
 
@@ -29,6 +29,12 @@ NOTE: RestSharp versions greater than 105.1.0 have a bug which causes file uploa
 
 ## Installation
 
+### NuGet
+
+The SignRequest API client can be installed using NuGet with the package name [SignRequest](https://www.nuget.org/packages/SignRequest/).
+
+### Building from Source
+
 Run the following command to generate the DLL
 
 - [Mac/Linux] `/bin/sh build.sh`
@@ -41,20 +47,6 @@ using SignRequest.Api;
 using SignRequest.Client;
 using SignRequest.Model;
 ```
-
-<a name="packaging"></a>
-
-## Packaging
-
-A `.nuspec` is included with the project. You can follow the Nuget quickstart to [create](https://docs.microsoft.com/en-us/nuget/quickstart/create-and-publish-a-package#create-the-package) and [publish](https://docs.microsoft.com/en-us/nuget/quickstart/create-and-publish-a-package#publish-the-package) packages.
-
-This `.nuspec` uses placeholders from the `.csproj`, so build the `.csproj` directly:
-
-```
-nuget pack -Build -OutputDirectory out SignRequest.csproj
-```
-
-Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) or [other host](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview) and consume the new package via Nuget as usual.
 
 <a name="getting-started"></a>
 
@@ -69,30 +61,27 @@ using SignRequest.Model;
 
 namespace Example
 {
-    public class Example
+    public class DocumentsCreateExample
     {
         public void main()
         {
-
             // Configure API key authorization: Token
-            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
-            var apiInstance = new ApiTokensApi();
-            var data = new AuthToken(); // AuthToken |
+            var apiInstance = new DocumentsApi();
+            var data = new Document();
+            data.FileFromUrl = "https://docs.google.com/document/d/1oI2R1SxfMNZXiz3jCQvorpoklF9xq_dCJnOpkI-zo80/edit?usp=sharing";
 
             try
             {
-                // Create an API token
-                AuthToken result = apiInstance.ApiTokensCreate(data);
+                Document result = apiInstance.DocumentsCreate(data);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
             {
-                Debug.Print("Exception when calling ApiTokensApi.ApiTokensCreate: " + e.Message );
+                Debug.Print("Exception when calling DocumentsApi.DocumentsCreate: " + e.Message );
             }
-
         }
     }
 }
