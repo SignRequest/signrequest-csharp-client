@@ -1,5 +1,7 @@
 # SignRequest - the C# library for [SignRequest.com](https://signrequest.com/)
 
+[![NuGet version](https://badge.fury.io/nu/SignRequest.svg)](https://badge.fury.io/nu/SignRequest)
+
 <a name="frameworks-supported"></a>
 
 ## Frameworks supported
