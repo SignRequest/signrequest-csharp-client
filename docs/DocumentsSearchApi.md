@@ -31,8 +31,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new DocumentsSearchApi();
             var page = 56;  // int? | A page number within the paginated result set. (optional) 

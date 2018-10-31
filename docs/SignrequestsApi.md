@@ -33,8 +33,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new SignrequestsApi();
             var uuid = uuid_example;  // string | 
@@ -97,8 +96,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new SignrequestsApi();
             var data = new SignRequest(); // SignRequest | 
@@ -161,8 +159,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new SignrequestsApi();
             var who = who_example;  // string |  (optional) 
@@ -231,8 +228,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new SignrequestsApi();
             var uuid = uuid_example;  // string | 
@@ -295,8 +291,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new SignrequestsApi();
             var uuid = uuid_example;  // string | 

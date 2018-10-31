@@ -32,8 +32,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new DocumentsApi();
             var data = new Document(); // Document | 
@@ -96,8 +95,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new DocumentsApi();
             var uuid = uuid_example;  // string | 
@@ -159,8 +157,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new DocumentsApi();
             var externalId = externalId_example;  // string |  (optional) 
@@ -243,8 +240,7 @@ namespace Example
         {
             // Configure API key authorization: Token
             Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
 
             var apiInstance = new DocumentsApi();
             var uuid = uuid_example;  // string | 
