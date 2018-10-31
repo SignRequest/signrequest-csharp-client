@@ -21,6 +21,7 @@
              nuget.org gallery uses information you add in the portal. -->
         <description>Official API client for SignRequest.com</description>
         <copyright>https://signrequest.com/#/terms</copyright>
+        <projectUrl>https://github.com/SignRequest/signrequest-csharp-client</projectUrl>
 
         <!-- Dependencies are automatically installed when the package is installed -->
         <dependencies>
