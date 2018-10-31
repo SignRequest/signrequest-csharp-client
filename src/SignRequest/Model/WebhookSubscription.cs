@@ -201,7 +201,7 @@ namespace SignRequest.Model
         /// <param name="CallbackUrl">CallbackUrl (required).</param>
         /// <param name="Integration">Integration.</param>
         /// <param name="Team">Team.</param>
-        public WebhookSubscription(string Name = default(string), EventTypeEnum EventType = default(EventTypeEnum), string CallbackUrl = default(string), IntegrationEnum? Integration = default(IntegrationEnum?), Team1 Team = default(Team1))
+        public WebhookSubscription(string Name = default(string), EventTypeEnum EventType = default(EventTypeEnum), string CallbackUrl = default(string), IntegrationEnum? Integration = default(IntegrationEnum?), DocumentTeam Team = default(DocumentTeam))
         {
             // to ensure "EventType" is required (not null)
             if (EventType == null)
@@ -257,7 +257,7 @@ namespace SignRequest.Model
         /// Gets or Sets Team
         /// </summary>
         [DataMember(Name="team", EmitDefaultValue=false)]
-        public Team1 Team { get; set; }
+        public DocumentTeam Team { get; set; }
 
         /// <summary>
         /// Gets or Sets Created

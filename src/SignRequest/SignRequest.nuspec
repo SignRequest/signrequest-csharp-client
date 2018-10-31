@@ -3,7 +3,7 @@
     <metadata>
         <!-- The identifier that must be unique within the hosting gallery -->
         <id>$id$</id>
-        <title>SignRequest API Client</title>
+        <title>Swagger Library</title>
 
         <!-- The package version number that is used when resolving dependencies -->
         <version>$version$</version>
@@ -19,7 +19,7 @@
 
         <!-- The description can be used in package manager UI. Note that the
              nuget.org gallery uses information you add in the portal. -->
-        <description>Official API client for SignRequest.com</description>
+        <description>A library generated from a Swagger doc</description>
         <copyright>https://signrequest.com/#/terms</copyright>
 
         <!-- Dependencies are automatically installed when the package is installed -->

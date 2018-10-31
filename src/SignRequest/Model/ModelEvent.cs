@@ -176,7 +176,7 @@ namespace SignRequest.Model
         /// <param name="Team">Team.</param>
         /// <param name="Document">Document.</param>
         /// <param name="Signer">Signer.</param>
-        public ModelEvent(Team1 Team = default(Team1), Document Document = default(Document), Signer Signer = default(Signer))
+        public ModelEvent(DocumentTeam Team = default(DocumentTeam), Document Document = default(Document), Signer Signer = default(Signer))
         {
             this.Team = Team;
             this.Document = Document;
@@ -219,7 +219,7 @@ namespace SignRequest.Model
         /// Gets or Sets Team
         /// </summary>
         [DataMember(Name="team", EmitDefaultValue=false)]
-        public Team1 Team { get; set; }
+        public DocumentTeam Team { get; set; }
 
         /// <summary>
         /// Gets or Sets Document

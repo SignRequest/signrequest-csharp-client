@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **Uuid** | **string** |  | [optional] 
 **Url** | **string** |  | [optional] 
 **User** | [**User**](User.md) |  | [optional] 
-**Team** | [**Team1**](Team1.md) |  | [optional] 
+**Team** | [**DocumentTeam**](DocumentTeam.md) |  | [optional] 
 **IsAdmin** | **bool?** |  | [optional] 
 **IsActive** | **bool?** |  | [optional] 
 **IsOwner** | **bool?** |  | [optional] 

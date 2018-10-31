@@ -1,7 +1,7 @@
 /* 
  * SignRequest API
  *
- * https://signrequest.com
+ * API for SignRequest.com
  *
  * OpenAPI spec version: v1
  * Contact: tech-support@signrequest.com

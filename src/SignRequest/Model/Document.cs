@@ -137,7 +137,7 @@ namespace SignRequest.Model
         /// <param name="Signrequest">Signrequest.</param>
         /// <param name="SigningLog">SigningLog.</param>
         /// <param name="Attachments">Attachments.</param>
-        public Document(Team1 Team = default(Team1), User User = default(User), string Name = default(string), string ExternalId = default(string), string FrontendId = default(string), string FileFromUrl = default(string), string EventsCallbackUrl = default(string), string FileFromContent = default(string), string FileFromContentName = default(string), string Template = default(string), List<InlinePrefillTags> PrefillTags = default(List<InlinePrefillTags>), List<InlineIntegrationData> Integrations = default(List<InlineIntegrationData>), FileFromSf FileFromSf = default(FileFromSf), int? AutoDeleteDays = default(int?), Signrequest Signrequest = default(Signrequest), SigningLog SigningLog = default(SigningLog), List<DocumentAttachment> Attachments = default(List<DocumentAttachment>))
+        public Document(DocumentTeam Team = default(DocumentTeam), User User = default(User), string Name = default(string), string ExternalId = default(string), string FrontendId = default(string), string FileFromUrl = default(string), string EventsCallbackUrl = default(string), string FileFromContent = default(string), string FileFromContentName = default(string), string Template = default(string), List<InlinePrefillTags> PrefillTags = default(List<InlinePrefillTags>), List<InlineIntegrationData> Integrations = default(List<InlineIntegrationData>), FileFromSf FileFromSf = default(FileFromSf), int? AutoDeleteDays = default(int?), DocumentSignrequest Signrequest = default(DocumentSignrequest), DocumentSigningLog SigningLog = default(DocumentSigningLog), List<DocumentAttachment> Attachments = default(List<DocumentAttachment>))
         {
             this.Team = Team;
             this.User = User;
@@ -168,7 +168,7 @@ namespace SignRequest.Model
         /// Gets or Sets Team
         /// </summary>
         [DataMember(Name="team", EmitDefaultValue=false)]
-        public Team1 Team { get; set; }
+        public DocumentTeam Team { get; set; }
 
         /// <summary>
         /// Gets or Sets Uuid
@@ -289,7 +289,7 @@ namespace SignRequest.Model
         /// Gets or Sets Signrequest
         /// </summary>
         [DataMember(Name="signrequest", EmitDefaultValue=false)]
-        public Signrequest Signrequest { get; set; }
+        public DocumentSignrequest Signrequest { get; set; }
 
         /// <summary>
         /// Indicates whether document was created using the API
@@ -302,7 +302,7 @@ namespace SignRequest.Model
         /// Gets or Sets SigningLog
         /// </summary>
         [DataMember(Name="signing_log", EmitDefaultValue=false)]
-        public SigningLog SigningLog { get; set; }
+        public DocumentSigningLog SigningLog { get; set; }
 
         /// <summary>
         /// SHA256 hash of PDF contents

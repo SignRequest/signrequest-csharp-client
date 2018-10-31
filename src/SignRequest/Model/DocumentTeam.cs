@@ -25,16 +25,16 @@ using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 namespace SignRequest.Model
 {
     /// <summary>
-    /// Team1
+    /// DocumentTeam
     /// </summary>
     [DataContract]
-    public partial class Team1 :  IEquatable<Team1>, IValidatableObject
+    public partial class DocumentTeam :  IEquatable<DocumentTeam>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Team1" /> class.
+        /// Initializes a new instance of the <see cref="DocumentTeam" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public Team1()
+        public DocumentTeam()
         {
         }
         
@@ -63,7 +63,7 @@ namespace SignRequest.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Team1 {\n");
+            sb.Append("class DocumentTeam {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Subdomain: ").Append(Subdomain).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
@@ -87,15 +87,15 @@ namespace SignRequest.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Team1);
+            return this.Equals(input as DocumentTeam);
         }
 
         /// <summary>
-        /// Returns true if Team1 instances are equal
+        /// Returns true if DocumentTeam instances are equal
         /// </summary>
-        /// <param name="input">Instance of Team1 to be compared</param>
+        /// <param name="input">Instance of DocumentTeam to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Team1 input)
+        public bool Equals(DocumentTeam input)
         {
             if (input == null)
                 return false;

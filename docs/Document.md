@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** |  | [optional] 
-**Team** | [**Team1**](Team1.md) |  | [optional] 
+**Team** | [**DocumentTeam**](DocumentTeam.md) |  | [optional] 
 **Uuid** | **string** |  | [optional] 
 **User** | [**User**](User.md) |  | [optional] 
 **FileAsPdf** | **string** | Temporary URL to original file as PDF, expires in five minutes | [optional] 
@@ -23,9 +23,9 @@ Name | Type | Description | Notes
 **AutoDeleteDays** | **int?** | Number of days after which a finished document (signed/cancelled/declined) will be automatically deleted | [optional] 
 **Pdf** | **string** | Temporary URL to signed document as PDF, expires in five minutes | [optional] 
 **Status** | **string** | &#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired | [optional] 
-**Signrequest** | [**Signrequest**](Signrequest.md) |  | [optional] 
+**Signrequest** | [**DocumentSignrequest**](DocumentSignrequest.md) |  | [optional] 
 **ApiUsed** | **bool?** | Indicates whether document was created using the API | [optional] 
-**SigningLog** | [**SigningLog**](SigningLog.md) |  | [optional] 
+**SigningLog** | [**DocumentSigningLog**](DocumentSigningLog.md) |  | [optional] 
 **SecurityHash** | **string** | SHA256 hash of PDF contents | [optional] 
 **Attachments** | [**List&lt;DocumentAttachment&gt;**](DocumentAttachment.md) |  | [optional] 
 **AutoDeleteAfter** | **DateTime?** | Date and time calculated using &#x60;auto_delete_days&#x60; after which a finished document (signed/cancelled/declined) will be automatically deleted | [optional] 

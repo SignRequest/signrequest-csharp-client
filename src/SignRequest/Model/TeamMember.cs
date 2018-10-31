@@ -38,7 +38,7 @@ namespace SignRequest.Model
         /// <param name="IsAdmin">IsAdmin.</param>
         /// <param name="IsActive">IsActive.</param>
         /// <param name="IsOwner">IsOwner.</param>
-        public TeamMember(User User = default(User), Team1 Team = default(Team1), bool? IsAdmin = default(bool?), bool? IsActive = default(bool?), bool? IsOwner = default(bool?))
+        public TeamMember(User User = default(User), DocumentTeam Team = default(DocumentTeam), bool? IsAdmin = default(bool?), bool? IsActive = default(bool?), bool? IsOwner = default(bool?))
         {
             this.User = User;
             this.Team = Team;
@@ -69,7 +69,7 @@ namespace SignRequest.Model
         /// Gets or Sets Team
         /// </summary>
         [DataMember(Name="team", EmitDefaultValue=false)]
-        public Team1 Team { get; set; }
+        public DocumentTeam Team { get; set; }
 
         /// <summary>
         /// Gets or Sets IsAdmin

@@ -70,7 +70,7 @@ namespace SignRequest.Model
         /// <param name="Team">Team.</param>
         /// <param name="Who">&#x60;m&#x60;: only me, &#x60;mo&#x60;: me and others, &#x60;o&#x60;: only others.</param>
         /// <param name="Signers">Signers.</param>
-        public Template(User User = default(User), Team1 Team = default(Team1), WhoEnum? Who = default(WhoEnum?), List<DocumentSignerTemplateConf> Signers = default(List<DocumentSignerTemplateConf>))
+        public Template(User User = default(User), DocumentTeam Team = default(DocumentTeam), WhoEnum? Who = default(WhoEnum?), List<DocumentSignerTemplateConf> Signers = default(List<DocumentSignerTemplateConf>))
         {
             this.User = User;
             this.Team = Team;
@@ -107,7 +107,7 @@ namespace SignRequest.Model
         /// Gets or Sets Team
         /// </summary>
         [DataMember(Name="team", EmitDefaultValue=false)]
-        public Team1 Team { get; set; }
+        public DocumentTeam Team { get; set; }
 
 
         /// <summary>

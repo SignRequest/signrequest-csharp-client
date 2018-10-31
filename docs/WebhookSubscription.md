@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **EventType** | **string** |  | 
 **CallbackUrl** | **string** |  | 
 **Integration** | **string** |  | [optional] 
-**Team** | [**Team1**](Team1.md) |  | [optional] 
+**Team** | [**DocumentTeam**](DocumentTeam.md) |  | [optional] 
 **Created** | **DateTime?** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

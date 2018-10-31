@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **DeliveredOn** | **DateTime?** |  | [optional] 
 **CallbackStatusCode** | **int?** |  | [optional] 
 **Timestamp** | **DateTime?** |  | [optional] 
-**Team** | [**Team1**](Team1.md) |  | [optional] 
+**Team** | [**DocumentTeam**](DocumentTeam.md) |  | [optional] 
 **Document** | [**Document**](Document.md) |  | [optional] 
 **Signer** | [**Signer**](Signer.md) |  | [optional] 
 
