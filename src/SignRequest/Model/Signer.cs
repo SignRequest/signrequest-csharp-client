@@ -160,10 +160,11 @@ namespace SignRequest.Model
         /// <param name="verifyPhoneNumber">verifyPhoneNumber.</param>
         /// <param name="verifyBankAccount">verifyBankAccount.</param>
         /// <param name="embedUrlUserId">embedUrlUserId.</param>
+        /// <param name="useStampForApproveOnly">Place an approval stamp on a document when a signer approves a document.</param>
         /// <param name="redirectUrl">redirectUrl.</param>
         /// <param name="afterDocument">afterDocument.</param>
         /// <param name="integrations">integrations.</param>
-        public Signer(string email = default(string), string firstName = default(string), string lastName = default(string), bool? needsToSign = true, bool? approveOnly = default(bool?), bool? notifyOnly = default(bool?), bool? inPerson = default(bool?), int? order = default(int?), LanguageEnum? language = default(LanguageEnum?), bool? forceLanguage = default(bool?), string verifyPhoneNumber = default(string), string verifyBankAccount = default(string), string embedUrlUserId = default(string), string redirectUrl = default(string), string afterDocument = default(string), List<InlineDocumentSignerIntegrationData> integrations = default(List<InlineDocumentSignerIntegrationData>))
+        public Signer(string email = default(string), string firstName = default(string), string lastName = default(string), bool? needsToSign = true, bool? approveOnly = default(bool?), bool? notifyOnly = default(bool?), bool? inPerson = default(bool?), int? order = default(int?), LanguageEnum? language = default(LanguageEnum?), bool? forceLanguage = default(bool?), string verifyPhoneNumber = default(string), string verifyBankAccount = default(string), string embedUrlUserId = default(string), bool? useStampForApproveOnly = default(bool?), string redirectUrl = default(string), string afterDocument = default(string), List<InlineDocumentSignerIntegrationData> integrations = default(List<InlineDocumentSignerIntegrationData>))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -194,6 +195,7 @@ namespace SignRequest.Model
             this.VerifyPhoneNumber = verifyPhoneNumber;
             this.VerifyBankAccount = verifyBankAccount;
             this.EmbedUrlUserId = embedUrlUserId;
+            this.UseStampForApproveOnly = useStampForApproveOnly;
             this.RedirectUrl = redirectUrl;
             this.AfterDocument = afterDocument;
             this.Integrations = integrations;
@@ -363,6 +365,13 @@ namespace SignRequest.Model
         public List<SignerInputs> Inputs { get; private set; }
 
         /// <summary>
+        /// Place an approval stamp on a document when a signer approves a document
+        /// </summary>
+        /// <value>Place an approval stamp on a document when a signer approves a document</value>
+        [DataMember(Name="use_stamp_for_approve_only", EmitDefaultValue=false)]
+        public bool? UseStampForApproveOnly { get; set; }
+
+        /// <summary>
         /// Gets or Sets EmbedUrl
         /// </summary>
         [DataMember(Name="embed_url", EmitDefaultValue=false)]
@@ -428,6 +437,7 @@ namespace SignRequest.Model
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  EmbedUrlUserId: ").Append(EmbedUrlUserId).Append("\n");
             sb.Append("  Inputs: ").Append(Inputs).Append("\n");
+            sb.Append("  UseStampForApproveOnly: ").Append(UseStampForApproveOnly).Append("\n");
             sb.Append("  EmbedUrl: ").Append(EmbedUrl).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
             sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
@@ -608,6 +618,11 @@ namespace SignRequest.Model
                     this.Inputs.SequenceEqual(input.Inputs)
                 ) && 
                 (
+                    this.UseStampForApproveOnly == input.UseStampForApproveOnly ||
+                    (this.UseStampForApproveOnly != null &&
+                    this.UseStampForApproveOnly.Equals(input.UseStampForApproveOnly))
+                ) && 
+                (
                     this.EmbedUrl == input.EmbedUrl ||
                     (this.EmbedUrl != null &&
                     this.EmbedUrl.Equals(input.EmbedUrl))
@@ -699,6 +714,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.EmbedUrlUserId.GetHashCode();
                 if (this.Inputs != null)
                     hashCode = hashCode * 59 + this.Inputs.GetHashCode();
+                if (this.UseStampForApproveOnly != null)
+                    hashCode = hashCode * 59 + this.UseStampForApproveOnly.GetHashCode();
                 if (this.EmbedUrl != null)
                     hashCode = hashCode * 59 + this.EmbedUrl.GetHashCode();
                 if (this.Attachments != null)

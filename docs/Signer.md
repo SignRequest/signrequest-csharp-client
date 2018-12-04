@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **Message** | **string** |  | [optional] 
 **EmbedUrlUserId** | **string** |  | [optional] 
 **Inputs** | [**List&lt;SignerInputs&gt;**](SignerInputs.md) |  | [optional] 
+**UseStampForApproveOnly** | **bool?** | Place an approval stamp on a document when a signer approves a document | [optional] 
 **EmbedUrl** | **string** |  | [optional] 
 **Attachments** | [**List&lt;SignerAttachment&gt;**](SignerAttachment.md) |  | [optional] 
 **RedirectUrl** | **string** |  | [optional] 
