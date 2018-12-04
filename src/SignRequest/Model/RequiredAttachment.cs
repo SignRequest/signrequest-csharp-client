@@ -38,17 +38,17 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RequiredAttachment" /> class.
         /// </summary>
-        /// <param name="Name">Name (required).</param>
-        public RequiredAttachment(string Name = default(string))
+        /// <param name="name">name (required).</param>
+        public RequiredAttachment(string name = default(string))
         {
-            // to ensure "Name" is required (not null)
-            if (Name == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new InvalidDataException("Name is a required property for RequiredAttachment and cannot be null");
+                throw new InvalidDataException("name is a required property for RequiredAttachment and cannot be null");
             }
             else
             {
-                this.Name = Name;
+                this.Name = name;
             }
         }
         
@@ -82,7 +82,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

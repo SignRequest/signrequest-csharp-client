@@ -33,10 +33,10 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SignerAttachment" /> class.
         /// </summary>
-        /// <param name="ForAttachment">ForAttachment.</param>
-        public SignerAttachment(RequiredAttachment ForAttachment = default(RequiredAttachment))
+        /// <param name="forAttachment">forAttachment.</param>
+        public SignerAttachment(RequiredAttachment forAttachment = default(RequiredAttachment))
         {
-            this.ForAttachment = ForAttachment;
+            this.ForAttachment = forAttachment;
         }
         
         /// <summary>
@@ -84,7 +84,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

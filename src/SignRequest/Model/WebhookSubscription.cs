@@ -196,34 +196,34 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookSubscription" /> class.
         /// </summary>
-        /// <param name="Name">Optional name to easily identify what webhook is used for.</param>
-        /// <param name="EventType">EventType (required).</param>
-        /// <param name="CallbackUrl">CallbackUrl (required).</param>
-        /// <param name="Integration">Integration.</param>
-        /// <param name="Team">Team.</param>
-        public WebhookSubscription(string Name = default(string), EventTypeEnum EventType = default(EventTypeEnum), string CallbackUrl = default(string), IntegrationEnum? Integration = default(IntegrationEnum?), DocumentTeam Team = default(DocumentTeam))
+        /// <param name="name">Optional name to easily identify what webhook is used for.</param>
+        /// <param name="eventType">eventType (required).</param>
+        /// <param name="callbackUrl">callbackUrl (required).</param>
+        /// <param name="integration">integration.</param>
+        /// <param name="team">team.</param>
+        public WebhookSubscription(string name = default(string), EventTypeEnum eventType = default(EventTypeEnum), string callbackUrl = default(string), IntegrationEnum? integration = default(IntegrationEnum?), DocumentTeam team = default(DocumentTeam))
         {
-            // to ensure "EventType" is required (not null)
-            if (EventType == null)
+            // to ensure "eventType" is required (not null)
+            if (eventType == null)
             {
-                throw new InvalidDataException("EventType is a required property for WebhookSubscription and cannot be null");
+                throw new InvalidDataException("eventType is a required property for WebhookSubscription and cannot be null");
             }
             else
             {
-                this.EventType = EventType;
+                this.EventType = eventType;
             }
-            // to ensure "CallbackUrl" is required (not null)
-            if (CallbackUrl == null)
+            // to ensure "callbackUrl" is required (not null)
+            if (callbackUrl == null)
             {
-                throw new InvalidDataException("CallbackUrl is a required property for WebhookSubscription and cannot be null");
+                throw new InvalidDataException("callbackUrl is a required property for WebhookSubscription and cannot be null");
             }
             else
             {
-                this.CallbackUrl = CallbackUrl;
+                this.CallbackUrl = callbackUrl;
             }
-            this.Name = Name;
-            this.Integration = Integration;
-            this.Team = Team;
+            this.Name = name;
+            this.Integration = integration;
+            this.Team = team;
         }
         
         /// <summary>
@@ -289,7 +289,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

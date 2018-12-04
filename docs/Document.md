@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **SecurityHash** | **string** | SHA256 hash of PDF contents | [optional] 
 **Attachments** | [**List&lt;DocumentAttachment&gt;**](DocumentAttachment.md) |  | [optional] 
 **AutoDeleteAfter** | **DateTime?** | Date and time calculated using &#x60;auto_delete_days&#x60; after which a finished document (signed/cancelled/declined) will be automatically deleted | [optional] 
+**Sandbox** | **bool?** | Indicates whether document was created as part of a sandbox team | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

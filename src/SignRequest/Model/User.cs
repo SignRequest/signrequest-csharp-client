@@ -38,22 +38,22 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="User" /> class.
         /// </summary>
-        /// <param name="Email">Email (required).</param>
-        /// <param name="FirstName">FirstName.</param>
-        /// <param name="LastName">LastName.</param>
-        public User(string Email = default(string), string FirstName = default(string), string LastName = default(string))
+        /// <param name="email">email (required).</param>
+        /// <param name="firstName">firstName.</param>
+        /// <param name="lastName">lastName.</param>
+        public User(string email = default(string), string firstName = default(string), string lastName = default(string))
         {
-            // to ensure "Email" is required (not null)
-            if (Email == null)
+            // to ensure "email" is required (not null)
+            if (email == null)
             {
-                throw new InvalidDataException("Email is a required property for User and cannot be null");
+                throw new InvalidDataException("email is a required property for User and cannot be null");
             }
             else
             {
-                this.Email = Email;
+                this.Email = email;
             }
-            this.FirstName = FirstName;
-            this.LastName = LastName;
+            this.FirstName = firstName;
+            this.LastName = lastName;
         }
         
         /// <summary>
@@ -100,7 +100,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

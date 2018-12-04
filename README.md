@@ -124,6 +124,7 @@ All URIs are relative to _https://signrequest.com/api/v1_
 | _TeamMembersApi_            | [**TeamMembersList**](docs/TeamMembersApi.md#teammemberslist)                                        | **GET** /team-members/                                  | Retrieve a list of Team Members         |
 | _TeamMembersApi_            | [**TeamMembersRead**](docs/TeamMembersApi.md#teammembersread)                                        | **GET** /team-members/{uuid}/                           | Retrieve a Team Member                  |
 | _TeamsApi_                  | [**TeamsCreate**](docs/TeamsApi.md#teamscreate)                                                      | **POST** /teams/                                        | Create a Team                           |
+| _TeamsApi_                  | [**TeamsDelete**](docs/TeamsApi.md#teamsdelete)                                                      | **DELETE** /teams/{subdomain}/                          | Delete a Team                           |
 | _TeamsApi_                  | [**TeamsInviteMember**](docs/TeamsApi.md#teamsinvitemember)                                          | **POST** /teams/{subdomain}/invite_member/              | Invite a Team Member                    |
 | _TeamsApi_                  | [**TeamsList**](docs/TeamsApi.md#teamslist)                                                          | **GET** /teams/                                         | Retrieve a list of Teams                |
 | _TeamsApi_                  | [**TeamsPartialUpdate**](docs/TeamsApi.md#teamspartialupdate)                                        | **PATCH** /teams/{subdomain}/                           | Update a Team                           |
@@ -149,6 +150,7 @@ All URIs are relative to _https://signrequest.com/api/v1_
 - [Model.DocumentSigningLog](docs/DocumentSigningLog.md)
 - [Model.DocumentSignrequest](docs/DocumentSignrequest.md)
 - [Model.DocumentTeam](docs/DocumentTeam.md)
+- [Model.Event](docs/Event.md)
 - [Model.FileFromSf](docs/FileFromSf.md)
 - [Model.InlineDocumentSignerIntegrationData](docs/InlineDocumentSignerIntegrationData.md)
 - [Model.InlineIntegrationData](docs/InlineIntegrationData.md)
@@ -169,7 +171,6 @@ All URIs are relative to _https://signrequest.com/api/v1_
 - [Model.InlineTeam](docs/InlineTeam.md)
 - [Model.InlineTeamMember](docs/InlineTeamMember.md)
 - [Model.InviteMember](docs/InviteMember.md)
-- [Model.ModelEvent](docs/ModelEvent.md)
 - [Model.Placeholder](docs/Placeholder.md)
 - [Model.RequiredAttachment](docs/RequiredAttachment.md)
 - [Model.SignRequest](docs/SignRequest.md)

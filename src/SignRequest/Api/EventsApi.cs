@@ -81,8 +81,8 @@ namespace SignRequest.Api
         /// </remarks>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
-        /// <returns>ModelEvent</returns>
-        ModelEvent EventsRead (int? id);
+        /// <returns>Event</returns>
+        Event EventsRead (int? id);
 
         /// <summary>
         /// Retrieve an Event
@@ -92,8 +92,8 @@ namespace SignRequest.Api
         /// </remarks>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
-        /// <returns>ApiResponse of ModelEvent</returns>
-        ApiResponse<ModelEvent> EventsReadWithHttpInfo (int? id);
+        /// <returns>ApiResponse of Event</returns>
+        ApiResponse<Event> EventsReadWithHttpInfo (int? id);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -153,8 +153,8 @@ namespace SignRequest.Api
         /// </remarks>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
-        /// <returns>Task of ModelEvent</returns>
-        System.Threading.Tasks.Task<ModelEvent> EventsReadAsync (int? id);
+        /// <returns>Task of Event</returns>
+        System.Threading.Tasks.Task<Event> EventsReadAsync (int? id);
 
         /// <summary>
         /// Retrieve an Event
@@ -164,8 +164,8 @@ namespace SignRequest.Api
         /// </remarks>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
-        /// <returns>Task of ApiResponse (ModelEvent)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ModelEvent>> EventsReadAsyncWithHttpInfo (int? id);
+        /// <returns>Task of ApiResponse (Event)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Event>> EventsReadAsyncWithHttpInfo (int? id);
         #endregion Asynchronous Operations
     }
 
@@ -182,7 +182,7 @@ namespace SignRequest.Api
         /// <returns></returns>
         public EventsApi(String basePath)
         {
-            this.Configuration = new Configuration { BasePath = basePath };
+            this.Configuration = new SignRequest.Client.Configuration { BasePath = basePath };
 
             ExceptionFactory = SignRequest.Client.Configuration.DefaultExceptionFactory;
         }
@@ -193,10 +193,10 @@ namespace SignRequest.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public EventsApi(Configuration configuration = null)
+        public EventsApi(SignRequest.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default;
+                this.Configuration = SignRequest.Client.Configuration.Default;
             else
                 this.Configuration = configuration;
 
@@ -226,7 +226,7 @@ namespace SignRequest.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Configuration Configuration {get; set;}
+        public SignRequest.Client.Configuration Configuration {get; set;}
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -318,7 +318,7 @@ namespace SignRequest.Api
             var localVarPath = "/events/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -327,40 +327,40 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (documentUuid != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__uuid", documentUuid)); // query parameter
-            if (documentExternalId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__external_id", documentExternalId)); // query parameter
-            if (documentSignrequestWho != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__signrequest__who", documentSignrequestWho)); // query parameter
-            if (documentSignrequestFromEmail != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__signrequest__from_email", documentSignrequestFromEmail)); // query parameter
-            if (documentStatus != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__status", documentStatus)); // query parameter
-            if (documentUserEmail != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__email", documentUserEmail)); // query parameter
-            if (documentUserFirstName != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__first_name", documentUserFirstName)); // query parameter
-            if (documentUserLastName != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__last_name", documentUserLastName)); // query parameter
-            if (delivered != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "delivered", delivered)); // query parameter
-            if (deliveredOn != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "delivered_on", deliveredOn)); // query parameter
-            if (timestamp != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "timestamp", timestamp)); // query parameter
-            if (status != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
-            if (eventType != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "event_type", eventType)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (limit != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (documentUuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__uuid", documentUuid)); // query parameter
+            if (documentExternalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__external_id", documentExternalId)); // query parameter
+            if (documentSignrequestWho != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__signrequest__who", documentSignrequestWho)); // query parameter
+            if (documentSignrequestFromEmail != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__signrequest__from_email", documentSignrequestFromEmail)); // query parameter
+            if (documentStatus != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__status", documentStatus)); // query parameter
+            if (documentUserEmail != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__email", documentUserEmail)); // query parameter
+            if (documentUserFirstName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__first_name", documentUserFirstName)); // query parameter
+            if (documentUserLastName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__last_name", documentUserLastName)); // query parameter
+            if (delivered != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "delivered", delivered)); // query parameter
+            if (deliveredOn != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "delivered_on", deliveredOn)); // query parameter
+            if (timestamp != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timestamp", timestamp)); // query parameter
+            if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
+            if (eventType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "event_type", eventType)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -374,7 +374,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<InlineResponse2004>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse2004) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
+                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
         }
 
         /// <summary>
@@ -430,7 +430,7 @@ namespace SignRequest.Api
             var localVarPath = "/events/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -439,40 +439,40 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (documentUuid != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__uuid", documentUuid)); // query parameter
-            if (documentExternalId != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__external_id", documentExternalId)); // query parameter
-            if (documentSignrequestWho != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__signrequest__who", documentSignrequestWho)); // query parameter
-            if (documentSignrequestFromEmail != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__signrequest__from_email", documentSignrequestFromEmail)); // query parameter
-            if (documentStatus != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__status", documentStatus)); // query parameter
-            if (documentUserEmail != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__email", documentUserEmail)); // query parameter
-            if (documentUserFirstName != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__first_name", documentUserFirstName)); // query parameter
-            if (documentUserLastName != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__last_name", documentUserLastName)); // query parameter
-            if (delivered != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "delivered", delivered)); // query parameter
-            if (deliveredOn != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "delivered_on", deliveredOn)); // query parameter
-            if (timestamp != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "timestamp", timestamp)); // query parameter
-            if (status != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
-            if (eventType != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "event_type", eventType)); // query parameter
-            if (page != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (limit != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (documentUuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__uuid", documentUuid)); // query parameter
+            if (documentExternalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__external_id", documentExternalId)); // query parameter
+            if (documentSignrequestWho != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__signrequest__who", documentSignrequestWho)); // query parameter
+            if (documentSignrequestFromEmail != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__signrequest__from_email", documentSignrequestFromEmail)); // query parameter
+            if (documentStatus != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__status", documentStatus)); // query parameter
+            if (documentUserEmail != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__email", documentUserEmail)); // query parameter
+            if (documentUserFirstName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__first_name", documentUserFirstName)); // query parameter
+            if (documentUserLastName != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "document__user__last_name", documentUserLastName)); // query parameter
+            if (delivered != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "delivered", delivered)); // query parameter
+            if (deliveredOn != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "delivered_on", deliveredOn)); // query parameter
+            if (timestamp != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "timestamp", timestamp)); // query parameter
+            if (status != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "status", status)); // query parameter
+            if (eventType != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "event_type", eventType)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -486,7 +486,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<InlineResponse2004>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse2004) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
+                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
         }
 
         /// <summary>
@@ -494,10 +494,10 @@ namespace SignRequest.Api
         /// </summary>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
-        /// <returns>ModelEvent</returns>
-        public ModelEvent EventsRead (int? id)
+        /// <returns>Event</returns>
+        public Event EventsRead (int? id)
         {
-             ApiResponse<ModelEvent> localVarResponse = EventsReadWithHttpInfo(id);
+             ApiResponse<Event> localVarResponse = EventsReadWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
@@ -506,8 +506,8 @@ namespace SignRequest.Api
         /// </summary>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
-        /// <returns>ApiResponse of ModelEvent</returns>
-        public ApiResponse< ModelEvent > EventsReadWithHttpInfo (int? id)
+        /// <returns>ApiResponse of Event</returns>
+        public ApiResponse< Event > EventsReadWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -516,7 +516,7 @@ namespace SignRequest.Api
             var localVarPath = "/events/{id}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -525,26 +525,26 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -556,9 +556,9 @@ namespace SignRequest.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelEvent>(localVarStatusCode,
+            return new ApiResponse<Event>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelEvent) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEvent)));
+                (Event) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
         }
 
         /// <summary>
@@ -566,10 +566,10 @@ namespace SignRequest.Api
         /// </summary>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
-        /// <returns>Task of ModelEvent</returns>
-        public async System.Threading.Tasks.Task<ModelEvent> EventsReadAsync (int? id)
+        /// <returns>Task of Event</returns>
+        public async System.Threading.Tasks.Task<Event> EventsReadAsync (int? id)
         {
-             ApiResponse<ModelEvent> localVarResponse = await EventsReadAsyncWithHttpInfo(id);
+             ApiResponse<Event> localVarResponse = await EventsReadAsyncWithHttpInfo(id);
              return localVarResponse.Data;
 
         }
@@ -579,8 +579,8 @@ namespace SignRequest.Api
         /// </summary>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
-        /// <returns>Task of ApiResponse (ModelEvent)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ModelEvent>> EventsReadAsyncWithHttpInfo (int? id)
+        /// <returns>Task of ApiResponse (Event)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Event>> EventsReadAsyncWithHttpInfo (int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -589,7 +589,7 @@ namespace SignRequest.Api
             var localVarPath = "/events/{id}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -598,26 +598,26 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (id != null) localVarPathParams.Add("id", Configuration.ApiClient.ParameterToString(id)); // path parameter
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -629,9 +629,9 @@ namespace SignRequest.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ModelEvent>(localVarStatusCode,
+            return new ApiResponse<Event>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ModelEvent) Configuration.ApiClient.Deserialize(localVarResponse, typeof(ModelEvent)));
+                (Event) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
         }
 
     }

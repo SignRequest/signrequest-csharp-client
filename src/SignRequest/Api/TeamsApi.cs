@@ -46,6 +46,27 @@ namespace SignRequest.Api
         /// <returns>ApiResponse of Team</returns>
         ApiResponse<Team> TeamsCreateWithHttpInfo (Team data);
         /// <summary>
+        /// Delete a Team
+        /// </summary>
+        /// <remarks>
+        /// Required fields are **name** and **subdomain** where the subdomain is globally unique. Use **POST** to create a Team. To update a field on a Team use **PATCH**.  To use the API on behalf of a particular team change the endpoint to: *https://_**{{ subdomain }}**.signrequest.com/api/v1/...*  To invite new team members you can use **POST** {\&quot;email\&quot;:\&quot;**email-of-member-to-invite@example.com**\&quot;,\&quot;is_admin\&quot;:false,\&quot;is_owner\&quot;:false} to: *https://signrequest.com/api/v1/teams/_**{{ subdomain }}**_/invite_member/_*
+        /// </remarks>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <returns></returns>
+        void TeamsDelete (string subdomain);
+
+        /// <summary>
+        /// Delete a Team
+        /// </summary>
+        /// <remarks>
+        /// Required fields are **name** and **subdomain** where the subdomain is globally unique. Use **POST** to create a Team. To update a field on a Team use **PATCH**.  To use the API on behalf of a particular team change the endpoint to: *https://_**{{ subdomain }}**.signrequest.com/api/v1/...*  To invite new team members you can use **POST** {\&quot;email\&quot;:\&quot;**email-of-member-to-invite@example.com**\&quot;,\&quot;is_admin\&quot;:false,\&quot;is_owner\&quot;:false} to: *https://signrequest.com/api/v1/teams/_**{{ subdomain }}**_/invite_member/_*
+        /// </remarks>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> TeamsDeleteWithHttpInfo (string subdomain);
+        /// <summary>
         /// Invite a Team Member
         /// </summary>
         /// <remarks>
@@ -159,6 +180,27 @@ namespace SignRequest.Api
         /// <returns>Task of ApiResponse (Team)</returns>
         System.Threading.Tasks.Task<ApiResponse<Team>> TeamsCreateAsyncWithHttpInfo (Team data);
         /// <summary>
+        /// Delete a Team
+        /// </summary>
+        /// <remarks>
+        /// Required fields are **name** and **subdomain** where the subdomain is globally unique. Use **POST** to create a Team. To update a field on a Team use **PATCH**.  To use the API on behalf of a particular team change the endpoint to: *https://_**{{ subdomain }}**.signrequest.com/api/v1/...*  To invite new team members you can use **POST** {\&quot;email\&quot;:\&quot;**email-of-member-to-invite@example.com**\&quot;,\&quot;is_admin\&quot;:false,\&quot;is_owner\&quot;:false} to: *https://signrequest.com/api/v1/teams/_**{{ subdomain }}**_/invite_member/_*
+        /// </remarks>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task TeamsDeleteAsync (string subdomain);
+
+        /// <summary>
+        /// Delete a Team
+        /// </summary>
+        /// <remarks>
+        /// Required fields are **name** and **subdomain** where the subdomain is globally unique. Use **POST** to create a Team. To update a field on a Team use **PATCH**.  To use the API on behalf of a particular team change the endpoint to: *https://_**{{ subdomain }}**.signrequest.com/api/v1/...*  To invite new team members you can use **POST** {\&quot;email\&quot;:\&quot;**email-of-member-to-invite@example.com**\&quot;,\&quot;is_admin\&quot;:false,\&quot;is_owner\&quot;:false} to: *https://signrequest.com/api/v1/teams/_**{{ subdomain }}**_/invite_member/_*
+        /// </remarks>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> TeamsDeleteAsyncWithHttpInfo (string subdomain);
+        /// <summary>
         /// Invite a Team Member
         /// </summary>
         /// <remarks>
@@ -264,7 +306,7 @@ namespace SignRequest.Api
         /// <returns></returns>
         public TeamsApi(String basePath)
         {
-            this.Configuration = new Configuration { BasePath = basePath };
+            this.Configuration = new SignRequest.Client.Configuration { BasePath = basePath };
 
             ExceptionFactory = SignRequest.Client.Configuration.DefaultExceptionFactory;
         }
@@ -275,10 +317,10 @@ namespace SignRequest.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public TeamsApi(Configuration configuration = null)
+        public TeamsApi(SignRequest.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default;
+                this.Configuration = SignRequest.Client.Configuration.Default;
             else
                 this.Configuration = configuration;
 
@@ -308,7 +350,7 @@ namespace SignRequest.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public Configuration Configuration {get; set;}
+        public SignRequest.Client.Configuration Configuration {get; set;}
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -375,7 +417,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -384,19 +426,19 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (data != null && data.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(data); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(data); // http body (model) parameter
             }
             else
             {
@@ -404,13 +446,13 @@ namespace SignRequest.Api
             }
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -424,7 +466,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<Team>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Team) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
+                (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
         /// <summary>
@@ -455,7 +497,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -464,19 +506,19 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (data != null && data.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(data); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(data); // http body (model) parameter
             }
             else
             {
@@ -484,13 +526,13 @@ namespace SignRequest.Api
             }
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -504,7 +546,150 @@ namespace SignRequest.Api
 
             return new ApiResponse<Team>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Team) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
+                (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
+        }
+
+        /// <summary>
+        /// Delete a Team Required fields are **name** and **subdomain** where the subdomain is globally unique. Use **POST** to create a Team. To update a field on a Team use **PATCH**.  To use the API on behalf of a particular team change the endpoint to: *https://_**{{ subdomain }}**.signrequest.com/api/v1/...*  To invite new team members you can use **POST** {\&quot;email\&quot;:\&quot;**email-of-member-to-invite@example.com**\&quot;,\&quot;is_admin\&quot;:false,\&quot;is_owner\&quot;:false} to: *https://signrequest.com/api/v1/teams/_**{{ subdomain }}**_/invite_member/_*
+        /// </summary>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <returns></returns>
+        public void TeamsDelete (string subdomain)
+        {
+             TeamsDeleteWithHttpInfo(subdomain);
+        }
+
+        /// <summary>
+        /// Delete a Team Required fields are **name** and **subdomain** where the subdomain is globally unique. Use **POST** to create a Team. To update a field on a Team use **PATCH**.  To use the API on behalf of a particular team change the endpoint to: *https://_**{{ subdomain }}**.signrequest.com/api/v1/...*  To invite new team members you can use **POST** {\&quot;email\&quot;:\&quot;**email-of-member-to-invite@example.com**\&quot;,\&quot;is_admin\&quot;:false,\&quot;is_owner\&quot;:false} to: *https://signrequest.com/api/v1/teams/_**{{ subdomain }}**_/invite_member/_*
+        /// </summary>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> TeamsDeleteWithHttpInfo (string subdomain)
+        {
+            // verify the required parameter 'subdomain' is set
+            if (subdomain == null)
+                throw new ApiException(400, "Missing required parameter 'subdomain' when calling TeamsApi->TeamsDelete");
+
+            var localVarPath = "/teams/{subdomain}/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subdomain != null) localVarPathParams.Add("subdomain", this.Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
+
+            // authentication (Token) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TeamsDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Delete a Team Required fields are **name** and **subdomain** where the subdomain is globally unique. Use **POST** to create a Team. To update a field on a Team use **PATCH**.  To use the API on behalf of a particular team change the endpoint to: *https://_**{{ subdomain }}**.signrequest.com/api/v1/...*  To invite new team members you can use **POST** {\&quot;email\&quot;:\&quot;**email-of-member-to-invite@example.com**\&quot;,\&quot;is_admin\&quot;:false,\&quot;is_owner\&quot;:false} to: *https://signrequest.com/api/v1/teams/_**{{ subdomain }}**_/invite_member/_*
+        /// </summary>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task TeamsDeleteAsync (string subdomain)
+        {
+             await TeamsDeleteAsyncWithHttpInfo(subdomain);
+
+        }
+
+        /// <summary>
+        /// Delete a Team Required fields are **name** and **subdomain** where the subdomain is globally unique. Use **POST** to create a Team. To update a field on a Team use **PATCH**.  To use the API on behalf of a particular team change the endpoint to: *https://_**{{ subdomain }}**.signrequest.com/api/v1/...*  To invite new team members you can use **POST** {\&quot;email\&quot;:\&quot;**email-of-member-to-invite@example.com**\&quot;,\&quot;is_admin\&quot;:false,\&quot;is_owner\&quot;:false} to: *https://signrequest.com/api/v1/teams/_**{{ subdomain }}**_/invite_member/_*
+        /// </summary>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="subdomain"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> TeamsDeleteAsyncWithHttpInfo (string subdomain)
+        {
+            // verify the required parameter 'subdomain' is set
+            if (subdomain == null)
+                throw new ApiException(400, "Missing required parameter 'subdomain' when calling TeamsApi->TeamsDelete");
+
+            var localVarPath = "/teams/{subdomain}/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (subdomain != null) localVarPathParams.Add("subdomain", this.Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
+
+            // authentication (Token) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TeamsDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
 
         /// <summary>
@@ -539,7 +724,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/{subdomain}/invite_member/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -548,20 +733,20 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (subdomain != null) localVarPathParams.Add("subdomain", Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
+            if (subdomain != null) localVarPathParams.Add("subdomain", this.Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
             if (data != null && data.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(data); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(data); // http body (model) parameter
             }
             else
             {
@@ -569,13 +754,13 @@ namespace SignRequest.Api
             }
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -589,7 +774,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<InviteMember>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InviteMember) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InviteMember)));
+                (InviteMember) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InviteMember)));
         }
 
         /// <summary>
@@ -625,7 +810,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/{subdomain}/invite_member/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -634,20 +819,20 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (subdomain != null) localVarPathParams.Add("subdomain", Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
+            if (subdomain != null) localVarPathParams.Add("subdomain", this.Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
             if (data != null && data.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(data); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(data); // http body (model) parameter
             }
             else
             {
@@ -655,13 +840,13 @@ namespace SignRequest.Api
             }
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -675,7 +860,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<InviteMember>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InviteMember) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InviteMember)));
+                (InviteMember) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InviteMember)));
         }
 
         /// <summary>
@@ -704,7 +889,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -713,27 +898,27 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (page != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (limit != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -747,7 +932,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<InlineResponse2007>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse2007) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
+                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
         }
 
         /// <summary>
@@ -777,7 +962,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -786,27 +971,27 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (page != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
-            if (limit != null) localVarQueryParams.AddRange(Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -820,7 +1005,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<InlineResponse2007>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InlineResponse2007) Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
+                (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
         }
 
         /// <summary>
@@ -855,7 +1040,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -864,20 +1049,20 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (subdomain != null) localVarPathParams.Add("subdomain", Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
+            if (subdomain != null) localVarPathParams.Add("subdomain", this.Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
             if (data != null && data.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(data); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(data); // http body (model) parameter
             }
             else
             {
@@ -885,13 +1070,13 @@ namespace SignRequest.Api
             }
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -905,7 +1090,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<Team>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Team) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
+                (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
         /// <summary>
@@ -941,7 +1126,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -950,20 +1135,20 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (subdomain != null) localVarPathParams.Add("subdomain", Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
+            if (subdomain != null) localVarPathParams.Add("subdomain", this.Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
             if (data != null && data.GetType() != typeof(byte[]))
             {
-                localVarPostBody = Configuration.ApiClient.Serialize(data); // http body (model) parameter
+                localVarPostBody = this.Configuration.ApiClient.Serialize(data); // http body (model) parameter
             }
             else
             {
@@ -971,13 +1156,13 @@ namespace SignRequest.Api
             }
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.PATCH, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -991,7 +1176,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<Team>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Team) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
+                (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
         /// <summary>
@@ -1021,7 +1206,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -1030,26 +1215,26 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (subdomain != null) localVarPathParams.Add("subdomain", Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
+            if (subdomain != null) localVarPathParams.Add("subdomain", this.Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1063,7 +1248,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<Team>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Team) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
+                (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
         /// <summary>
@@ -1094,7 +1279,7 @@ namespace SignRequest.Api
             var localVarPath = "/teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
@@ -1103,26 +1288,26 @@ namespace SignRequest.Api
             String[] localVarHttpContentTypes = new String[] {
                 "application/json"
             };
-            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
                 "application/json"
             };
-            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (subdomain != null) localVarPathParams.Add("subdomain", Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
+            if (subdomain != null) localVarPathParams.Add("subdomain", this.Configuration.ApiClient.ParameterToString(subdomain)); // path parameter
 
             // authentication (Token) required
-            if (!String.IsNullOrEmpty(Configuration.GetApiKeyWithPrefix("Authorization")))
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
-                localVarHeaderParams["Authorization"] = Configuration.GetApiKeyWithPrefix("Authorization");
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
@@ -1136,7 +1321,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<Team>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Team) Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
+                (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
     }

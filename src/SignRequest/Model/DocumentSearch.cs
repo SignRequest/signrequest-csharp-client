@@ -38,52 +38,50 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentSearch" /> class.
         /// </summary>
-        /// <param name="Status">&#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired.</param>
-        /// <param name="Who">Who (required).</param>
-        /// <param name="NrExtraDocs">NrExtraDocs (required).</param>
-        /// <param name="FromEmail">FromEmail (required).</param>
-        /// <param name="Autocomplete">Autocomplete (required).</param>
-        /// <param name="SignerEmails">SignerEmails.</param>
-        public DocumentSearch(string Status = default(string), string Who = default(string), int? NrExtraDocs = default(int?), string FromEmail = default(string), string Autocomplete = default(string), List<string> SignerEmails = default(List<string>))
+        /// <param name="status">&#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired.</param>
+        /// <param name="who">who (required).</param>
+        /// <param name="nrExtraDocs">nrExtraDocs (required).</param>
+        /// <param name="fromEmail">fromEmail (required).</param>
+        /// <param name="autocomplete">autocomplete (required).</param>
+        public DocumentSearch(string status = default(string), string who = default(string), int? nrExtraDocs = default(int?), string fromEmail = default(string), string autocomplete = default(string))
         {
-            // to ensure "Who" is required (not null)
-            if (Who == null)
+            // to ensure "who" is required (not null)
+            if (who == null)
             {
-                throw new InvalidDataException("Who is a required property for DocumentSearch and cannot be null");
+                throw new InvalidDataException("who is a required property for DocumentSearch and cannot be null");
             }
             else
             {
-                this.Who = Who;
+                this.Who = who;
             }
-            // to ensure "NrExtraDocs" is required (not null)
-            if (NrExtraDocs == null)
+            // to ensure "nrExtraDocs" is required (not null)
+            if (nrExtraDocs == null)
             {
-                throw new InvalidDataException("NrExtraDocs is a required property for DocumentSearch and cannot be null");
+                throw new InvalidDataException("nrExtraDocs is a required property for DocumentSearch and cannot be null");
             }
             else
             {
-                this.NrExtraDocs = NrExtraDocs;
+                this.NrExtraDocs = nrExtraDocs;
             }
-            // to ensure "FromEmail" is required (not null)
-            if (FromEmail == null)
+            // to ensure "fromEmail" is required (not null)
+            if (fromEmail == null)
             {
-                throw new InvalidDataException("FromEmail is a required property for DocumentSearch and cannot be null");
+                throw new InvalidDataException("fromEmail is a required property for DocumentSearch and cannot be null");
             }
             else
             {
-                this.FromEmail = FromEmail;
+                this.FromEmail = fromEmail;
             }
-            // to ensure "Autocomplete" is required (not null)
-            if (Autocomplete == null)
+            // to ensure "autocomplete" is required (not null)
+            if (autocomplete == null)
             {
-                throw new InvalidDataException("Autocomplete is a required property for DocumentSearch and cannot be null");
+                throw new InvalidDataException("autocomplete is a required property for DocumentSearch and cannot be null");
             }
             else
             {
-                this.Autocomplete = Autocomplete;
+                this.Autocomplete = autocomplete;
             }
-            this.Status = Status;
-            this.SignerEmails = SignerEmails;
+            this.Status = status;
         }
         
         /// <summary>
@@ -140,7 +138,7 @@ namespace SignRequest.Model
         /// Gets or Sets SignerEmails
         /// </summary>
         [DataMember(Name="signer_emails", EmitDefaultValue=false)]
-        public List<string> SignerEmails { get; set; }
+        public List<string> SignerEmails { get; private set; }
 
         /// <summary>
         /// Gets or Sets StatusDisplay
@@ -209,7 +207,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

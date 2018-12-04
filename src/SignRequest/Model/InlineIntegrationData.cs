@@ -76,12 +76,12 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineIntegrationData" /> class.
         /// </summary>
-        /// <param name="Integration">Integration.</param>
-        /// <param name="IntegrationData">IntegrationData.</param>
-        public InlineIntegrationData(IntegrationEnum? Integration = default(IntegrationEnum?), string IntegrationData = default(string))
+        /// <param name="integration">integration.</param>
+        /// <param name="integrationData">integrationData.</param>
+        public InlineIntegrationData(IntegrationEnum? integration = default(IntegrationEnum?), string integrationData = default(string))
         {
-            this.Integration = Integration;
-            this.IntegrationData = IntegrationData;
+            this.Integration = integration;
+            this.IntegrationData = integrationData;
         }
         
 
@@ -109,7 +109,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

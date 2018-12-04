@@ -38,37 +38,37 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InviteMember" /> class.
         /// </summary>
-        /// <param name="Email">Email (required).</param>
-        /// <param name="IsAdmin">IsAdmin (default to false).</param>
-        /// <param name="IsOwner">IsOwner (default to false).</param>
-        public InviteMember(string Email = default(string), bool? IsAdmin = false, bool? IsOwner = false)
+        /// <param name="email">email (required).</param>
+        /// <param name="isAdmin">isAdmin (default to false).</param>
+        /// <param name="isOwner">isOwner (default to false).</param>
+        public InviteMember(string email = default(string), bool? isAdmin = false, bool? isOwner = false)
         {
-            // to ensure "Email" is required (not null)
-            if (Email == null)
+            // to ensure "email" is required (not null)
+            if (email == null)
             {
-                throw new InvalidDataException("Email is a required property for InviteMember and cannot be null");
+                throw new InvalidDataException("email is a required property for InviteMember and cannot be null");
             }
             else
             {
-                this.Email = Email;
+                this.Email = email;
             }
-            // use default value if no "IsAdmin" provided
-            if (IsAdmin == null)
+            // use default value if no "isAdmin" provided
+            if (isAdmin == null)
             {
                 this.IsAdmin = false;
             }
             else
             {
-                this.IsAdmin = IsAdmin;
+                this.IsAdmin = isAdmin;
             }
-            // use default value if no "IsOwner" provided
-            if (IsOwner == null)
+            // use default value if no "isOwner" provided
+            if (isOwner == null)
             {
                 this.IsOwner = false;
             }
             else
             {
-                this.IsOwner = IsOwner;
+                this.IsOwner = isOwner;
             }
         }
         
@@ -109,7 +109,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

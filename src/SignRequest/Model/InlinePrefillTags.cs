@@ -33,16 +33,16 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlinePrefillTags" /> class.
         /// </summary>
-        /// <param name="ExternalId">ExternalId.</param>
-        /// <param name="Text">Text.</param>
-        /// <param name="CheckboxValue">CheckboxValue.</param>
-        /// <param name="DateValue">DateValue.</param>
-        public InlinePrefillTags(string ExternalId = default(string), string Text = default(string), bool? CheckboxValue = default(bool?), DateTime? DateValue = default(DateTime?))
+        /// <param name="externalId">externalId.</param>
+        /// <param name="text">text.</param>
+        /// <param name="checkboxValue">checkboxValue.</param>
+        /// <param name="dateValue">dateValue.</param>
+        public InlinePrefillTags(string externalId = default(string), string text = default(string), bool? checkboxValue = default(bool?), DateTime? dateValue = default(DateTime?))
         {
-            this.ExternalId = ExternalId;
-            this.Text = Text;
-            this.CheckboxValue = CheckboxValue;
-            this.DateValue = DateValue;
+            this.ExternalId = externalId;
+            this.Text = text;
+            this.CheckboxValue = checkboxValue;
+            this.DateValue = dateValue;
         }
         
         /// <summary>
@@ -90,7 +90,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

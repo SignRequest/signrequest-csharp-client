@@ -57,27 +57,27 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse201" /> class.
         /// </summary>
-        /// <param name="Cancelled">Cancelled (required).</param>
-        /// <param name="Detail">Detail (required).</param>
-        public InlineResponse201(bool? Cancelled = default(bool?), DetailEnum Detail = default(DetailEnum))
+        /// <param name="cancelled">cancelled (required).</param>
+        /// <param name="detail">detail (required).</param>
+        public InlineResponse201(bool? cancelled = default(bool?), DetailEnum detail = default(DetailEnum))
         {
-            // to ensure "Cancelled" is required (not null)
-            if (Cancelled == null)
+            // to ensure "cancelled" is required (not null)
+            if (cancelled == null)
             {
-                throw new InvalidDataException("Cancelled is a required property for InlineResponse201 and cannot be null");
+                throw new InvalidDataException("cancelled is a required property for InlineResponse201 and cannot be null");
             }
             else
             {
-                this.Cancelled = Cancelled;
+                this.Cancelled = cancelled;
             }
-            // to ensure "Detail" is required (not null)
-            if (Detail == null)
+            // to ensure "detail" is required (not null)
+            if (detail == null)
             {
-                throw new InvalidDataException("Detail is a required property for InlineResponse201 and cannot be null");
+                throw new InvalidDataException("detail is a required property for InlineResponse201 and cannot be null");
             }
             else
             {
-                this.Detail = Detail;
+                this.Detail = detail;
             }
         }
         
@@ -106,7 +106,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

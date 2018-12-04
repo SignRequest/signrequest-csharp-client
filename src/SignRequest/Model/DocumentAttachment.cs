@@ -38,24 +38,24 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentAttachment" /> class.
         /// </summary>
-        /// <param name="FileFromContent">Base64 encoded document content.</param>
-        /// <param name="FileFromContentName">Filename, including extension. Required when using &#x60;file_from_content&#x60;..</param>
-        /// <param name="FileFromUrl">Publicly accessible URL of document to be downloaded by SignRequest.</param>
-        /// <param name="Document">Document (required).</param>
-        public DocumentAttachment(string FileFromContent = default(string), string FileFromContentName = default(string), string FileFromUrl = default(string), string Document = default(string))
+        /// <param name="fileFromContent">Base64 encoded document content.</param>
+        /// <param name="fileFromContentName">Filename, including extension. Required when using &#x60;file_from_content&#x60;..</param>
+        /// <param name="fileFromUrl">Publicly accessible URL of document to be downloaded by SignRequest.</param>
+        /// <param name="document">document (required).</param>
+        public DocumentAttachment(string fileFromContent = default(string), string fileFromContentName = default(string), string fileFromUrl = default(string), string document = default(string))
         {
-            // to ensure "Document" is required (not null)
-            if (Document == null)
+            // to ensure "document" is required (not null)
+            if (document == null)
             {
-                throw new InvalidDataException("Document is a required property for DocumentAttachment and cannot be null");
+                throw new InvalidDataException("document is a required property for DocumentAttachment and cannot be null");
             }
             else
             {
-                this.Document = Document;
+                this.Document = document;
             }
-            this.FileFromContent = FileFromContent;
-            this.FileFromContentName = FileFromContentName;
-            this.FileFromUrl = FileFromUrl;
+            this.FileFromContent = fileFromContent;
+            this.FileFromContentName = fileFromContentName;
+            this.FileFromUrl = fileFromUrl;
         }
         
         /// <summary>
@@ -135,7 +135,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
