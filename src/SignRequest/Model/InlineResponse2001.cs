@@ -38,32 +38,32 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse2001" /> class.
         /// </summary>
-        /// <param name="Count">Count (required).</param>
-        /// <param name="Next">Next.</param>
-        /// <param name="Previous">Previous.</param>
-        /// <param name="Results">Results (required).</param>
-        public InlineResponse2001(int? Count = default(int?), string Next = default(string), string Previous = default(string), List<DocumentAttachment> Results = default(List<DocumentAttachment>))
+        /// <param name="count">count (required).</param>
+        /// <param name="next">next.</param>
+        /// <param name="previous">previous.</param>
+        /// <param name="results">results (required).</param>
+        public InlineResponse2001(int? count = default(int?), string next = default(string), string previous = default(string), List<DocumentAttachment> results = default(List<DocumentAttachment>))
         {
-            // to ensure "Count" is required (not null)
-            if (Count == null)
+            // to ensure "count" is required (not null)
+            if (count == null)
             {
-                throw new InvalidDataException("Count is a required property for InlineResponse2001 and cannot be null");
+                throw new InvalidDataException("count is a required property for InlineResponse2001 and cannot be null");
             }
             else
             {
-                this.Count = Count;
+                this.Count = count;
             }
-            // to ensure "Results" is required (not null)
-            if (Results == null)
+            // to ensure "results" is required (not null)
+            if (results == null)
             {
-                throw new InvalidDataException("Results is a required property for InlineResponse2001 and cannot be null");
+                throw new InvalidDataException("results is a required property for InlineResponse2001 and cannot be null");
             }
             else
             {
-                this.Results = Results;
+                this.Results = results;
             }
-            this.Next = Next;
-            this.Previous = Previous;
+            this.Next = next;
+            this.Previous = previous;
         }
         
         /// <summary>
@@ -110,7 +110,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

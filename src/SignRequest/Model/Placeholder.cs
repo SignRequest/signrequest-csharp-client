@@ -87,38 +87,38 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Placeholder" /> class.
         /// </summary>
-        /// <param name="Type">Type.</param>
-        /// <param name="PageIndex">PageIndex (required).</param>
-        /// <param name="Prefill">Prefill (required).</param>
-        /// <param name="Text">Text.</param>
-        /// <param name="CheckboxValue">CheckboxValue.</param>
-        /// <param name="DateValue">DateValue.</param>
-        /// <param name="ExternalId">ExternalId.</param>
-        public Placeholder(TypeEnum? Type = default(TypeEnum?), int? PageIndex = default(int?), bool? Prefill = default(bool?), string Text = default(string), bool? CheckboxValue = default(bool?), DateTime? DateValue = default(DateTime?), string ExternalId = default(string))
+        /// <param name="type">type.</param>
+        /// <param name="pageIndex">pageIndex (required).</param>
+        /// <param name="prefill">prefill (required).</param>
+        /// <param name="text">text.</param>
+        /// <param name="checkboxValue">checkboxValue.</param>
+        /// <param name="dateValue">dateValue.</param>
+        /// <param name="externalId">externalId.</param>
+        public Placeholder(TypeEnum? type = default(TypeEnum?), int? pageIndex = default(int?), bool? prefill = default(bool?), string text = default(string), bool? checkboxValue = default(bool?), DateTime? dateValue = default(DateTime?), string externalId = default(string))
         {
-            // to ensure "PageIndex" is required (not null)
-            if (PageIndex == null)
+            // to ensure "pageIndex" is required (not null)
+            if (pageIndex == null)
             {
-                throw new InvalidDataException("PageIndex is a required property for Placeholder and cannot be null");
+                throw new InvalidDataException("pageIndex is a required property for Placeholder and cannot be null");
             }
             else
             {
-                this.PageIndex = PageIndex;
+                this.PageIndex = pageIndex;
             }
-            // to ensure "Prefill" is required (not null)
-            if (Prefill == null)
+            // to ensure "prefill" is required (not null)
+            if (prefill == null)
             {
-                throw new InvalidDataException("Prefill is a required property for Placeholder and cannot be null");
+                throw new InvalidDataException("prefill is a required property for Placeholder and cannot be null");
             }
             else
             {
-                this.Prefill = Prefill;
+                this.Prefill = prefill;
             }
-            this.Type = Type;
-            this.Text = Text;
-            this.CheckboxValue = CheckboxValue;
-            this.DateValue = DateValue;
-            this.ExternalId = ExternalId;
+            this.Type = type;
+            this.Text = text;
+            this.CheckboxValue = checkboxValue;
+            this.DateValue = dateValue;
+            this.ExternalId = externalId;
         }
         
         /// <summary>
@@ -189,7 +189,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

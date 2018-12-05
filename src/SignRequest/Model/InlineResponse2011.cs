@@ -57,17 +57,17 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse2011" /> class.
         /// </summary>
-        /// <param name="Detail">Detail (required).</param>
-        public InlineResponse2011(DetailEnum Detail = default(DetailEnum))
+        /// <param name="detail">detail (required).</param>
+        public InlineResponse2011(DetailEnum detail = default(DetailEnum))
         {
-            // to ensure "Detail" is required (not null)
-            if (Detail == null)
+            // to ensure "detail" is required (not null)
+            if (detail == null)
             {
-                throw new InvalidDataException("Detail is a required property for InlineResponse2011 and cannot be null");
+                throw new InvalidDataException("detail is a required property for InlineResponse2011 and cannot be null");
             }
             else
             {
-                this.Detail = Detail;
+                this.Detail = detail;
             }
         }
         
@@ -89,7 +89,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

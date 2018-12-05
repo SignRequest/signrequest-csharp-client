@@ -38,36 +38,34 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Team" /> class.
         /// </summary>
-        /// <param name="Name">Name (required).</param>
-        /// <param name="Subdomain">Subdomain (required).</param>
-        /// <param name="Phone">Phone.</param>
-        /// <param name="PrimaryColor">PrimaryColor.</param>
-        /// <param name="EventsCallbackUrl">EventsCallbackUrl.</param>
-        /// <param name="Members">Members.</param>
-        public Team(string Name = default(string), string Subdomain = default(string), string Phone = default(string), string PrimaryColor = default(string), string EventsCallbackUrl = default(string), List<InlineTeamMember> Members = default(List<InlineTeamMember>))
+        /// <param name="name">name (required).</param>
+        /// <param name="subdomain">subdomain (required).</param>
+        /// <param name="phone">phone.</param>
+        /// <param name="primaryColor">primaryColor.</param>
+        /// <param name="eventsCallbackUrl">eventsCallbackUrl.</param>
+        public Team(string name = default(string), string subdomain = default(string), string phone = default(string), string primaryColor = default(string), string eventsCallbackUrl = default(string))
         {
-            // to ensure "Name" is required (not null)
-            if (Name == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new InvalidDataException("Name is a required property for Team and cannot be null");
+                throw new InvalidDataException("name is a required property for Team and cannot be null");
             }
             else
             {
-                this.Name = Name;
+                this.Name = name;
             }
-            // to ensure "Subdomain" is required (not null)
-            if (Subdomain == null)
+            // to ensure "subdomain" is required (not null)
+            if (subdomain == null)
             {
-                throw new InvalidDataException("Subdomain is a required property for Team and cannot be null");
+                throw new InvalidDataException("subdomain is a required property for Team and cannot be null");
             }
             else
             {
-                this.Subdomain = Subdomain;
+                this.Subdomain = subdomain;
             }
-            this.Phone = Phone;
-            this.PrimaryColor = PrimaryColor;
-            this.EventsCallbackUrl = EventsCallbackUrl;
-            this.Members = Members;
+            this.Phone = phone;
+            this.PrimaryColor = primaryColor;
+            this.EventsCallbackUrl = eventsCallbackUrl;
         }
         
         /// <summary>
@@ -116,7 +114,21 @@ namespace SignRequest.Model
         /// Gets or Sets Members
         /// </summary>
         [DataMember(Name="members", EmitDefaultValue=false)]
-        public List<InlineTeamMember> Members { get; set; }
+        public List<InlineTeamMember> Members { get; private set; }
+
+        /// <summary>
+        /// When filled this team will be deleted after this date
+        /// </summary>
+        /// <value>When filled this team will be deleted after this date</value>
+        [DataMember(Name="delete_after", EmitDefaultValue=false)]
+        public DateTime? DeleteAfter { get; private set; }
+
+        /// <summary>
+        /// Indicates whether team is in Sandbox mode
+        /// </summary>
+        /// <value>Indicates whether team is in Sandbox mode</value>
+        [DataMember(Name="sandbox", EmitDefaultValue=false)]
+        public bool? Sandbox { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -134,6 +146,8 @@ namespace SignRequest.Model
             sb.Append("  PrimaryColor: ").Append(PrimaryColor).Append("\n");
             sb.Append("  EventsCallbackUrl: ").Append(EventsCallbackUrl).Append("\n");
             sb.Append("  Members: ").Append(Members).Append("\n");
+            sb.Append("  DeleteAfter: ").Append(DeleteAfter).Append("\n");
+            sb.Append("  Sandbox: ").Append(Sandbox).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -142,7 +156,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -207,6 +221,16 @@ namespace SignRequest.Model
                     this.Members == input.Members ||
                     this.Members != null &&
                     this.Members.SequenceEqual(input.Members)
+                ) && 
+                (
+                    this.DeleteAfter == input.DeleteAfter ||
+                    (this.DeleteAfter != null &&
+                    this.DeleteAfter.Equals(input.DeleteAfter))
+                ) && 
+                (
+                    this.Sandbox == input.Sandbox ||
+                    (this.Sandbox != null &&
+                    this.Sandbox.Equals(input.Sandbox))
                 );
         }
 
@@ -235,6 +259,10 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.EventsCallbackUrl.GetHashCode();
                 if (this.Members != null)
                     hashCode = hashCode * 59 + this.Members.GetHashCode();
+                if (this.DeleteAfter != null)
+                    hashCode = hashCode * 59 + this.DeleteAfter.GetHashCode();
+                if (this.Sandbox != null)
+                    hashCode = hashCode * 59 + this.Sandbox.GetHashCode();
                 return hashCode;
             }
         }

@@ -120,42 +120,40 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Document" /> class.
         /// </summary>
-        /// <param name="Team">Team.</param>
-        /// <param name="User">User.</param>
-        /// <param name="Name">Defaults to filename, including extension.</param>
-        /// <param name="ExternalId">ID used to reference document in external system.</param>
-        /// <param name="FrontendId">Shared secret used in conjunction with &lt;a href&#x3D;\&quot;#section/Frontend-API/SignRequest-js-client-(beta)\&quot;&gt;SignRequest-js client&lt;/a&gt; to grant user access to a document that&#39;s not a member of the document&#39;s team.</param>
-        /// <param name="FileFromUrl">Publicly accessible URL of document to be downloaded by SignRequest.</param>
-        /// <param name="EventsCallbackUrl">URL at which to receive [event callbacks](#section/Events/Events-callback) for this document.</param>
-        /// <param name="FileFromContent">Base64 encoded document content.</param>
-        /// <param name="FileFromContentName">Filename, including extension. Required when using &#x60;file_from_content&#x60;..</param>
-        /// <param name="Template">Template.</param>
-        /// <param name="PrefillTags">Prefill signer input data, see [prefill tags](#section/Preparing-a-document/Prefill-tags-templates).</param>
-        /// <param name="Integrations">Integrations.</param>
-        /// <param name="FileFromSf">FileFromSf.</param>
-        /// <param name="AutoDeleteDays">Number of days after which a finished document (signed/cancelled/declined) will be automatically deleted.</param>
-        /// <param name="Signrequest">Signrequest.</param>
-        /// <param name="SigningLog">SigningLog.</param>
-        /// <param name="Attachments">Attachments.</param>
-        public Document(DocumentTeam Team = default(DocumentTeam), User User = default(User), string Name = default(string), string ExternalId = default(string), string FrontendId = default(string), string FileFromUrl = default(string), string EventsCallbackUrl = default(string), string FileFromContent = default(string), string FileFromContentName = default(string), string Template = default(string), List<InlinePrefillTags> PrefillTags = default(List<InlinePrefillTags>), List<InlineIntegrationData> Integrations = default(List<InlineIntegrationData>), FileFromSf FileFromSf = default(FileFromSf), int? AutoDeleteDays = default(int?), DocumentSignrequest Signrequest = default(DocumentSignrequest), DocumentSigningLog SigningLog = default(DocumentSigningLog), List<DocumentAttachment> Attachments = default(List<DocumentAttachment>))
+        /// <param name="team">team.</param>
+        /// <param name="user">user.</param>
+        /// <param name="name">Defaults to filename, including extension.</param>
+        /// <param name="externalId">ID used to reference document in external system.</param>
+        /// <param name="frontendId">Shared secret used in conjunction with &lt;a href&#x3D;\&quot;#section/Frontend-API/SignRequest-js-client-(beta)\&quot;&gt;SignRequest-js client&lt;/a&gt; to grant user access to a document that&#39;s not a member of the document&#39;s team.</param>
+        /// <param name="fileFromUrl">Publicly accessible URL of document to be downloaded by SignRequest.</param>
+        /// <param name="eventsCallbackUrl">URL at which to receive [event callbacks](#section/Events/Events-callback) for this document.</param>
+        /// <param name="fileFromContent">Base64 encoded document content.</param>
+        /// <param name="fileFromContentName">Filename, including extension. Required when using &#x60;file_from_content&#x60;..</param>
+        /// <param name="template">template.</param>
+        /// <param name="prefillTags">Prefill signer input data, see [prefill tags](#section/Preparing-a-document/Prefill-tags-templates).</param>
+        /// <param name="integrations">integrations.</param>
+        /// <param name="fileFromSf">fileFromSf.</param>
+        /// <param name="autoDeleteDays">Number of days after which a finished document (signed/cancelled/declined) will be automatically deleted.</param>
+        /// <param name="signrequest">signrequest.</param>
+        /// <param name="signingLog">signingLog.</param>
+        public Document(DocumentTeam team = default(DocumentTeam), User user = default(User), string name = default(string), string externalId = default(string), string frontendId = default(string), string fileFromUrl = default(string), string eventsCallbackUrl = default(string), string fileFromContent = default(string), string fileFromContentName = default(string), string template = default(string), List<InlinePrefillTags> prefillTags = default(List<InlinePrefillTags>), List<InlineIntegrationData> integrations = default(List<InlineIntegrationData>), FileFromSf fileFromSf = default(FileFromSf), int? autoDeleteDays = default(int?), DocumentSignrequest signrequest = default(DocumentSignrequest), DocumentSigningLog signingLog = default(DocumentSigningLog))
         {
-            this.Team = Team;
-            this.User = User;
-            this.Name = Name;
-            this.ExternalId = ExternalId;
-            this.FrontendId = FrontendId;
-            this.FileFromUrl = FileFromUrl;
-            this.EventsCallbackUrl = EventsCallbackUrl;
-            this.FileFromContent = FileFromContent;
-            this.FileFromContentName = FileFromContentName;
-            this.Template = Template;
-            this.PrefillTags = PrefillTags;
-            this.Integrations = Integrations;
-            this.FileFromSf = FileFromSf;
-            this.AutoDeleteDays = AutoDeleteDays;
-            this.Signrequest = Signrequest;
-            this.SigningLog = SigningLog;
-            this.Attachments = Attachments;
+            this.Team = team;
+            this.User = user;
+            this.Name = name;
+            this.ExternalId = externalId;
+            this.FrontendId = frontendId;
+            this.FileFromUrl = fileFromUrl;
+            this.EventsCallbackUrl = eventsCallbackUrl;
+            this.FileFromContent = fileFromContent;
+            this.FileFromContentName = fileFromContentName;
+            this.Template = template;
+            this.PrefillTags = prefillTags;
+            this.Integrations = integrations;
+            this.FileFromSf = fileFromSf;
+            this.AutoDeleteDays = autoDeleteDays;
+            this.Signrequest = signrequest;
+            this.SigningLog = signingLog;
         }
         
         /// <summary>
@@ -315,7 +313,7 @@ namespace SignRequest.Model
         /// Gets or Sets Attachments
         /// </summary>
         [DataMember(Name="attachments", EmitDefaultValue=false)]
-        public List<DocumentAttachment> Attachments { get; set; }
+        public List<DocumentAttachment> Attachments { get; private set; }
 
         /// <summary>
         /// Date and time calculated using &#x60;auto_delete_days&#x60; after which a finished document (signed/cancelled/declined) will be automatically deleted
@@ -323,6 +321,13 @@ namespace SignRequest.Model
         /// <value>Date and time calculated using &#x60;auto_delete_days&#x60; after which a finished document (signed/cancelled/declined) will be automatically deleted</value>
         [DataMember(Name="auto_delete_after", EmitDefaultValue=false)]
         public DateTime? AutoDeleteAfter { get; private set; }
+
+        /// <summary>
+        /// Indicates whether document was created as part of a sandbox team
+        /// </summary>
+        /// <value>Indicates whether document was created as part of a sandbox team</value>
+        [DataMember(Name="sandbox", EmitDefaultValue=false)]
+        public bool? Sandbox { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -358,6 +363,7 @@ namespace SignRequest.Model
             sb.Append("  SecurityHash: ").Append(SecurityHash).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
             sb.Append("  AutoDeleteAfter: ").Append(AutoDeleteAfter).Append("\n");
+            sb.Append("  Sandbox: ").Append(Sandbox).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -366,7 +372,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -521,6 +527,11 @@ namespace SignRequest.Model
                     this.AutoDeleteAfter == input.AutoDeleteAfter ||
                     (this.AutoDeleteAfter != null &&
                     this.AutoDeleteAfter.Equals(input.AutoDeleteAfter))
+                ) && 
+                (
+                    this.Sandbox == input.Sandbox ||
+                    (this.Sandbox != null &&
+                    this.Sandbox.Equals(input.Sandbox))
                 );
         }
 
@@ -585,6 +596,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Attachments.GetHashCode();
                 if (this.AutoDeleteAfter != null)
                     hashCode = hashCode * 59 + this.AutoDeleteAfter.GetHashCode();
+                if (this.Sandbox != null)
+                    hashCode = hashCode * 59 + this.Sandbox.GetHashCode();
                 return hashCode;
             }
         }

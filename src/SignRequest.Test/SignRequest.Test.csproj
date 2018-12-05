@@ -81,7 +81,7 @@ Contact: tech-support@signrequest.com
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\SignRequest\SignRequest.csproj">
-          <Project>{8C6F5E9C-ED26-437A-87ED-4A6F2E35A098}</Project>
+          <Project>{7C55D80D-01C1-41D9-A66D-B6921DC0997F}</Project>
           <Name>SignRequest</Name>
       </ProjectReference>
   </ItemGroup>

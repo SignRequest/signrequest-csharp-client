@@ -147,60 +147,58 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Signer" /> class.
         /// </summary>
-        /// <param name="Email">Email (required).</param>
-        /// <param name="FirstName">FirstName.</param>
-        /// <param name="LastName">LastName.</param>
-        /// <param name="NeedsToSign">NeedsToSign (default to true).</param>
-        /// <param name="ApproveOnly">ApproveOnly.</param>
-        /// <param name="NotifyOnly">NotifyOnly.</param>
-        /// <param name="InPerson">InPerson.</param>
-        /// <param name="Order">Order.</param>
-        /// <param name="Language">Language.</param>
-        /// <param name="ForceLanguage">ForceLanguage.</param>
-        /// <param name="VerifyPhoneNumber">VerifyPhoneNumber.</param>
-        /// <param name="VerifyBankAccount">VerifyBankAccount.</param>
-        /// <param name="EmbedUrlUserId">EmbedUrlUserId.</param>
-        /// <param name="Inputs">Inputs.</param>
-        /// <param name="Attachments">Attachments.</param>
-        /// <param name="RedirectUrl">RedirectUrl.</param>
-        /// <param name="AfterDocument">AfterDocument.</param>
-        /// <param name="Integrations">Integrations.</param>
-        public Signer(string Email = default(string), string FirstName = default(string), string LastName = default(string), bool? NeedsToSign = true, bool? ApproveOnly = default(bool?), bool? NotifyOnly = default(bool?), bool? InPerson = default(bool?), int? Order = default(int?), LanguageEnum? Language = default(LanguageEnum?), bool? ForceLanguage = default(bool?), string VerifyPhoneNumber = default(string), string VerifyBankAccount = default(string), string EmbedUrlUserId = default(string), List<SignerInputs> Inputs = default(List<SignerInputs>), List<SignerAttachment> Attachments = default(List<SignerAttachment>), string RedirectUrl = default(string), string AfterDocument = default(string), List<InlineDocumentSignerIntegrationData> Integrations = default(List<InlineDocumentSignerIntegrationData>))
+        /// <param name="email">email (required).</param>
+        /// <param name="firstName">firstName.</param>
+        /// <param name="lastName">lastName.</param>
+        /// <param name="needsToSign">needsToSign (default to true).</param>
+        /// <param name="approveOnly">approveOnly.</param>
+        /// <param name="notifyOnly">notifyOnly.</param>
+        /// <param name="inPerson">inPerson.</param>
+        /// <param name="order">order.</param>
+        /// <param name="language">language.</param>
+        /// <param name="forceLanguage">forceLanguage.</param>
+        /// <param name="verifyPhoneNumber">verifyPhoneNumber.</param>
+        /// <param name="verifyBankAccount">verifyBankAccount.</param>
+        /// <param name="embedUrlUserId">embedUrlUserId.</param>
+        /// <param name="useStampForApproveOnly">Place an approval stamp on a document when a signer approves a document.</param>
+        /// <param name="redirectUrl">redirectUrl.</param>
+        /// <param name="afterDocument">afterDocument.</param>
+        /// <param name="integrations">integrations.</param>
+        public Signer(string email = default(string), string firstName = default(string), string lastName = default(string), bool? needsToSign = true, bool? approveOnly = default(bool?), bool? notifyOnly = default(bool?), bool? inPerson = default(bool?), int? order = default(int?), LanguageEnum? language = default(LanguageEnum?), bool? forceLanguage = default(bool?), string verifyPhoneNumber = default(string), string verifyBankAccount = default(string), string embedUrlUserId = default(string), bool? useStampForApproveOnly = default(bool?), string redirectUrl = default(string), string afterDocument = default(string), List<InlineDocumentSignerIntegrationData> integrations = default(List<InlineDocumentSignerIntegrationData>))
         {
-            // to ensure "Email" is required (not null)
-            if (Email == null)
+            // to ensure "email" is required (not null)
+            if (email == null)
             {
-                throw new InvalidDataException("Email is a required property for Signer and cannot be null");
+                throw new InvalidDataException("email is a required property for Signer and cannot be null");
             }
             else
             {
-                this.Email = Email;
+                this.Email = email;
             }
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            // use default value if no "NeedsToSign" provided
-            if (NeedsToSign == null)
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            // use default value if no "needsToSign" provided
+            if (needsToSign == null)
             {
                 this.NeedsToSign = true;
             }
             else
             {
-                this.NeedsToSign = NeedsToSign;
+                this.NeedsToSign = needsToSign;
             }
-            this.ApproveOnly = ApproveOnly;
-            this.NotifyOnly = NotifyOnly;
-            this.InPerson = InPerson;
-            this.Order = Order;
-            this.Language = Language;
-            this.ForceLanguage = ForceLanguage;
-            this.VerifyPhoneNumber = VerifyPhoneNumber;
-            this.VerifyBankAccount = VerifyBankAccount;
-            this.EmbedUrlUserId = EmbedUrlUserId;
-            this.Inputs = Inputs;
-            this.Attachments = Attachments;
-            this.RedirectUrl = RedirectUrl;
-            this.AfterDocument = AfterDocument;
-            this.Integrations = Integrations;
+            this.ApproveOnly = approveOnly;
+            this.NotifyOnly = notifyOnly;
+            this.InPerson = inPerson;
+            this.Order = order;
+            this.Language = language;
+            this.ForceLanguage = forceLanguage;
+            this.VerifyPhoneNumber = verifyPhoneNumber;
+            this.VerifyBankAccount = verifyBankAccount;
+            this.EmbedUrlUserId = embedUrlUserId;
+            this.UseStampForApproveOnly = useStampForApproveOnly;
+            this.RedirectUrl = redirectUrl;
+            this.AfterDocument = afterDocument;
+            this.Integrations = integrations;
         }
         
         /// <summary>
@@ -364,7 +362,14 @@ namespace SignRequest.Model
         /// Gets or Sets Inputs
         /// </summary>
         [DataMember(Name="inputs", EmitDefaultValue=false)]
-        public List<SignerInputs> Inputs { get; set; }
+        public List<SignerInputs> Inputs { get; private set; }
+
+        /// <summary>
+        /// Place an approval stamp on a document when a signer approves a document
+        /// </summary>
+        /// <value>Place an approval stamp on a document when a signer approves a document</value>
+        [DataMember(Name="use_stamp_for_approve_only", EmitDefaultValue=false)]
+        public bool? UseStampForApproveOnly { get; set; }
 
         /// <summary>
         /// Gets or Sets EmbedUrl
@@ -376,7 +381,7 @@ namespace SignRequest.Model
         /// Gets or Sets Attachments
         /// </summary>
         [DataMember(Name="attachments", EmitDefaultValue=false)]
-        public List<SignerAttachment> Attachments { get; set; }
+        public List<SignerAttachment> Attachments { get; private set; }
 
         /// <summary>
         /// Gets or Sets RedirectUrl
@@ -432,6 +437,7 @@ namespace SignRequest.Model
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  EmbedUrlUserId: ").Append(EmbedUrlUserId).Append("\n");
             sb.Append("  Inputs: ").Append(Inputs).Append("\n");
+            sb.Append("  UseStampForApproveOnly: ").Append(UseStampForApproveOnly).Append("\n");
             sb.Append("  EmbedUrl: ").Append(EmbedUrl).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
             sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
@@ -445,7 +451,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -612,6 +618,11 @@ namespace SignRequest.Model
                     this.Inputs.SequenceEqual(input.Inputs)
                 ) && 
                 (
+                    this.UseStampForApproveOnly == input.UseStampForApproveOnly ||
+                    (this.UseStampForApproveOnly != null &&
+                    this.UseStampForApproveOnly.Equals(input.UseStampForApproveOnly))
+                ) && 
+                (
                     this.EmbedUrl == input.EmbedUrl ||
                     (this.EmbedUrl != null &&
                     this.EmbedUrl.Equals(input.EmbedUrl))
@@ -703,6 +714,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.EmbedUrlUserId.GetHashCode();
                 if (this.Inputs != null)
                     hashCode = hashCode * 59 + this.Inputs.GetHashCode();
+                if (this.UseStampForApproveOnly != null)
+                    hashCode = hashCode * 59 + this.UseStampForApproveOnly.GetHashCode();
                 if (this.EmbedUrl != null)
                     hashCode = hashCode * 59 + this.EmbedUrl.GetHashCode();
                 if (this.Attachments != null)

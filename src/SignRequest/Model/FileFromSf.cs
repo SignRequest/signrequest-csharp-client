@@ -38,30 +38,30 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FileFromSf" /> class.
         /// </summary>
-        /// <param name="ObjectType">ObjectType (required).</param>
-        /// <param name="ObjectId">ObjectId (required).</param>
-        /// <param name="Uid">Uid.</param>
-        public FileFromSf(string ObjectType = default(string), string ObjectId = default(string), string Uid = default(string))
+        /// <param name="objectType">objectType (required).</param>
+        /// <param name="objectId">objectId (required).</param>
+        /// <param name="uid">uid.</param>
+        public FileFromSf(string objectType = default(string), string objectId = default(string), string uid = default(string))
         {
-            // to ensure "ObjectType" is required (not null)
-            if (ObjectType == null)
+            // to ensure "objectType" is required (not null)
+            if (objectType == null)
             {
-                throw new InvalidDataException("ObjectType is a required property for FileFromSf and cannot be null");
+                throw new InvalidDataException("objectType is a required property for FileFromSf and cannot be null");
             }
             else
             {
-                this.ObjectType = ObjectType;
+                this.ObjectType = objectType;
             }
-            // to ensure "ObjectId" is required (not null)
-            if (ObjectId == null)
+            // to ensure "objectId" is required (not null)
+            if (objectId == null)
             {
-                throw new InvalidDataException("ObjectId is a required property for FileFromSf and cannot be null");
+                throw new InvalidDataException("objectId is a required property for FileFromSf and cannot be null");
             }
             else
             {
-                this.ObjectId = ObjectId;
+                this.ObjectId = objectId;
             }
-            this.Uid = Uid;
+            this.Uid = uid;
         }
         
         /// <summary>
@@ -101,7 +101,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

@@ -5,6 +5,7 @@ All URIs are relative to *https://signrequest.com/api/v1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**TeamsCreate**](TeamsApi.md#teamscreate) | **POST** /teams/ | Create a Team
+[**TeamsDelete**](TeamsApi.md#teamsdelete) | **DELETE** /teams/{subdomain}/ | Delete a Team
 [**TeamsInviteMember**](TeamsApi.md#teamsinvitemember) | **POST** /teams/{subdomain}/invite_member/ | Invite a Team Member
 [**TeamsList**](TeamsApi.md#teamslist) | **GET** /teams/ | Retrieve a list of Teams
 [**TeamsPartialUpdate**](TeamsApi.md#teamspartialupdate) | **PATCH** /teams/{subdomain}/ | Update a Team
@@ -64,6 +65,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Team**](Team.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="teamsdelete"></a>
+# **TeamsDelete**
+> void TeamsDelete (string subdomain)
+
+Delete a Team
+
+Required fields are **name** and **subdomain** where the subdomain is globally unique. Use **POST** to create a Team. To update a field on a Team use **PATCH**.  To use the API on behalf of a particular team change the endpoint to: *https://_**{{ subdomain }}**.signrequest.com/api/v1/...*  To invite new team members you can use **POST** {\"email\":\"**email-of-member-to-invite@example.com**\",\"is_admin\":false,\"is_owner\":false} to: *https://signrequest.com/api/v1/teams/_**{{ subdomain }}**_/invite_member/_*
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using SignRequest.Api;
+using SignRequest.Client;
+using SignRequest.Model;
+
+namespace Example
+{
+    public class TeamsDeleteExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: Token
+            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
+            Configuration.Default.AddApiKeyPrefix("Authorization", "Token");
+
+            var apiInstance = new TeamsApi();
+            var subdomain = subdomain_example;  // string | 
+
+            try
+            {
+                // Delete a Team
+                apiInstance.TeamsDelete(subdomain);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling TeamsApi.TeamsDelete: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subdomain** | **string**|  | 
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

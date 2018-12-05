@@ -38,24 +38,24 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthToken" /> class.
         /// </summary>
-        /// <param name="Email">Email.</param>
-        /// <param name="Password">Password.</param>
-        /// <param name="Subdomain">Subdomain (required).</param>
-        /// <param name="Name">Name.</param>
-        public AuthToken(string Email = default(string), string Password = default(string), string Subdomain = default(string), string Name = default(string))
+        /// <param name="email">email.</param>
+        /// <param name="password">password.</param>
+        /// <param name="subdomain">subdomain (required).</param>
+        /// <param name="name">name.</param>
+        public AuthToken(string email = default(string), string password = default(string), string subdomain = default(string), string name = default(string))
         {
-            // to ensure "Subdomain" is required (not null)
-            if (Subdomain == null)
+            // to ensure "subdomain" is required (not null)
+            if (subdomain == null)
             {
-                throw new InvalidDataException("Subdomain is a required property for AuthToken and cannot be null");
+                throw new InvalidDataException("subdomain is a required property for AuthToken and cannot be null");
             }
             else
             {
-                this.Subdomain = Subdomain;
+                this.Subdomain = subdomain;
             }
-            this.Email = Email;
-            this.Password = Password;
-            this.Name = Name;
+            this.Email = email;
+            this.Password = password;
+            this.Name = name;
         }
         
         /// <summary>
@@ -116,7 +116,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

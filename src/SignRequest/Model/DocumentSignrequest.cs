@@ -66,12 +66,9 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentSignrequest" /> class.
         /// </summary>
-        /// <param name="RequiredAttachments">RequiredAttachments.</param>
-        /// <param name="Signers">Signers.</param>
-        public DocumentSignrequest(List<RequiredAttachment> RequiredAttachments = default(List<RequiredAttachment>), List<Signer> Signers = default(List<Signer>))
+        [JsonConstructorAttribute]
+        public DocumentSignrequest()
         {
-            this.RequiredAttachments = RequiredAttachments;
-            this.Signers = Signers;
         }
         
         /// <summary>
@@ -112,7 +109,7 @@ namespace SignRequest.Model
         /// Gets or Sets RequiredAttachments
         /// </summary>
         [DataMember(Name="required_attachments", EmitDefaultValue=false)]
-        public List<RequiredAttachment> RequiredAttachments { get; set; }
+        public List<RequiredAttachment> RequiredAttachments { get; private set; }
 
         /// <summary>
         /// Disable uploading/adding of attachments
@@ -157,6 +154,13 @@ namespace SignRequest.Model
         public bool? DisableUploadSignatures { get; private set; }
 
         /// <summary>
+        /// When true a text message verification is needed before the signer can see the document
+        /// </summary>
+        /// <value>When true a text message verification is needed before the signer can see the document</value>
+        [DataMember(Name="text_message_verification_locked", EmitDefaultValue=false)]
+        public bool? TextMessageVerificationLocked { get; private set; }
+
+        /// <summary>
         /// Subject of SignRequest email
         /// </summary>
         /// <value>Subject of SignRequest email</value>
@@ -182,7 +186,7 @@ namespace SignRequest.Model
         /// Gets or Sets Signers
         /// </summary>
         [DataMember(Name="signers", EmitDefaultValue=false)]
-        public List<Signer> Signers { get; set; }
+        public List<Signer> Signers { get; private set; }
 
         /// <summary>
         /// Gets or Sets Uuid
@@ -210,6 +214,7 @@ namespace SignRequest.Model
             sb.Append("  DisableDate: ").Append(DisableDate).Append("\n");
             sb.Append("  DisableEmails: ").Append(DisableEmails).Append("\n");
             sb.Append("  DisableUploadSignatures: ").Append(DisableUploadSignatures).Append("\n");
+            sb.Append("  TextMessageVerificationLocked: ").Append(TextMessageVerificationLocked).Append("\n");
             sb.Append("  Subject: ").Append(Subject).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  Who: ").Append(Who).Append("\n");
@@ -224,7 +229,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -311,6 +316,11 @@ namespace SignRequest.Model
                     this.DisableUploadSignatures.Equals(input.DisableUploadSignatures))
                 ) && 
                 (
+                    this.TextMessageVerificationLocked == input.TextMessageVerificationLocked ||
+                    (this.TextMessageVerificationLocked != null &&
+                    this.TextMessageVerificationLocked.Equals(input.TextMessageVerificationLocked))
+                ) && 
+                (
                     this.Subject == input.Subject ||
                     (this.Subject != null &&
                     this.Subject.Equals(input.Subject))
@@ -375,6 +385,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.DisableEmails.GetHashCode();
                 if (this.DisableUploadSignatures != null)
                     hashCode = hashCode * 59 + this.DisableUploadSignatures.GetHashCode();
+                if (this.TextMessageVerificationLocked != null)
+                    hashCode = hashCode * 59 + this.TextMessageVerificationLocked.GetHashCode();
                 if (this.Subject != null)
                     hashCode = hashCode * 59 + this.Subject.GetHashCode();
                 if (this.Message != null)

@@ -25,10 +25,10 @@ using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 namespace SignRequest.Model
 {
     /// <summary>
-    /// ModelEvent
+    /// Event
     /// </summary>
     [DataContract]
-    public partial class ModelEvent :  IEquatable<ModelEvent>, IValidatableObject
+    public partial class Event :  IEquatable<Event>, IValidatableObject
     {
         /// <summary>
         /// Defines Status
@@ -171,16 +171,16 @@ namespace SignRequest.Model
         [DataMember(Name="event_type", EmitDefaultValue=false)]
         public EventTypeEnum? EventType { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ModelEvent" /> class.
+        /// Initializes a new instance of the <see cref="Event" /> class.
         /// </summary>
-        /// <param name="Team">Team.</param>
-        /// <param name="Document">Document.</param>
-        /// <param name="Signer">Signer.</param>
-        public ModelEvent(DocumentTeam Team = default(DocumentTeam), Document Document = default(Document), Signer Signer = default(Signer))
+        /// <param name="team">team.</param>
+        /// <param name="document">document.</param>
+        /// <param name="signer">signer.</param>
+        public Event(DocumentTeam team = default(DocumentTeam), Document document = default(Document), Signer signer = default(Signer))
         {
-            this.Team = Team;
-            this.Document = Document;
-            this.Signer = Signer;
+            this.Team = team;
+            this.Document = document;
+            this.Signer = signer;
         }
         
         /// <summary>
@@ -240,7 +240,7 @@ namespace SignRequest.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ModelEvent {\n");
+            sb.Append("class Event {\n");
             sb.Append("  Uuid: ").Append(Uuid).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  EventType: ").Append(EventType).Append("\n");
@@ -259,7 +259,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -271,15 +271,15 @@ namespace SignRequest.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ModelEvent);
+            return this.Equals(input as Event);
         }
 
         /// <summary>
-        /// Returns true if ModelEvent instances are equal
+        /// Returns true if Event instances are equal
         /// </summary>
-        /// <param name="input">Instance of ModelEvent to be compared</param>
+        /// <param name="input">Instance of Event to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ModelEvent input)
+        public bool Equals(Event input)
         {
             if (input == null)
                 return false;

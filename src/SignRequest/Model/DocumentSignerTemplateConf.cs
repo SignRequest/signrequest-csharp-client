@@ -33,22 +33,20 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentSignerTemplateConf" /> class.
         /// </summary>
-        /// <param name="SignerIndex">SignerIndex.</param>
-        /// <param name="NeedsToSign">NeedsToSign.</param>
-        /// <param name="ApproveOnly">ApproveOnly.</param>
-        /// <param name="NotifyOnly">NotifyOnly.</param>
-        /// <param name="InPerson">InPerson.</param>
-        /// <param name="Order">Order.</param>
-        /// <param name="Placeholders">Placeholders.</param>
-        public DocumentSignerTemplateConf(int? SignerIndex = default(int?), bool? NeedsToSign = default(bool?), bool? ApproveOnly = default(bool?), bool? NotifyOnly = default(bool?), bool? InPerson = default(bool?), int? Order = default(int?), List<Placeholder> Placeholders = default(List<Placeholder>))
+        /// <param name="signerIndex">signerIndex.</param>
+        /// <param name="needsToSign">needsToSign.</param>
+        /// <param name="approveOnly">approveOnly.</param>
+        /// <param name="notifyOnly">notifyOnly.</param>
+        /// <param name="inPerson">inPerson.</param>
+        /// <param name="order">order.</param>
+        public DocumentSignerTemplateConf(int? signerIndex = default(int?), bool? needsToSign = default(bool?), bool? approveOnly = default(bool?), bool? notifyOnly = default(bool?), bool? inPerson = default(bool?), int? order = default(int?))
         {
-            this.SignerIndex = SignerIndex;
-            this.NeedsToSign = NeedsToSign;
-            this.ApproveOnly = ApproveOnly;
-            this.NotifyOnly = NotifyOnly;
-            this.InPerson = InPerson;
-            this.Order = Order;
-            this.Placeholders = Placeholders;
+            this.SignerIndex = signerIndex;
+            this.NeedsToSign = needsToSign;
+            this.ApproveOnly = approveOnly;
+            this.NotifyOnly = notifyOnly;
+            this.InPerson = inPerson;
+            this.Order = order;
         }
         
         /// <summary>
@@ -91,7 +89,7 @@ namespace SignRequest.Model
         /// Gets or Sets Placeholders
         /// </summary>
         [DataMember(Name="placeholders", EmitDefaultValue=false)]
-        public List<Placeholder> Placeholders { get; set; }
+        public List<Placeholder> Placeholders { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -116,7 +114,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

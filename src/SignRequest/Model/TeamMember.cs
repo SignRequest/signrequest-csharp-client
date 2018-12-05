@@ -33,18 +33,18 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TeamMember" /> class.
         /// </summary>
-        /// <param name="User">User.</param>
-        /// <param name="Team">Team.</param>
-        /// <param name="IsAdmin">IsAdmin.</param>
-        /// <param name="IsActive">IsActive.</param>
-        /// <param name="IsOwner">IsOwner.</param>
-        public TeamMember(User User = default(User), DocumentTeam Team = default(DocumentTeam), bool? IsAdmin = default(bool?), bool? IsActive = default(bool?), bool? IsOwner = default(bool?))
+        /// <param name="user">user.</param>
+        /// <param name="team">team.</param>
+        /// <param name="isAdmin">isAdmin.</param>
+        /// <param name="isActive">isActive.</param>
+        /// <param name="isOwner">isOwner.</param>
+        public TeamMember(User user = default(User), DocumentTeam team = default(DocumentTeam), bool? isAdmin = default(bool?), bool? isActive = default(bool?), bool? isOwner = default(bool?))
         {
-            this.User = User;
-            this.Team = Team;
-            this.IsAdmin = IsAdmin;
-            this.IsActive = IsActive;
-            this.IsOwner = IsOwner;
+            this.User = user;
+            this.Team = team;
+            this.IsAdmin = isAdmin;
+            this.IsActive = isActive;
+            this.IsOwner = isOwner;
         }
         
         /// <summary>
@@ -112,7 +112,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }

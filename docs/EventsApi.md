@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 <a name="eventsread"></a>
 # **EventsRead**
-> ModelEvent EventsRead (int? id)
+> Event EventsRead (int? id)
 
 Retrieve an Event
 
@@ -129,7 +129,7 @@ namespace Example
             try
             {
                 // Retrieve an Event
-                ModelEvent result = apiInstance.EventsRead(id);
+                Event result = apiInstance.EventsRead(id);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ModelEvent**](ModelEvent.md)
+[**Event**](Event.md)
 
 ### Authorization
 

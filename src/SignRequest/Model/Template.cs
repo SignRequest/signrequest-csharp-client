@@ -66,16 +66,14 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Template" /> class.
         /// </summary>
-        /// <param name="User">User.</param>
-        /// <param name="Team">Team.</param>
-        /// <param name="Who">&#x60;m&#x60;: only me, &#x60;mo&#x60;: me and others, &#x60;o&#x60;: only others.</param>
-        /// <param name="Signers">Signers.</param>
-        public Template(User User = default(User), DocumentTeam Team = default(DocumentTeam), WhoEnum? Who = default(WhoEnum?), List<DocumentSignerTemplateConf> Signers = default(List<DocumentSignerTemplateConf>))
+        /// <param name="user">user.</param>
+        /// <param name="team">team.</param>
+        /// <param name="who">&#x60;m&#x60;: only me, &#x60;mo&#x60;: me and others, &#x60;o&#x60;: only others.</param>
+        public Template(User user = default(User), DocumentTeam team = default(DocumentTeam), WhoEnum? who = default(WhoEnum?))
         {
-            this.User = User;
-            this.Team = Team;
-            this.Who = Who;
-            this.Signers = Signers;
+            this.User = user;
+            this.Team = team;
+            this.Who = who;
         }
         
         /// <summary>
@@ -114,7 +112,7 @@ namespace SignRequest.Model
         /// Gets or Sets Signers
         /// </summary>
         [DataMember(Name="signers", EmitDefaultValue=false)]
-        public List<DocumentSignerTemplateConf> Signers { get; set; }
+        public List<DocumentSignerTemplateConf> Signers { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -139,7 +137,7 @@ namespace SignRequest.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
