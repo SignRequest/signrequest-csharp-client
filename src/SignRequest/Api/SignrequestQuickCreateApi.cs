@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -192,7 +192,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling SignrequestQuickCreateApi->SignrequestQuickCreateCreate");
 
-            var localVarPath = "/signrequest-quick-create/";
+            var localVarPath = "./signrequest-quick-create/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -243,7 +243,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<SignRequestQuickCreate>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (SignRequestQuickCreate) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SignRequestQuickCreate)));
         }
 
@@ -272,7 +272,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling SignrequestQuickCreateApi->SignrequestQuickCreateCreate");
 
-            var localVarPath = "/signrequest-quick-create/";
+            var localVarPath = "./signrequest-quick-create/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -323,7 +323,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<SignRequestQuickCreate>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (SignRequestQuickCreate) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SignRequestQuickCreate)));
         }
 

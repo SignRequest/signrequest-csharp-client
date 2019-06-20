@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -315,7 +315,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse2004 > EventsListWithHttpInfo (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/events/";
+            var localVarPath = "./events/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -373,7 +373,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2004>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
         }
 
@@ -427,7 +427,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> EventsListAsyncWithHttpInfo (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/events/";
+            var localVarPath = "./events/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -485,7 +485,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2004>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
         }
 
@@ -513,7 +513,7 @@ namespace SignRequest.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling EventsApi->EventsRead");
 
-            var localVarPath = "/events/{id}/";
+            var localVarPath = "./events/{id}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -557,7 +557,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Event>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Event) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
         }
 
@@ -586,7 +586,7 @@ namespace SignRequest.Api
             if (id == null)
                 throw new ApiException(400, "Missing required parameter 'id' when calling EventsApi->EventsRead");
 
-            var localVarPath = "/events/{id}/";
+            var localVarPath = "./events/{id}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -630,7 +630,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Event>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Event) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
         }
 

@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// Team
     /// </summary>
     [DataContract]
-    public partial class Team :  IEquatable<Team>, IValidatableObject
+    public partial class Team :  IEquatable<Team>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Team" /> class.
@@ -265,58 +263,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Sandbox.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 100.", new [] { "Name" });
-            }
-
-            // Name (string) minLength
-            if(this.Name != null && this.Name.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be greater than 1.", new [] { "Name" });
-            }
-
-            // Subdomain (string) maxLength
-            if(this.Subdomain != null && this.Subdomain.Length > 100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Subdomain, length must be less than 100.", new [] { "Subdomain" });
-            }
-
-            // Subdomain (string) minLength
-            if(this.Subdomain != null && this.Subdomain.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Subdomain, length must be greater than 1.", new [] { "Subdomain" });
-            }
-
-            // Phone (string) maxLength
-            if(this.Phone != null && this.Phone.Length > 100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Phone, length must be less than 100.", new [] { "Phone" });
-            }
-
-            // PrimaryColor (string) maxLength
-            if(this.PrimaryColor != null && this.PrimaryColor.Length > 100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrimaryColor, length must be less than 100.", new [] { "PrimaryColor" });
-            }
-
-            // EventsCallbackUrl (string) maxLength
-            if(this.EventsCallbackUrl != null && this.EventsCallbackUrl.Length > 2100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EventsCallbackUrl, length must be less than 2100.", new [] { "EventsCallbackUrl" });
-            }
-
-            yield break;
         }
     }
 

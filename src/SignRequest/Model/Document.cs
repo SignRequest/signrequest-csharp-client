@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// Document
     /// </summary>
     [DataContract]
-    public partial class Document :  IEquatable<Document>, IValidatableObject
+    public partial class Document :  IEquatable<Document>
     {
         /// <summary>
         /// &#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired
@@ -134,9 +132,10 @@ namespace SignRequest.Model
         /// <param name="integrations">integrations.</param>
         /// <param name="fileFromSf">fileFromSf.</param>
         /// <param name="autoDeleteDays">Number of days after which a finished document (signed/cancelled/declined) will be automatically deleted.</param>
+        /// <param name="autoExpireDays">Number of days after which a non finished document will be automatically expired.</param>
         /// <param name="signrequest">signrequest.</param>
         /// <param name="signingLog">signingLog.</param>
-        public Document(DocumentTeam team = default(DocumentTeam), User user = default(User), string name = default(string), string externalId = default(string), string frontendId = default(string), string fileFromUrl = default(string), string eventsCallbackUrl = default(string), string fileFromContent = default(string), string fileFromContentName = default(string), string template = default(string), List<InlinePrefillTags> prefillTags = default(List<InlinePrefillTags>), List<InlineIntegrationData> integrations = default(List<InlineIntegrationData>), FileFromSf fileFromSf = default(FileFromSf), int? autoDeleteDays = default(int?), DocumentSignrequest signrequest = default(DocumentSignrequest), DocumentSigningLog signingLog = default(DocumentSigningLog))
+        public Document(DocumentTeam team = default(DocumentTeam), User user = default(User), string name = default(string), string externalId = default(string), string frontendId = default(string), string fileFromUrl = default(string), string eventsCallbackUrl = default(string), string fileFromContent = default(string), string fileFromContentName = default(string), string template = default(string), List<InlinePrefillTags> prefillTags = default(List<InlinePrefillTags>), List<InlineIntegrationData> integrations = default(List<InlineIntegrationData>), FileFromSf fileFromSf = default(FileFromSf), int? autoDeleteDays = default(int?), int? autoExpireDays = default(int?), DocumentSignrequest signrequest = default(DocumentSignrequest), DocumentSigningLog signingLog = default(DocumentSigningLog))
         {
             this.Team = team;
             this.User = user;
@@ -152,6 +151,7 @@ namespace SignRequest.Model
             this.Integrations = integrations;
             this.FileFromSf = fileFromSf;
             this.AutoDeleteDays = autoDeleteDays;
+            this.AutoExpireDays = autoExpireDays;
             this.Signrequest = signrequest;
             this.SigningLog = signingLog;
         }
@@ -276,6 +276,13 @@ namespace SignRequest.Model
         public int? AutoDeleteDays { get; set; }
 
         /// <summary>
+        /// Number of days after which a non finished document will be automatically expired
+        /// </summary>
+        /// <value>Number of days after which a non finished document will be automatically expired</value>
+        [DataMember(Name="auto_expire_days", EmitDefaultValue=false)]
+        public int? AutoExpireDays { get; set; }
+
+        /// <summary>
         /// Temporary URL to signed document as PDF, expires in five minutes
         /// </summary>
         /// <value>Temporary URL to signed document as PDF, expires in five minutes</value>
@@ -330,6 +337,13 @@ namespace SignRequest.Model
         public bool? Sandbox { get; private set; }
 
         /// <summary>
+        /// Date and time calculated using &#x60;auto_expire_days&#x60; after which a non finished document will be automatically expired
+        /// </summary>
+        /// <value>Date and time calculated using &#x60;auto_expire_days&#x60; after which a non finished document will be automatically expired</value>
+        [DataMember(Name="auto_expire_after", EmitDefaultValue=false)]
+        public DateTime? AutoExpireAfter { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -355,6 +369,7 @@ namespace SignRequest.Model
             sb.Append("  Integrations: ").Append(Integrations).Append("\n");
             sb.Append("  FileFromSf: ").Append(FileFromSf).Append("\n");
             sb.Append("  AutoDeleteDays: ").Append(AutoDeleteDays).Append("\n");
+            sb.Append("  AutoExpireDays: ").Append(AutoExpireDays).Append("\n");
             sb.Append("  Pdf: ").Append(Pdf).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Signrequest: ").Append(Signrequest).Append("\n");
@@ -364,6 +379,7 @@ namespace SignRequest.Model
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
             sb.Append("  AutoDeleteAfter: ").Append(AutoDeleteAfter).Append("\n");
             sb.Append("  Sandbox: ").Append(Sandbox).Append("\n");
+            sb.Append("  AutoExpireAfter: ").Append(AutoExpireAfter).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -489,6 +505,11 @@ namespace SignRequest.Model
                     this.AutoDeleteDays.Equals(input.AutoDeleteDays))
                 ) && 
                 (
+                    this.AutoExpireDays == input.AutoExpireDays ||
+                    (this.AutoExpireDays != null &&
+                    this.AutoExpireDays.Equals(input.AutoExpireDays))
+                ) && 
+                (
                     this.Pdf == input.Pdf ||
                     (this.Pdf != null &&
                     this.Pdf.Equals(input.Pdf))
@@ -532,6 +553,11 @@ namespace SignRequest.Model
                     this.Sandbox == input.Sandbox ||
                     (this.Sandbox != null &&
                     this.Sandbox.Equals(input.Sandbox))
+                ) && 
+                (
+                    this.AutoExpireAfter == input.AutoExpireAfter ||
+                    (this.AutoExpireAfter != null &&
+                    this.AutoExpireAfter.Equals(input.AutoExpireAfter))
                 );
         }
 
@@ -580,6 +606,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.FileFromSf.GetHashCode();
                 if (this.AutoDeleteDays != null)
                     hashCode = hashCode * 59 + this.AutoDeleteDays.GetHashCode();
+                if (this.AutoExpireDays != null)
+                    hashCode = hashCode * 59 + this.AutoExpireDays.GetHashCode();
                 if (this.Pdf != null)
                     hashCode = hashCode * 59 + this.Pdf.GetHashCode();
                 if (this.Status != null)
@@ -598,78 +626,10 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.AutoDeleteAfter.GetHashCode();
                 if (this.Sandbox != null)
                     hashCode = hashCode * 59 + this.Sandbox.GetHashCode();
+                if (this.AutoExpireAfter != null)
+                    hashCode = hashCode * 59 + this.AutoExpireAfter.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // Uuid (string) minLength
-            if(this.Uuid != null && this.Uuid.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Uuid, length must be greater than 1.", new [] { "Uuid" });
-            }
-
-            // FileAsPdf (string) minLength
-            if(this.FileAsPdf != null && this.FileAsPdf.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FileAsPdf, length must be greater than 1.", new [] { "FileAsPdf" });
-            }
-
-            // Name (string) maxLength
-            if(this.Name != null && this.Name.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be less than 255.", new [] { "Name" });
-            }
-
-            // ExternalId (string) maxLength
-            if(this.ExternalId != null && this.ExternalId.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExternalId, length must be less than 255.", new [] { "ExternalId" });
-            }
-
-            // FrontendId (string) maxLength
-            if(this.FrontendId != null && this.FrontendId.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FrontendId, length must be less than 255.", new [] { "FrontendId" });
-            }
-
-            // FileFromUrl (string) maxLength
-            if(this.FileFromUrl != null && this.FileFromUrl.Length > 2100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FileFromUrl, length must be less than 2100.", new [] { "FileFromUrl" });
-            }
-
-            // EventsCallbackUrl (string) maxLength
-            if(this.EventsCallbackUrl != null && this.EventsCallbackUrl.Length > 2100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EventsCallbackUrl, length must be less than 2100.", new [] { "EventsCallbackUrl" });
-            }
-
-            // AutoDeleteDays (int?) maximum
-            if(this.AutoDeleteDays > (int?)730)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AutoDeleteDays, must be a value less than or equal to 730.", new [] { "AutoDeleteDays" });
-            }
-
-            // AutoDeleteDays (int?) minimum
-            if(this.AutoDeleteDays < (int?)1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AutoDeleteDays, must be a value greater than or equal to 1.", new [] { "AutoDeleteDays" });
-            }
-
-            // SecurityHash (string) minLength
-            if(this.SecurityHash != null && this.SecurityHash.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SecurityHash, length must be greater than 1.", new [] { "SecurityHash" });
-            }
-
-            yield break;
         }
     }
 

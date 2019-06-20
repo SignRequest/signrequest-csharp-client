@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// InviteMember
     /// </summary>
     [DataContract]
-    public partial class InviteMember :  IEquatable<InviteMember>, IValidatableObject
+    public partial class InviteMember :  IEquatable<InviteMember>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="InviteMember" /> class.
@@ -169,22 +167,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.IsOwner.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // Email (string) minLength
-            if(this.Email != null && this.Email.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Email, length must be greater than 1.", new [] { "Email" });
-            }
-
-            yield break;
         }
     }
 

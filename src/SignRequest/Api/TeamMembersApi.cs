@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -273,7 +273,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse2006 > TeamMembersListWithHttpInfo (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/team-members/";
+            var localVarPath = "./team-members/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -324,7 +324,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2006>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2006) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2006)));
         }
 
@@ -364,7 +364,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2006>> TeamMembersListAsyncWithHttpInfo (string isActive = null, string isOwner = null, string isAdmin = null, string userEmail = null, string userFirstName = null, string userLastName = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/team-members/";
+            var localVarPath = "./team-members/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -415,7 +415,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2006>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2006) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2006)));
         }
 
@@ -443,7 +443,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling TeamMembersApi->TeamMembersRead");
 
-            var localVarPath = "/team-members/{uuid}/";
+            var localVarPath = "./team-members/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -487,7 +487,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<TeamMember>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (TeamMember) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TeamMember)));
         }
 
@@ -516,7 +516,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling TeamMembersApi->TeamMembersRead");
 
-            var localVarPath = "/team-members/{uuid}/";
+            var localVarPath = "./team-members/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -560,7 +560,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<TeamMember>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (TeamMember) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TeamMember)));
         }
 

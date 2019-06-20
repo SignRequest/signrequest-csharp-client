@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// Signer
     /// </summary>
     [DataContract]
-    public partial class Signer :  IEquatable<Signer>, IValidatableObject
+    public partial class Signer :  IEquatable<Signer>
     {
         /// <summary>
         /// Defines Language
@@ -164,7 +162,8 @@ namespace SignRequest.Model
         /// <param name="redirectUrl">redirectUrl.</param>
         /// <param name="afterDocument">afterDocument.</param>
         /// <param name="integrations">integrations.</param>
-        public Signer(string email = default(string), string firstName = default(string), string lastName = default(string), bool? needsToSign = true, bool? approveOnly = default(bool?), bool? notifyOnly = default(bool?), bool? inPerson = default(bool?), int? order = default(int?), LanguageEnum? language = default(LanguageEnum?), bool? forceLanguage = default(bool?), string verifyPhoneNumber = default(string), string verifyBankAccount = default(string), string embedUrlUserId = default(string), bool? useStampForApproveOnly = default(bool?), string redirectUrl = default(string), string afterDocument = default(string), List<InlineDocumentSignerIntegrationData> integrations = default(List<InlineDocumentSignerIntegrationData>))
+        /// <param name="password">Require the signer to enter this password before signing a document. This field is write only..</param>
+        public Signer(string email = default(string), string firstName = default(string), string lastName = default(string), bool? needsToSign = true, bool? approveOnly = default(bool?), bool? notifyOnly = default(bool?), bool? inPerson = default(bool?), int? order = default(int?), LanguageEnum? language = default(LanguageEnum?), bool? forceLanguage = default(bool?), string verifyPhoneNumber = default(string), string verifyBankAccount = default(string), string embedUrlUserId = default(string), bool? useStampForApproveOnly = default(bool?), string redirectUrl = default(string), string afterDocument = default(string), List<InlineDocumentSignerIntegrationData> integrations = default(List<InlineDocumentSignerIntegrationData>), string password = default(string))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -199,6 +198,7 @@ namespace SignRequest.Model
             this.RedirectUrl = redirectUrl;
             this.AfterDocument = afterDocument;
             this.Integrations = integrations;
+            this.Password = password;
         }
         
         /// <summary>
@@ -402,6 +402,13 @@ namespace SignRequest.Model
         public List<InlineDocumentSignerIntegrationData> Integrations { get; set; }
 
         /// <summary>
+        /// Require the signer to enter this password before signing a document. This field is write only.
+        /// </summary>
+        /// <value>Require the signer to enter this password before signing a document. This field is write only.</value>
+        [DataMember(Name="password", EmitDefaultValue=false)]
+        public string Password { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -443,6 +450,7 @@ namespace SignRequest.Model
             sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
             sb.Append("  AfterDocument: ").Append(AfterDocument).Append("\n");
             sb.Append("  Integrations: ").Append(Integrations).Append("\n");
+            sb.Append("  Password: ").Append(Password).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -646,6 +654,11 @@ namespace SignRequest.Model
                     this.Integrations == input.Integrations ||
                     this.Integrations != null &&
                     this.Integrations.SequenceEqual(input.Integrations)
+                ) && 
+                (
+                    this.Password == input.Password ||
+                    (this.Password != null &&
+                    this.Password.Equals(input.Password))
                 );
         }
 
@@ -726,108 +739,10 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.AfterDocument.GetHashCode();
                 if (this.Integrations != null)
                     hashCode = hashCode * 59 + this.Integrations.GetHashCode();
+                if (this.Password != null)
+                    hashCode = hashCode * 59 + this.Password.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // Email (string) maxLength
-            if(this.Email != null && this.Email.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Email, length must be less than 255.", new [] { "Email" });
-            }
-
-            // Email (string) minLength
-            if(this.Email != null && this.Email.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Email, length must be greater than 1.", new [] { "Email" });
-            }
-
-            // DisplayName (string) minLength
-            if(this.DisplayName != null && this.DisplayName.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DisplayName, length must be greater than 1.", new [] { "DisplayName" });
-            }
-
-            // FirstName (string) maxLength
-            if(this.FirstName != null && this.FirstName.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FirstName, length must be less than 255.", new [] { "FirstName" });
-            }
-
-            // LastName (string) maxLength
-            if(this.LastName != null && this.LastName.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LastName, length must be less than 255.", new [] { "LastName" });
-            }
-
-            // Order (int?) maximum
-            if(this.Order > (int?)2147483647)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Order, must be a value less than or equal to 2147483647.", new [] { "Order" });
-            }
-
-            // Order (int?) minimum
-            if(this.Order < (int?)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Order, must be a value greater than or equal to 0.", new [] { "Order" });
-            }
-
-            // VerifyPhoneNumber (string) maxLength
-            if(this.VerifyPhoneNumber != null && this.VerifyPhoneNumber.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VerifyPhoneNumber, length must be less than 255.", new [] { "VerifyPhoneNumber" });
-            }
-
-            // VerifyBankAccount (string) maxLength
-            if(this.VerifyBankAccount != null && this.VerifyBankAccount.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for VerifyBankAccount, length must be less than 255.", new [] { "VerifyBankAccount" });
-            }
-
-            // ForwardedToEmail (string) minLength
-            if(this.ForwardedToEmail != null && this.ForwardedToEmail.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ForwardedToEmail, length must be greater than 1.", new [] { "ForwardedToEmail" });
-            }
-
-            // ForwardedReason (string) minLength
-            if(this.ForwardedReason != null && this.ForwardedReason.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ForwardedReason, length must be greater than 1.", new [] { "ForwardedReason" });
-            }
-
-            // Message (string) minLength
-            if(this.Message != null && this.Message.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Message, length must be greater than 1.", new [] { "Message" });
-            }
-
-            // EmbedUrlUserId (string) maxLength
-            if(this.EmbedUrlUserId != null && this.EmbedUrlUserId.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EmbedUrlUserId, length must be less than 255.", new [] { "EmbedUrlUserId" });
-            }
-
-            // EmbedUrl (string) minLength
-            if(this.EmbedUrl != null && this.EmbedUrl.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EmbedUrl, length must be greater than 1.", new [] { "EmbedUrl" });
-            }
-
-            // RedirectUrl (string) maxLength
-            if(this.RedirectUrl != null && this.RedirectUrl.Length > 2100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RedirectUrl, length must be less than 2100.", new [] { "RedirectUrl" });
-            }
-
-            yield break;
         }
     }
 

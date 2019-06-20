@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -24,48 +24,6 @@ namespace SignRequest.Api
     public interface IApiTokensApi : IApiAccessor
     {
         #region Synchronous Operations
-        /// <summary>
-        /// Create an API token
-        /// </summary>
-        /// <remarks>
-        /// You can create an API token in the [team api settings page](/#/teams). It is also possible to get or create a token using the REST api with your login credentials.
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data"></param>
-        /// <returns>AuthToken</returns>
-        AuthToken ApiTokensCreate (AuthToken data);
-
-        /// <summary>
-        /// Create an API token
-        /// </summary>
-        /// <remarks>
-        /// You can create an API token in the [team api settings page](/#/teams). It is also possible to get or create a token using the REST api with your login credentials.
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data"></param>
-        /// <returns>ApiResponse of AuthToken</returns>
-        ApiResponse<AuthToken> ApiTokensCreateWithHttpInfo (AuthToken data);
-        /// <summary>
-        /// Delete an API token
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns></returns>
-        void ApiTokensDelete (string key);
-
-        /// <summary>
-        /// Delete an API token
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ApiTokensDeleteWithHttpInfo (string key);
         /// <summary>
         /// Retrieve a list of API tokens
         /// </summary>
@@ -89,71 +47,8 @@ namespace SignRequest.Api
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>ApiResponse of InlineResponse200</returns>
         ApiResponse<InlineResponse200> ApiTokensListWithHttpInfo (int? page = null, int? limit = null);
-        /// <summary>
-        /// Retrieve an API token
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>AuthToken</returns>
-        AuthToken ApiTokensRead (string key);
-
-        /// <summary>
-        /// Retrieve an API token
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>ApiResponse of AuthToken</returns>
-        ApiResponse<AuthToken> ApiTokensReadWithHttpInfo (string key);
         #endregion Synchronous Operations
         #region Asynchronous Operations
-        /// <summary>
-        /// Create an API token
-        /// </summary>
-        /// <remarks>
-        /// You can create an API token in the [team api settings page](/#/teams). It is also possible to get or create a token using the REST api with your login credentials.
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data"></param>
-        /// <returns>Task of AuthToken</returns>
-        System.Threading.Tasks.Task<AuthToken> ApiTokensCreateAsync (AuthToken data);
-
-        /// <summary>
-        /// Create an API token
-        /// </summary>
-        /// <remarks>
-        /// You can create an API token in the [team api settings page](/#/teams). It is also possible to get or create a token using the REST api with your login credentials.
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data"></param>
-        /// <returns>Task of ApiResponse (AuthToken)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AuthToken>> ApiTokensCreateAsyncWithHttpInfo (AuthToken data);
-        /// <summary>
-        /// Delete an API token
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ApiTokensDeleteAsync (string key);
-
-        /// <summary>
-        /// Delete an API token
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ApiTokensDeleteAsyncWithHttpInfo (string key);
         /// <summary>
         /// Retrieve a list of API tokens
         /// </summary>
@@ -177,27 +72,6 @@ namespace SignRequest.Api
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse200)</returns>
         System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> ApiTokensListAsyncWithHttpInfo (int? page = null, int? limit = null);
-        /// <summary>
-        /// Retrieve an API token
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>Task of AuthToken</returns>
-        System.Threading.Tasks.Task<AuthToken> ApiTokensReadAsync (string key);
-
-        /// <summary>
-        /// Retrieve an API token
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>Task of ApiResponse (AuthToken)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AuthToken>> ApiTokensReadAsyncWithHttpInfo (string key);
         #endregion Asynchronous Operations
     }
 
@@ -299,308 +173,6 @@ namespace SignRequest.Api
         }
 
         /// <summary>
-        /// Create an API token You can create an API token in the [team api settings page](/#/teams). It is also possible to get or create a token using the REST api with your login credentials.
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data"></param>
-        /// <returns>AuthToken</returns>
-        public AuthToken ApiTokensCreate (AuthToken data)
-        {
-             ApiResponse<AuthToken> localVarResponse = ApiTokensCreateWithHttpInfo(data);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Create an API token You can create an API token in the [team api settings page](/#/teams). It is also possible to get or create a token using the REST api with your login credentials.
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data"></param>
-        /// <returns>ApiResponse of AuthToken</returns>
-        public ApiResponse< AuthToken > ApiTokensCreateWithHttpInfo (AuthToken data)
-        {
-            // verify the required parameter 'data' is set
-            if (data == null)
-                throw new ApiException(400, "Missing required parameter 'data' when calling ApiTokensApi->ApiTokensCreate");
-
-            var localVarPath = "/api-tokens/";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (data != null && data.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(data); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = data; // byte array
-            }
-
-            // authentication (Token) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiTokensCreate", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<AuthToken>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (AuthToken) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AuthToken)));
-        }
-
-        /// <summary>
-        /// Create an API token You can create an API token in the [team api settings page](/#/teams). It is also possible to get or create a token using the REST api with your login credentials.
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data"></param>
-        /// <returns>Task of AuthToken</returns>
-        public async System.Threading.Tasks.Task<AuthToken> ApiTokensCreateAsync (AuthToken data)
-        {
-             ApiResponse<AuthToken> localVarResponse = await ApiTokensCreateAsyncWithHttpInfo(data);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Create an API token You can create an API token in the [team api settings page](/#/teams). It is also possible to get or create a token using the REST api with your login credentials.
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="data"></param>
-        /// <returns>Task of ApiResponse (AuthToken)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AuthToken>> ApiTokensCreateAsyncWithHttpInfo (AuthToken data)
-        {
-            // verify the required parameter 'data' is set
-            if (data == null)
-                throw new ApiException(400, "Missing required parameter 'data' when calling ApiTokensApi->ApiTokensCreate");
-
-            var localVarPath = "/api-tokens/";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (data != null && data.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(data); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = data; // byte array
-            }
-
-            // authentication (Token) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiTokensCreate", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<AuthToken>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (AuthToken) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AuthToken)));
-        }
-
-        /// <summary>
-        /// Delete an API token 
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns></returns>
-        public void ApiTokensDelete (string key)
-        {
-             ApiTokensDeleteWithHttpInfo(key);
-        }
-
-        /// <summary>
-        /// Delete an API token 
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ApiTokensDeleteWithHttpInfo (string key)
-        {
-            // verify the required parameter 'key' is set
-            if (key == null)
-                throw new ApiException(400, "Missing required parameter 'key' when calling ApiTokensApi->ApiTokensDelete");
-
-            var localVarPath = "/api-tokens/{key}/";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (key != null) localVarPathParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // path parameter
-
-            // authentication (Token) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiTokensDelete", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
-        /// Delete an API token 
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ApiTokensDeleteAsync (string key)
-        {
-             await ApiTokensDeleteAsyncWithHttpInfo(key);
-
-        }
-
-        /// <summary>
-        /// Delete an API token 
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> ApiTokensDeleteAsyncWithHttpInfo (string key)
-        {
-            // verify the required parameter 'key' is set
-            if (key == null)
-                throw new ApiException(400, "Missing required parameter 'key' when calling ApiTokensApi->ApiTokensDelete");
-
-            var localVarPath = "/api-tokens/{key}/";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (key != null) localVarPathParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // path parameter
-
-            // authentication (Token) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiTokensDelete", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
-        }
-
-        /// <summary>
         /// Retrieve a list of API tokens 
         /// </summary>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
@@ -623,7 +195,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse200 > ApiTokensListWithHttpInfo (int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/api-tokens/";
+            var localVarPath = "./api-tokens/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -668,7 +240,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
         }
 
@@ -696,7 +268,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> ApiTokensListAsyncWithHttpInfo (int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/api-tokens/";
+            var localVarPath = "./api-tokens/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -741,153 +313,8 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse200>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
-        }
-
-        /// <summary>
-        /// Retrieve an API token 
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>AuthToken</returns>
-        public AuthToken ApiTokensRead (string key)
-        {
-             ApiResponse<AuthToken> localVarResponse = ApiTokensReadWithHttpInfo(key);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Retrieve an API token 
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>ApiResponse of AuthToken</returns>
-        public ApiResponse< AuthToken > ApiTokensReadWithHttpInfo (string key)
-        {
-            // verify the required parameter 'key' is set
-            if (key == null)
-                throw new ApiException(400, "Missing required parameter 'key' when calling ApiTokensApi->ApiTokensRead");
-
-            var localVarPath = "/api-tokens/{key}/";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (key != null) localVarPathParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // path parameter
-
-            // authentication (Token) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiTokensRead", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<AuthToken>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (AuthToken) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AuthToken)));
-        }
-
-        /// <summary>
-        /// Retrieve an API token 
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>Task of AuthToken</returns>
-        public async System.Threading.Tasks.Task<AuthToken> ApiTokensReadAsync (string key)
-        {
-             ApiResponse<AuthToken> localVarResponse = await ApiTokensReadAsyncWithHttpInfo(key);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Retrieve an API token 
-        /// </summary>
-        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="key">A unique value identifying this api token.</param>
-        /// <returns>Task of ApiResponse (AuthToken)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AuthToken>> ApiTokensReadAsyncWithHttpInfo (string key)
-        {
-            // verify the required parameter 'key' is set
-            if (key == null)
-                throw new ApiException(400, "Missing required parameter 'key' when calling ApiTokensApi->ApiTokensRead");
-
-            var localVarPath = "/api-tokens/{key}/";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (key != null) localVarPathParams.Add("key", this.Configuration.ApiClient.ParameterToString(key)); // path parameter
-
-            // authentication (Token) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ApiTokensRead", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<AuthToken>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (AuthToken) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AuthToken)));
         }
 
     }

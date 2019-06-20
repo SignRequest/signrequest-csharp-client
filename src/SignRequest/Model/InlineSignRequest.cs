@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// InlineSignRequest
     /// </summary>
     [DataContract]
-    public partial class InlineSignRequest :  IEquatable<InlineSignRequest>, IValidatableObject
+    public partial class InlineSignRequest :  IEquatable<InlineSignRequest>
     {
         /// <summary>
         /// &#x60;m&#x60;: only me, &#x60;mo&#x60;: me and others, &#x60;o&#x60;: only others
@@ -154,6 +152,13 @@ namespace SignRequest.Model
         public bool? DisableUploadSignatures { get; private set; }
 
         /// <summary>
+        /// Disables storing timestamp proof hashes in blockchain integrations.
+        /// </summary>
+        /// <value>Disables storing timestamp proof hashes in blockchain integrations.</value>
+        [DataMember(Name="disable_blockchain_proof", EmitDefaultValue=false)]
+        public bool? DisableBlockchainProof { get; private set; }
+
+        /// <summary>
         /// When true a text message verification is needed before the signer can see the document
         /// </summary>
         /// <value>When true a text message verification is needed before the signer can see the document</value>
@@ -214,6 +219,7 @@ namespace SignRequest.Model
             sb.Append("  DisableDate: ").Append(DisableDate).Append("\n");
             sb.Append("  DisableEmails: ").Append(DisableEmails).Append("\n");
             sb.Append("  DisableUploadSignatures: ").Append(DisableUploadSignatures).Append("\n");
+            sb.Append("  DisableBlockchainProof: ").Append(DisableBlockchainProof).Append("\n");
             sb.Append("  TextMessageVerificationLocked: ").Append(TextMessageVerificationLocked).Append("\n");
             sb.Append("  Subject: ").Append(Subject).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
@@ -316,6 +322,11 @@ namespace SignRequest.Model
                     this.DisableUploadSignatures.Equals(input.DisableUploadSignatures))
                 ) && 
                 (
+                    this.DisableBlockchainProof == input.DisableBlockchainProof ||
+                    (this.DisableBlockchainProof != null &&
+                    this.DisableBlockchainProof.Equals(input.DisableBlockchainProof))
+                ) && 
+                (
                     this.TextMessageVerificationLocked == input.TextMessageVerificationLocked ||
                     (this.TextMessageVerificationLocked != null &&
                     this.TextMessageVerificationLocked.Equals(input.TextMessageVerificationLocked))
@@ -385,6 +396,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.DisableEmails.GetHashCode();
                 if (this.DisableUploadSignatures != null)
                     hashCode = hashCode * 59 + this.DisableUploadSignatures.GetHashCode();
+                if (this.DisableBlockchainProof != null)
+                    hashCode = hashCode * 59 + this.DisableBlockchainProof.GetHashCode();
                 if (this.TextMessageVerificationLocked != null)
                     hashCode = hashCode * 59 + this.TextMessageVerificationLocked.GetHashCode();
                 if (this.Subject != null)
@@ -401,58 +414,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Uuid.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // FromEmail (string) minLength
-            if(this.FromEmail != null && this.FromEmail.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FromEmail, length must be greater than 1.", new [] { "FromEmail" });
-            }
-
-            // FromEmailName (string) minLength
-            if(this.FromEmailName != null && this.FromEmailName.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FromEmailName, length must be greater than 1.", new [] { "FromEmailName" });
-            }
-
-            // PrepareUrl (string) minLength
-            if(this.PrepareUrl != null && this.PrepareUrl.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrepareUrl, length must be greater than 1.", new [] { "PrepareUrl" });
-            }
-
-            // RedirectUrl (string) minLength
-            if(this.RedirectUrl != null && this.RedirectUrl.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RedirectUrl, length must be greater than 1.", new [] { "RedirectUrl" });
-            }
-
-            // Subject (string) minLength
-            if(this.Subject != null && this.Subject.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Subject, length must be greater than 1.", new [] { "Subject" });
-            }
-
-            // Message (string) minLength
-            if(this.Message != null && this.Message.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Message, length must be greater than 1.", new [] { "Message" });
-            }
-
-            // Uuid (string) minLength
-            if(this.Uuid != null && this.Uuid.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Uuid, length must be greater than 1.", new [] { "Uuid" });
-            }
-
-            yield break;
         }
     }
 
