@@ -29,7 +29,7 @@ namespace SignRequest.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "2.0.0";
+        public const string Version = "3.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -57,11 +57,7 @@ namespace SignRequest.Client
                     string.Format("Error calling {0}: {1}", methodName, response.Content),
                     response.Content);
             }
-            if (status == 0)
-            {
-                return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), response.ErrorMessage);
-            }
+            
             return null;
         };
 
@@ -114,8 +110,8 @@ namespace SignRequest.Client
         /// </summary>
         public Configuration()
         {
+            UserAgent = "Swagger-Codegen/3.0.0/csharp";
             BasePath = "https://signrequest.com/api/v1";
-            UserAgent = "Swagger-Codegen/2.0.0/csharp";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -187,7 +183,7 @@ namespace SignRequest.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Swagger-Codegen/2.0.0/csharp"
+            string userAgent = "Swagger-Codegen/3.0.0/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -248,9 +244,8 @@ namespace SignRequest.Client
         /// </summary>
         public virtual int Timeout
         {
-            
-            get { return ApiClient.RestClient.Timeout; }
-            set { ApiClient.RestClient.Timeout = value; }
+            get { return (int)ApiClient.RestClient.Timeout.GetValueOrDefault(TimeSpan.FromSeconds(0)).TotalMilliseconds; }
+            set { ApiClient.RestClient.Timeout = TimeSpan.FromMilliseconds(value); }
         }
 
         /// <summary>
@@ -419,10 +414,9 @@ namespace SignRequest.Client
         public static String ToDebugReport()
         {
             String report = "C# SDK (SignRequest) Debug Report:\n";
-            report += "    OS: " + System.Environment.OSVersion + "\n";
-            report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
+            report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: v1\n";
-            report += "    SDK Package Version: 2.0.0\n";
+            report += "    SDK Package Version: 3.0.0\n";
 
             return report;
         }

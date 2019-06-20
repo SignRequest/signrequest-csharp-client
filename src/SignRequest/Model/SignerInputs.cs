@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// SignerInputs
     /// </summary>
     [DataContract]
-    public partial class SignerInputs :  IEquatable<SignerInputs>, IValidatableObject
+    public partial class SignerInputs :  IEquatable<SignerInputs>
     {
         /// <summary>
         /// Defines Type
@@ -262,28 +260,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.PlaceholderUuid.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // ExternalId (string) maxLength
-            if(this.ExternalId != null && this.ExternalId.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExternalId, length must be less than 255.", new [] { "ExternalId" });
-            }
-
-            // PlaceholderUuid (string) maxLength
-            if(this.PlaceholderUuid != null && this.PlaceholderUuid.Length > 36)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PlaceholderUuid, length must be less than 36.", new [] { "PlaceholderUuid" });
-            }
-
-            yield break;
         }
     }
 

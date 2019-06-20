@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -292,7 +292,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling DocumentAttachmentsApi->DocumentAttachmentsCreate");
 
-            var localVarPath = "/document-attachments/";
+            var localVarPath = "./document-attachments/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -343,7 +343,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<DocumentAttachment>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (DocumentAttachment) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DocumentAttachment)));
         }
 
@@ -372,7 +372,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling DocumentAttachmentsApi->DocumentAttachmentsCreate");
 
-            var localVarPath = "/document-attachments/";
+            var localVarPath = "./document-attachments/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -423,7 +423,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<DocumentAttachment>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (DocumentAttachment) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DocumentAttachment)));
         }
 
@@ -456,7 +456,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse2001 > DocumentAttachmentsListWithHttpInfo (string documentUuid = null, string documentExternalId = null, string created = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/document-attachments/";
+            var localVarPath = "./document-attachments/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -504,7 +504,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2001>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2001) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2001)));
         }
 
@@ -538,7 +538,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2001>> DocumentAttachmentsListAsyncWithHttpInfo (string documentUuid = null, string documentExternalId = null, string created = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/document-attachments/";
+            var localVarPath = "./document-attachments/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -586,7 +586,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2001>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2001) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2001)));
         }
 
@@ -614,7 +614,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling DocumentAttachmentsApi->DocumentAttachmentsRead");
 
-            var localVarPath = "/document-attachments/{uuid}/";
+            var localVarPath = "./document-attachments/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -658,7 +658,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<DocumentAttachment>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (DocumentAttachment) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DocumentAttachment)));
         }
 
@@ -687,7 +687,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling DocumentAttachmentsApi->DocumentAttachmentsRead");
 
-            var localVarPath = "/document-attachments/{uuid}/";
+            var localVarPath = "./document-attachments/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -731,7 +731,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<DocumentAttachment>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (DocumentAttachment) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DocumentAttachment)));
         }
 

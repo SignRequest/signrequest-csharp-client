@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -414,7 +414,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling TeamsApi->TeamsCreate");
 
-            var localVarPath = "/teams/";
+            var localVarPath = "./teams/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -465,7 +465,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Team>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
@@ -494,7 +494,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling TeamsApi->TeamsCreate");
 
-            var localVarPath = "/teams/";
+            var localVarPath = "./teams/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -545,7 +545,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Team>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
@@ -572,7 +572,7 @@ namespace SignRequest.Api
             if (subdomain == null)
                 throw new ApiException(400, "Missing required parameter 'subdomain' when calling TeamsApi->TeamsDelete");
 
-            var localVarPath = "/teams/{subdomain}/";
+            var localVarPath = "./teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -616,7 +616,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -644,7 +644,7 @@ namespace SignRequest.Api
             if (subdomain == null)
                 throw new ApiException(400, "Missing required parameter 'subdomain' when calling TeamsApi->TeamsDelete");
 
-            var localVarPath = "/teams/{subdomain}/";
+            var localVarPath = "./teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -688,7 +688,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -721,7 +721,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling TeamsApi->TeamsInviteMember");
 
-            var localVarPath = "/teams/{subdomain}/invite_member/";
+            var localVarPath = "./teams/{subdomain}/invite_member/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -773,7 +773,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InviteMember>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InviteMember) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InviteMember)));
         }
 
@@ -807,7 +807,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling TeamsApi->TeamsInviteMember");
 
-            var localVarPath = "/teams/{subdomain}/invite_member/";
+            var localVarPath = "./teams/{subdomain}/invite_member/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -859,7 +859,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InviteMember>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InviteMember) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InviteMember)));
         }
 
@@ -886,7 +886,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse2007 > TeamsListWithHttpInfo (int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/teams/";
+            var localVarPath = "./teams/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -931,7 +931,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2007>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
         }
 
@@ -959,7 +959,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2007>> TeamsListAsyncWithHttpInfo (int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/teams/";
+            var localVarPath = "./teams/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1004,7 +1004,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2007>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2007) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2007)));
         }
 
@@ -1037,7 +1037,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling TeamsApi->TeamsPartialUpdate");
 
-            var localVarPath = "/teams/{subdomain}/";
+            var localVarPath = "./teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1089,7 +1089,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Team>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
@@ -1123,7 +1123,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling TeamsApi->TeamsPartialUpdate");
 
-            var localVarPath = "/teams/{subdomain}/";
+            var localVarPath = "./teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1175,7 +1175,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Team>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
@@ -1203,7 +1203,7 @@ namespace SignRequest.Api
             if (subdomain == null)
                 throw new ApiException(400, "Missing required parameter 'subdomain' when calling TeamsApi->TeamsRead");
 
-            var localVarPath = "/teams/{subdomain}/";
+            var localVarPath = "./teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1247,7 +1247,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Team>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 
@@ -1276,7 +1276,7 @@ namespace SignRequest.Api
             if (subdomain == null)
                 throw new ApiException(400, "Missing required parameter 'subdomain' when calling TeamsApi->TeamsRead");
 
-            var localVarPath = "/teams/{subdomain}/";
+            var localVarPath = "./teams/{subdomain}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1320,7 +1320,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Team>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Team) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Team)));
         }
 

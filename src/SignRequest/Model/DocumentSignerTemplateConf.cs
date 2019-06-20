@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// DocumentSignerTemplateConf
     /// </summary>
     [DataContract]
-    public partial class DocumentSignerTemplateConf :  IEquatable<DocumentSignerTemplateConf>, IValidatableObject
+    public partial class DocumentSignerTemplateConf :  IEquatable<DocumentSignerTemplateConf>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentSignerTemplateConf" /> class.
@@ -202,40 +200,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Placeholders.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // SignerIndex (int?) maximum
-            if(this.SignerIndex > (int?)2147483647)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SignerIndex, must be a value less than or equal to 2147483647.", new [] { "SignerIndex" });
-            }
-
-            // SignerIndex (int?) minimum
-            if(this.SignerIndex < (int?)-2147483648)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SignerIndex, must be a value greater than or equal to -2147483648.", new [] { "SignerIndex" });
-            }
-
-            // Order (int?) maximum
-            if(this.Order > (int?)2147483647)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Order, must be a value less than or equal to 2147483647.", new [] { "Order" });
-            }
-
-            // Order (int?) minimum
-            if(this.Order < (int?)0)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Order, must be a value greater than or equal to 0.", new [] { "Order" });
-            }
-
-            yield break;
         }
     }
 

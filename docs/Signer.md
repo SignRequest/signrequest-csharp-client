@@ -37,6 +37,7 @@ Name | Type | Description | Notes
 **RedirectUrl** | **string** |  | [optional] 
 **AfterDocument** | **string** |  | [optional] 
 **Integrations** | [**List&lt;InlineDocumentSignerIntegrationData&gt;**](InlineDocumentSignerIntegrationData.md) |  | [optional] 
+**Password** | **string** | Require the signer to enter this password before signing a document. This field is write only. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

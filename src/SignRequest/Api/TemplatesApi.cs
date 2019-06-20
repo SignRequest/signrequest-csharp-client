@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -237,7 +237,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse2008 > TemplatesListWithHttpInfo (int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/templates/";
+            var localVarPath = "./templates/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -282,7 +282,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2008>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
         }
 
@@ -310,7 +310,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2008>> TemplatesListAsyncWithHttpInfo (int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/templates/";
+            var localVarPath = "./templates/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -355,7 +355,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2008>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2008) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2008)));
         }
 
@@ -383,7 +383,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling TemplatesApi->TemplatesRead");
 
-            var localVarPath = "/templates/{uuid}/";
+            var localVarPath = "./templates/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -427,7 +427,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Template>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Template) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Template)));
         }
 
@@ -456,7 +456,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling TemplatesApi->TemplatesRead");
 
-            var localVarPath = "/templates/{uuid}/";
+            var localVarPath = "./templates/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -500,7 +500,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Template>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Template) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Template)));
         }
 

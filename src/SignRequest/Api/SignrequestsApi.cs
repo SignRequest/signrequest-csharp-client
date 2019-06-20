@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -372,7 +372,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling SignrequestsApi->SignrequestsCancelSignrequest");
 
-            var localVarPath = "/signrequests/{uuid}/cancel_signrequest/";
+            var localVarPath = "./signrequests/{uuid}/cancel_signrequest/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -416,7 +416,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse201>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse201) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse201)));
         }
 
@@ -445,7 +445,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling SignrequestsApi->SignrequestsCancelSignrequest");
 
-            var localVarPath = "/signrequests/{uuid}/cancel_signrequest/";
+            var localVarPath = "./signrequests/{uuid}/cancel_signrequest/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -489,7 +489,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse201>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse201) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse201)));
         }
 
@@ -517,7 +517,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling SignrequestsApi->SignrequestsCreate");
 
-            var localVarPath = "/signrequests/";
+            var localVarPath = "./signrequests/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -568,7 +568,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Model.SignRequest>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Model.SignRequest) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Model.SignRequest)));
         }
 
@@ -597,7 +597,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling SignrequestsApi->SignrequestsCreate");
 
-            var localVarPath = "/signrequests/";
+            var localVarPath = "./signrequests/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -648,7 +648,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Model.SignRequest>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Model.SignRequest) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Model.SignRequest)));
         }
 
@@ -679,7 +679,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse2005 > SignrequestsListWithHttpInfo (string who = null, string fromEmail = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/signrequests/";
+            var localVarPath = "./signrequests/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -726,7 +726,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2005>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2005)));
         }
 
@@ -758,7 +758,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2005>> SignrequestsListAsyncWithHttpInfo (string who = null, string fromEmail = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/signrequests/";
+            var localVarPath = "./signrequests/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -805,7 +805,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2005>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2005) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2005)));
         }
 
@@ -833,7 +833,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling SignrequestsApi->SignrequestsRead");
 
-            var localVarPath = "/signrequests/{uuid}/";
+            var localVarPath = "./signrequests/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -877,7 +877,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Model.SignRequest>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Model.SignRequest) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Model.SignRequest)));
         }
 
@@ -906,7 +906,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling SignrequestsApi->SignrequestsRead");
 
-            var localVarPath = "/signrequests/{uuid}/";
+            var localVarPath = "./signrequests/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -950,7 +950,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Model.SignRequest>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Model.SignRequest) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Model.SignRequest)));
         }
 
@@ -978,7 +978,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling SignrequestsApi->SignrequestsResendSignrequestEmail");
 
-            var localVarPath = "/signrequests/{uuid}/resend_signrequest_email/";
+            var localVarPath = "./signrequests/{uuid}/resend_signrequest_email/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1022,7 +1022,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2011>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2011) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2011)));
         }
 
@@ -1051,7 +1051,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling SignrequestsApi->SignrequestsResendSignrequestEmail");
 
-            var localVarPath = "/signrequests/{uuid}/resend_signrequest_email/";
+            var localVarPath = "./signrequests/{uuid}/resend_signrequest_email/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1095,7 +1095,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2011>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2011) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2011)));
         }
 

@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Integrations** | [**List&lt;InlineIntegrationData&gt;**](InlineIntegrationData.md) |  | [optional] 
 **FileFromSf** | [**FileFromSf**](FileFromSf.md) |  | [optional] 
 **AutoDeleteDays** | **int?** | Number of days after which a finished document (signed/cancelled/declined) will be automatically deleted | [optional] 
+**AutoExpireDays** | **int?** | Number of days after which a non finished document will be automatically expired | [optional] 
 **Pdf** | **string** | Temporary URL to signed document as PDF, expires in five minutes | [optional] 
 **Status** | **string** | &#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired | [optional] 
 **Signrequest** | [**DocumentSignrequest**](DocumentSignrequest.md) |  | [optional] 
@@ -30,6 +31,7 @@ Name | Type | Description | Notes
 **Attachments** | [**List&lt;DocumentAttachment&gt;**](DocumentAttachment.md) |  | [optional] 
 **AutoDeleteAfter** | **DateTime?** | Date and time calculated using &#x60;auto_delete_days&#x60; after which a finished document (signed/cancelled/declined) will be automatically deleted | [optional] 
 **Sandbox** | **bool?** | Indicates whether document was created as part of a sandbox team | [optional] 
+**AutoExpireAfter** | **DateTime?** | Date and time calculated using &#x60;auto_expire_days&#x60; after which a non finished document will be automatically expired | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

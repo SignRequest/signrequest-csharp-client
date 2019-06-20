@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -249,7 +249,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse2002 > DocumentsSearchListWithHttpInfo (int? page = null, int? limit = null, string q = null, string autocomplete = null, string name = null, string subdomain = null, string signerEmails = null, string status = null, string who = null, string format = null, decimal? signerData = null)
         {
 
-            var localVarPath = "/documents-search/";
+            var localVarPath = "./documents-search/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -305,7 +305,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2002>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2002) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2002)));
         }
 
@@ -351,7 +351,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2002>> DocumentsSearchListAsyncWithHttpInfo (int? page = null, int? limit = null, string q = null, string autocomplete = null, string name = null, string subdomain = null, string signerEmails = null, string status = null, string who = null, string format = null, decimal? signerData = null)
         {
 
-            var localVarPath = "/documents-search/";
+            var localVarPath = "./documents-search/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -407,7 +407,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2002>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2002) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2002)));
         }
 

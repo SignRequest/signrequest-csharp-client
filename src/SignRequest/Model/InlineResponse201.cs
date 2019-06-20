@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// InlineResponse201
     /// </summary>
     [DataContract]
-    public partial class InlineResponse201 :  IEquatable<InlineResponse201>, IValidatableObject
+    public partial class InlineResponse201 :  IEquatable<InlineResponse201>
     {
         /// <summary>
         /// Defines Detail
@@ -57,19 +55,10 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="InlineResponse201" /> class.
         /// </summary>
-        /// <param name="cancelled">cancelled (required).</param>
         /// <param name="detail">detail (required).</param>
-        public InlineResponse201(bool? cancelled = default(bool?), DetailEnum detail = default(DetailEnum))
+        /// <param name="cancelled">cancelled (required).</param>
+        public InlineResponse201(DetailEnum detail = default(DetailEnum), bool? cancelled = default(bool?))
         {
-            // to ensure "cancelled" is required (not null)
-            if (cancelled == null)
-            {
-                throw new InvalidDataException("cancelled is a required property for InlineResponse201 and cannot be null");
-            }
-            else
-            {
-                this.Cancelled = cancelled;
-            }
             // to ensure "detail" is required (not null)
             if (detail == null)
             {
@@ -79,14 +68,23 @@ namespace SignRequest.Model
             {
                 this.Detail = detail;
             }
+            // to ensure "cancelled" is required (not null)
+            if (cancelled == null)
+            {
+                throw new InvalidDataException("cancelled is a required property for InlineResponse201 and cannot be null");
+            }
+            else
+            {
+                this.Cancelled = cancelled;
+            }
         }
         
+
         /// <summary>
         /// Gets or Sets Cancelled
         /// </summary>
         [DataMember(Name="cancelled", EmitDefaultValue=false)]
         public bool? Cancelled { get; set; }
-
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -96,8 +94,8 @@ namespace SignRequest.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InlineResponse201 {\n");
-            sb.Append("  Cancelled: ").Append(Cancelled).Append("\n");
             sb.Append("  Detail: ").Append(Detail).Append("\n");
+            sb.Append("  Cancelled: ").Append(Cancelled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -133,14 +131,14 @@ namespace SignRequest.Model
 
             return 
                 (
-                    this.Cancelled == input.Cancelled ||
-                    (this.Cancelled != null &&
-                    this.Cancelled.Equals(input.Cancelled))
-                ) && 
-                (
                     this.Detail == input.Detail ||
                     (this.Detail != null &&
                     this.Detail.Equals(input.Detail))
+                ) && 
+                (
+                    this.Cancelled == input.Cancelled ||
+                    (this.Cancelled != null &&
+                    this.Cancelled.Equals(input.Cancelled))
                 );
         }
 
@@ -153,22 +151,12 @@ namespace SignRequest.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Cancelled != null)
-                    hashCode = hashCode * 59 + this.Cancelled.GetHashCode();
                 if (this.Detail != null)
                     hashCode = hashCode * 59 + this.Detail.GetHashCode();
+                if (this.Cancelled != null)
+                    hashCode = hashCode * 59 + this.Cancelled.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
         }
     }
 

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **DisableDate** | **bool?** | Disable adding of dates | [optional] 
 **DisableEmails** | **bool?** | Disable all SignRequest status emails as well as the email that contains the signed documents | [optional] 
 **DisableUploadSignatures** | **bool?** | Disable usage of uploaded signatures (images) | [optional] 
+**DisableBlockchainProof** | **bool?** | Disables storing timestamp proof hashes in blockchain integrations. | [optional] 
 **TextMessageVerificationLocked** | **bool?** | When true a text message verification is needed before the signer can see the document | [optional] 
 **Subject** | **string** | Subject of SignRequest email | [optional] 
 **Message** | **string** | Message to include in SignRequest email, may contain the following html tags: &#x60;a&#x60;, &#x60;abbr&#x60;, &#x60;acronym&#x60;, &#x60;b&#x60;, &#x60;blockquote&#x60;, &#x60;code&#x60;, &#x60;em&#x60;, &#x60;i&#x60;, &#x60;ul&#x60;, &#x60;li&#x60;, &#x60;ol&#x60;, and &#x60;strong&#x60; | [optional] 
@@ -39,6 +40,7 @@ Name | Type | Description | Notes
 **Integrations** | [**List&lt;InlineIntegrationData&gt;**](InlineIntegrationData.md) |  | [optional] 
 **FileFromSf** | [**FileFromSf**](FileFromSf.md) |  | [optional] 
 **AutoDeleteDays** | **int?** | Number of days after which a finished document (signed/cancelled/declined) will be automatically deleted | [optional] 
+**AutoExpireDays** | **int?** | Number of days after which a non finished document will be automatically expired | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// DocumentSearch
     /// </summary>
     [DataContract]
-    public partial class DocumentSearch :  IEquatable<DocumentSearch>, IValidatableObject
+    public partial class DocumentSearch :  IEquatable<DocumentSearch>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentSearch" /> class.
@@ -40,10 +38,10 @@ namespace SignRequest.Model
         /// </summary>
         /// <param name="status">&#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired.</param>
         /// <param name="who">who (required).</param>
-        /// <param name="nrExtraDocs">nrExtraDocs (required).</param>
-        /// <param name="fromEmail">fromEmail (required).</param>
         /// <param name="autocomplete">autocomplete (required).</param>
-        public DocumentSearch(string status = default(string), string who = default(string), int? nrExtraDocs = default(int?), string fromEmail = default(string), string autocomplete = default(string))
+        /// <param name="fromEmail">fromEmail (required).</param>
+        /// <param name="nrExtraDocs">nrExtraDocs (required).</param>
+        public DocumentSearch(string status = default(string), string who = default(string), string autocomplete = default(string), string fromEmail = default(string), int? nrExtraDocs = default(int?))
         {
             // to ensure "who" is required (not null)
             if (who == null)
@@ -54,14 +52,14 @@ namespace SignRequest.Model
             {
                 this.Who = who;
             }
-            // to ensure "nrExtraDocs" is required (not null)
-            if (nrExtraDocs == null)
+            // to ensure "autocomplete" is required (not null)
+            if (autocomplete == null)
             {
-                throw new InvalidDataException("nrExtraDocs is a required property for DocumentSearch and cannot be null");
+                throw new InvalidDataException("autocomplete is a required property for DocumentSearch and cannot be null");
             }
             else
             {
-                this.NrExtraDocs = nrExtraDocs;
+                this.Autocomplete = autocomplete;
             }
             // to ensure "fromEmail" is required (not null)
             if (fromEmail == null)
@@ -72,50 +70,18 @@ namespace SignRequest.Model
             {
                 this.FromEmail = fromEmail;
             }
-            // to ensure "autocomplete" is required (not null)
-            if (autocomplete == null)
+            // to ensure "nrExtraDocs" is required (not null)
+            if (nrExtraDocs == null)
             {
-                throw new InvalidDataException("autocomplete is a required property for DocumentSearch and cannot be null");
+                throw new InvalidDataException("nrExtraDocs is a required property for DocumentSearch and cannot be null");
             }
             else
             {
-                this.Autocomplete = autocomplete;
+                this.NrExtraDocs = nrExtraDocs;
             }
             this.Status = status;
         }
         
-        /// <summary>
-        /// &#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired
-        /// </summary>
-        /// <value>&#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired</value>
-        [DataMember(Name="status", EmitDefaultValue=false)]
-        public string Status { get; set; }
-
-        /// <summary>
-        /// Defaults to filename
-        /// </summary>
-        /// <value>Defaults to filename</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Who
-        /// </summary>
-        [DataMember(Name="who", EmitDefaultValue=false)]
-        public string Who { get; set; }
-
-        /// <summary>
-        /// Gets or Sets NrExtraDocs
-        /// </summary>
-        [DataMember(Name="nr_extra_docs", EmitDefaultValue=false)]
-        public int? NrExtraDocs { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FromEmail
-        /// </summary>
-        [DataMember(Name="from_email", EmitDefaultValue=false)]
-        public string FromEmail { get; set; }
-
         /// <summary>
         /// Gets or Sets Uuid
         /// </summary>
@@ -129,10 +95,42 @@ namespace SignRequest.Model
         public DateTime? Created { get; private set; }
 
         /// <summary>
+        /// &#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired
+        /// </summary>
+        /// <value>&#x60;co&#x60;: converting, &#x60;ne&#x60;: new, &#x60;se&#x60;: sent, &#x60;vi&#x60;: viewed, &#x60;si&#x60;: signed, &#x60;do&#x60;: downloaded, &#x60;sd&#x60;: signed and downloaded, &#x60;ca&#x60;: cancelled, &#x60;de&#x60;: declined, &#x60;ec&#x60;: error converting, &#x60;es&#x60;: error sending, &#x60;xp&#x60;: expired</value>
+        [DataMember(Name="status", EmitDefaultValue=false)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Who
+        /// </summary>
+        [DataMember(Name="who", EmitDefaultValue=false)]
+        public string Who { get; set; }
+
+        /// <summary>
+        /// Defaults to filename
+        /// </summary>
+        /// <value>Defaults to filename</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; private set; }
+
+        /// <summary>
         /// Gets or Sets Autocomplete
         /// </summary>
         [DataMember(Name="autocomplete", EmitDefaultValue=false)]
         public string Autocomplete { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FromEmail
+        /// </summary>
+        [DataMember(Name="from_email", EmitDefaultValue=false)]
+        public string FromEmail { get; set; }
+
+        /// <summary>
+        /// Gets or Sets NrExtraDocs
+        /// </summary>
+        [DataMember(Name="nr_extra_docs", EmitDefaultValue=false)]
+        public int? NrExtraDocs { get; set; }
 
         /// <summary>
         /// Gets or Sets SignerEmails
@@ -184,14 +182,14 @@ namespace SignRequest.Model
         {
             var sb = new StringBuilder();
             sb.Append("class DocumentSearch {\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Who: ").Append(Who).Append("\n");
-            sb.Append("  NrExtraDocs: ").Append(NrExtraDocs).Append("\n");
-            sb.Append("  FromEmail: ").Append(FromEmail).Append("\n");
             sb.Append("  Uuid: ").Append(Uuid).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Who: ").Append(Who).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Autocomplete: ").Append(Autocomplete).Append("\n");
+            sb.Append("  FromEmail: ").Append(FromEmail).Append("\n");
+            sb.Append("  NrExtraDocs: ").Append(NrExtraDocs).Append("\n");
             sb.Append("  SignerEmails: ").Append(SignerEmails).Append("\n");
             sb.Append("  StatusDisplay: ").Append(StatusDisplay).Append("\n");
             sb.Append("  CreatedTimestamp: ").Append(CreatedTimestamp).Append("\n");
@@ -234,31 +232,6 @@ namespace SignRequest.Model
 
             return 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.Who == input.Who ||
-                    (this.Who != null &&
-                    this.Who.Equals(input.Who))
-                ) && 
-                (
-                    this.NrExtraDocs == input.NrExtraDocs ||
-                    (this.NrExtraDocs != null &&
-                    this.NrExtraDocs.Equals(input.NrExtraDocs))
-                ) && 
-                (
-                    this.FromEmail == input.FromEmail ||
-                    (this.FromEmail != null &&
-                    this.FromEmail.Equals(input.FromEmail))
-                ) && 
-                (
                     this.Uuid == input.Uuid ||
                     (this.Uuid != null &&
                     this.Uuid.Equals(input.Uuid))
@@ -269,9 +242,34 @@ namespace SignRequest.Model
                     this.Created.Equals(input.Created))
                 ) && 
                 (
+                    this.Status == input.Status ||
+                    (this.Status != null &&
+                    this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.Who == input.Who ||
+                    (this.Who != null &&
+                    this.Who.Equals(input.Who))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
                     this.Autocomplete == input.Autocomplete ||
                     (this.Autocomplete != null &&
                     this.Autocomplete.Equals(input.Autocomplete))
+                ) && 
+                (
+                    this.FromEmail == input.FromEmail ||
+                    (this.FromEmail != null &&
+                    this.FromEmail.Equals(input.FromEmail))
+                ) && 
+                (
+                    this.NrExtraDocs == input.NrExtraDocs ||
+                    (this.NrExtraDocs != null &&
+                    this.NrExtraDocs.Equals(input.NrExtraDocs))
                 ) && 
                 (
                     this.SignerEmails == input.SignerEmails ||
@@ -319,22 +317,22 @@ namespace SignRequest.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Who != null)
-                    hashCode = hashCode * 59 + this.Who.GetHashCode();
-                if (this.NrExtraDocs != null)
-                    hashCode = hashCode * 59 + this.NrExtraDocs.GetHashCode();
-                if (this.FromEmail != null)
-                    hashCode = hashCode * 59 + this.FromEmail.GetHashCode();
                 if (this.Uuid != null)
                     hashCode = hashCode * 59 + this.Uuid.GetHashCode();
                 if (this.Created != null)
                     hashCode = hashCode * 59 + this.Created.GetHashCode();
+                if (this.Status != null)
+                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                if (this.Who != null)
+                    hashCode = hashCode * 59 + this.Who.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Autocomplete != null)
                     hashCode = hashCode * 59 + this.Autocomplete.GetHashCode();
+                if (this.FromEmail != null)
+                    hashCode = hashCode * 59 + this.FromEmail.GetHashCode();
+                if (this.NrExtraDocs != null)
+                    hashCode = hashCode * 59 + this.NrExtraDocs.GetHashCode();
                 if (this.SignerEmails != null)
                     hashCode = hashCode * 59 + this.SignerEmails.GetHashCode();
                 if (this.StatusDisplay != null)
@@ -351,76 +349,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Subdomain.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // Status (string) maxLength
-            if(this.Status != null && this.Status.Length > 2)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Status, length must be less than 2.", new [] { "Status" });
-            }
-
-            // Status (string) minLength
-            if(this.Status != null && this.Status.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Status, length must be greater than 1.", new [] { "Status" });
-            }
-
-            // Name (string) minLength
-            if(this.Name != null && this.Name.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be greater than 1.", new [] { "Name" });
-            }
-
-            // Who (string) minLength
-            if(this.Who != null && this.Who.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Who, length must be greater than 1.", new [] { "Who" });
-            }
-
-            // FromEmail (string) minLength
-            if(this.FromEmail != null && this.FromEmail.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FromEmail, length must be greater than 1.", new [] { "FromEmail" });
-            }
-
-            // Uuid (string) minLength
-            if(this.Uuid != null && this.Uuid.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Uuid, length must be greater than 1.", new [] { "Uuid" });
-            }
-
-            // Autocomplete (string) minLength
-            if(this.Autocomplete != null && this.Autocomplete.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Autocomplete, length must be greater than 1.", new [] { "Autocomplete" });
-            }
-
-            // StatusDisplay (string) minLength
-            if(this.StatusDisplay != null && this.StatusDisplay.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for StatusDisplay, length must be greater than 1.", new [] { "StatusDisplay" });
-            }
-
-            // ParentDoc (string) minLength
-            if(this.ParentDoc != null && this.ParentDoc.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ParentDoc, length must be greater than 1.", new [] { "ParentDoc" });
-            }
-
-            // Subdomain (string) minLength
-            if(this.Subdomain != null && this.Subdomain.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Subdomain, length must be greater than 1.", new [] { "Subdomain" });
-            }
-
-            yield break;
         }
     }
 

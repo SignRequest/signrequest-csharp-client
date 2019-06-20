@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// SignRequest
     /// </summary>
     [DataContract]
-    public partial class SignRequest :  IEquatable<SignRequest>, IValidatableObject
+    public partial class SignRequest :  IEquatable<SignRequest>
     {
         /// <summary>
         /// &#x60;m&#x60;: only me, &#x60;mo&#x60;: me and others, &#x60;o&#x60;: only others
@@ -125,6 +123,7 @@ namespace SignRequest.Model
         /// <param name="disableDate">Disable adding of dates.</param>
         /// <param name="disableEmails">Disable all SignRequest status emails as well as the email that contains the signed documents.</param>
         /// <param name="disableUploadSignatures">Disable usage of uploaded signatures (images).</param>
+        /// <param name="disableBlockchainProof">Disables storing timestamp proof hashes in blockchain integrations..</param>
         /// <param name="textMessageVerificationLocked">When true a text message verification is needed before the signer can see the document.</param>
         /// <param name="subject">Subject of SignRequest email.</param>
         /// <param name="message">Message to include in SignRequest email, may contain the following html tags: &#x60;a&#x60;, &#x60;abbr&#x60;, &#x60;acronym&#x60;, &#x60;b&#x60;, &#x60;blockquote&#x60;, &#x60;code&#x60;, &#x60;em&#x60;, &#x60;i&#x60;, &#x60;ul&#x60;, &#x60;li&#x60;, &#x60;ol&#x60;, and &#x60;strong&#x60;.</param>
@@ -134,7 +133,7 @@ namespace SignRequest.Model
         /// <param name="document">document (required).</param>
         /// <param name="integration">integration.</param>
         /// <param name="integrationData">integrationData.</param>
-        public SignRequest(string fromEmail = default(string), string fromEmailName = default(string), bool? isBeingPrepared = default(bool?), string redirectUrl = default(string), List<RequiredAttachment> requiredAttachments = default(List<RequiredAttachment>), bool? disableAttachments = default(bool?), bool? disableTextSignatures = default(bool?), bool? disableText = default(bool?), bool? disableDate = default(bool?), bool? disableEmails = default(bool?), bool? disableUploadSignatures = default(bool?), bool? textMessageVerificationLocked = default(bool?), string subject = default(string), string message = default(string), WhoEnum? who = WhoEnum.O, bool? sendReminders = default(bool?), List<Signer> signers = default(List<Signer>), string document = default(string), IntegrationEnum? integration = default(IntegrationEnum?), string integrationData = default(string))
+        public SignRequest(string fromEmail = default(string), string fromEmailName = default(string), bool? isBeingPrepared = default(bool?), string redirectUrl = default(string), List<RequiredAttachment> requiredAttachments = default(List<RequiredAttachment>), bool? disableAttachments = default(bool?), bool? disableTextSignatures = default(bool?), bool? disableText = default(bool?), bool? disableDate = default(bool?), bool? disableEmails = default(bool?), bool? disableUploadSignatures = default(bool?), bool? disableBlockchainProof = default(bool?), bool? textMessageVerificationLocked = default(bool?), string subject = default(string), string message = default(string), WhoEnum? who = WhoEnum.O, bool? sendReminders = default(bool?), List<Signer> signers = default(List<Signer>), string document = default(string), IntegrationEnum? integration = default(IntegrationEnum?), string integrationData = default(string))
         {
             // to ensure "signers" is required (not null)
             if (signers == null)
@@ -165,6 +164,7 @@ namespace SignRequest.Model
             this.DisableDate = disableDate;
             this.DisableEmails = disableEmails;
             this.DisableUploadSignatures = disableUploadSignatures;
+            this.DisableBlockchainProof = disableBlockchainProof;
             this.TextMessageVerificationLocked = textMessageVerificationLocked;
             this.Subject = subject;
             this.Message = message;
@@ -266,6 +266,13 @@ namespace SignRequest.Model
         public bool? DisableUploadSignatures { get; set; }
 
         /// <summary>
+        /// Disables storing timestamp proof hashes in blockchain integrations.
+        /// </summary>
+        /// <value>Disables storing timestamp proof hashes in blockchain integrations.</value>
+        [DataMember(Name="disable_blockchain_proof", EmitDefaultValue=false)]
+        public bool? DisableBlockchainProof { get; set; }
+
+        /// <summary>
         /// When true a text message verification is needed before the signer can see the document
         /// </summary>
         /// <value>When true a text message verification is needed before the signer can see the document</value>
@@ -345,6 +352,7 @@ namespace SignRequest.Model
             sb.Append("  DisableDate: ").Append(DisableDate).Append("\n");
             sb.Append("  DisableEmails: ").Append(DisableEmails).Append("\n");
             sb.Append("  DisableUploadSignatures: ").Append(DisableUploadSignatures).Append("\n");
+            sb.Append("  DisableBlockchainProof: ").Append(DisableBlockchainProof).Append("\n");
             sb.Append("  TextMessageVerificationLocked: ").Append(TextMessageVerificationLocked).Append("\n");
             sb.Append("  Subject: ").Append(Subject).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
@@ -451,6 +459,11 @@ namespace SignRequest.Model
                     this.DisableUploadSignatures.Equals(input.DisableUploadSignatures))
                 ) && 
                 (
+                    this.DisableBlockchainProof == input.DisableBlockchainProof ||
+                    (this.DisableBlockchainProof != null &&
+                    this.DisableBlockchainProof.Equals(input.DisableBlockchainProof))
+                ) && 
+                (
                     this.TextMessageVerificationLocked == input.TextMessageVerificationLocked ||
                     (this.TextMessageVerificationLocked != null &&
                     this.TextMessageVerificationLocked.Equals(input.TextMessageVerificationLocked))
@@ -540,6 +553,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.DisableEmails.GetHashCode();
                 if (this.DisableUploadSignatures != null)
                     hashCode = hashCode * 59 + this.DisableUploadSignatures.GetHashCode();
+                if (this.DisableBlockchainProof != null)
+                    hashCode = hashCode * 59 + this.DisableBlockchainProof.GetHashCode();
                 if (this.TextMessageVerificationLocked != null)
                     hashCode = hashCode * 59 + this.TextMessageVerificationLocked.GetHashCode();
                 if (this.Subject != null)
@@ -564,58 +579,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.IntegrationData.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // FromEmail (string) maxLength
-            if(this.FromEmail != null && this.FromEmail.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FromEmail, length must be less than 255.", new [] { "FromEmail" });
-            }
-
-            // FromEmail (string) minLength
-            if(this.FromEmail != null && this.FromEmail.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FromEmail, length must be greater than 1.", new [] { "FromEmail" });
-            }
-
-            // FromEmailName (string) maxLength
-            if(this.FromEmailName != null && this.FromEmailName.Length > 255)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FromEmailName, length must be less than 255.", new [] { "FromEmailName" });
-            }
-
-            // PrepareUrl (string) minLength
-            if(this.PrepareUrl != null && this.PrepareUrl.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrepareUrl, length must be greater than 1.", new [] { "PrepareUrl" });
-            }
-
-            // RedirectUrl (string) maxLength
-            if(this.RedirectUrl != null && this.RedirectUrl.Length > 2100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RedirectUrl, length must be less than 2100.", new [] { "RedirectUrl" });
-            }
-
-            // Subject (string) maxLength
-            if(this.Subject != null && this.Subject.Length > 512)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Subject, length must be less than 512.", new [] { "Subject" });
-            }
-
-            // Uuid (string) minLength
-            if(this.Uuid != null && this.Uuid.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Uuid, length must be greater than 1.", new [] { "Uuid" });
-            }
-
-            yield break;
         }
     }
 

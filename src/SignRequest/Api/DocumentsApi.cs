@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -358,7 +358,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling DocumentsApi->DocumentsCreate");
 
-            var localVarPath = "/documents/";
+            var localVarPath = "./documents/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -409,7 +409,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Document>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Document) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Document)));
         }
 
@@ -438,7 +438,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling DocumentsApi->DocumentsCreate");
 
-            var localVarPath = "/documents/";
+            var localVarPath = "./documents/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -489,7 +489,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Document>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Document) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Document)));
         }
 
@@ -516,7 +516,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling DocumentsApi->DocumentsDelete");
 
-            var localVarPath = "/documents/{uuid}/";
+            var localVarPath = "./documents/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -560,7 +560,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -588,7 +588,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling DocumentsApi->DocumentsDelete");
 
-            var localVarPath = "/documents/{uuid}/";
+            var localVarPath = "./documents/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -632,7 +632,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -677,7 +677,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse2003 > DocumentsListWithHttpInfo (string externalId = null, string signrequestWho = null, string signrequestFromEmail = null, string status = null, string userEmail = null, string userFirstName = null, string userLastName = null, string created = null, string modified = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/documents/";
+            var localVarPath = "./documents/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -731,7 +731,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2003>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2003) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2003)));
         }
 
@@ -777,7 +777,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2003>> DocumentsListAsyncWithHttpInfo (string externalId = null, string signrequestWho = null, string signrequestFromEmail = null, string status = null, string userEmail = null, string userFirstName = null, string userLastName = null, string created = null, string modified = null, int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/documents/";
+            var localVarPath = "./documents/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -831,7 +831,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2003>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2003) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2003)));
         }
 
@@ -859,7 +859,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling DocumentsApi->DocumentsRead");
 
-            var localVarPath = "/documents/{uuid}/";
+            var localVarPath = "./documents/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -903,7 +903,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Document>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Document) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Document)));
         }
 
@@ -932,7 +932,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling DocumentsApi->DocumentsRead");
 
-            var localVarPath = "/documents/{uuid}/";
+            var localVarPath = "./documents/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -976,7 +976,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Document>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (Document) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Document)));
         }
 

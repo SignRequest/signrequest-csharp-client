@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// DocumentTeam
     /// </summary>
     [DataContract]
-    public partial class DocumentTeam :  IEquatable<DocumentTeam>, IValidatableObject
+    public partial class DocumentTeam :  IEquatable<DocumentTeam>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentTeam" /> class.
@@ -135,35 +133,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // Name (string) minLength
-            if(this.Name != null && this.Name.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be greater than 1.", new [] { "Name" });
-            }
-
-            // Subdomain (string) minLength
-            if(this.Subdomain != null && this.Subdomain.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Subdomain, length must be greater than 1.", new [] { "Subdomain" });
-            }
-
-            // Subdomain (string) pattern
-            Regex regexSubdomain = new Regex(@"^[-a-zA-Z0-9_]+$", RegexOptions.CultureInvariant);
-            if (false == regexSubdomain.Match(this.Subdomain).Success)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Subdomain, must match a pattern of " + regexSubdomain, new [] { "Subdomain" });
-            }
-
-            yield break;
         }
     }
 

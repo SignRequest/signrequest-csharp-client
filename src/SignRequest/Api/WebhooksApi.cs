@@ -12,7 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using RestSharp;
+using RestSharp.Portable;
 using SignRequest.Client;
 using SignRequest.Model;
 
@@ -414,7 +414,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling WebhooksApi->WebhooksCreate");
 
-            var localVarPath = "/webhooks/";
+            var localVarPath = "./webhooks/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -465,7 +465,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<WebhookSubscription>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (WebhookSubscription) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookSubscription)));
         }
 
@@ -494,7 +494,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling WebhooksApi->WebhooksCreate");
 
-            var localVarPath = "/webhooks/";
+            var localVarPath = "./webhooks/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -545,7 +545,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<WebhookSubscription>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (WebhookSubscription) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookSubscription)));
         }
 
@@ -572,7 +572,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling WebhooksApi->WebhooksDelete");
 
-            var localVarPath = "/webhooks/{uuid}/";
+            var localVarPath = "./webhooks/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -616,7 +616,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -644,7 +644,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling WebhooksApi->WebhooksDelete");
 
-            var localVarPath = "/webhooks/{uuid}/";
+            var localVarPath = "./webhooks/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -688,7 +688,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 null);
         }
 
@@ -715,7 +715,7 @@ namespace SignRequest.Api
         public ApiResponse< InlineResponse2009 > WebhooksListWithHttpInfo (int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/webhooks/";
+            var localVarPath = "./webhooks/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -760,7 +760,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2009>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2009) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2009)));
         }
 
@@ -788,7 +788,7 @@ namespace SignRequest.Api
         public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2009>> WebhooksListAsyncWithHttpInfo (int? page = null, int? limit = null)
         {
 
-            var localVarPath = "/webhooks/";
+            var localVarPath = "./webhooks/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -833,7 +833,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<InlineResponse2009>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (InlineResponse2009) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2009)));
         }
 
@@ -866,7 +866,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling WebhooksApi->WebhooksPartialUpdate");
 
-            var localVarPath = "/webhooks/{uuid}/";
+            var localVarPath = "./webhooks/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -918,7 +918,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<WebhookSubscription>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (WebhookSubscription) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookSubscription)));
         }
 
@@ -952,7 +952,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling WebhooksApi->WebhooksPartialUpdate");
 
-            var localVarPath = "/webhooks/{uuid}/";
+            var localVarPath = "./webhooks/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1004,7 +1004,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<WebhookSubscription>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (WebhookSubscription) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookSubscription)));
         }
 
@@ -1032,7 +1032,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling WebhooksApi->WebhooksRead");
 
-            var localVarPath = "/webhooks/{uuid}/";
+            var localVarPath = "./webhooks/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1076,7 +1076,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<WebhookSubscription>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (WebhookSubscription) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookSubscription)));
         }
 
@@ -1105,7 +1105,7 @@ namespace SignRequest.Api
             if (uuid == null)
                 throw new ApiException(400, "Missing required parameter 'uuid' when calling WebhooksApi->WebhooksRead");
 
-            var localVarPath = "/webhooks/{uuid}/";
+            var localVarPath = "./webhooks/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1149,7 +1149,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<WebhookSubscription>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (WebhookSubscription) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookSubscription)));
         }
 
@@ -1182,7 +1182,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling WebhooksApi->WebhooksUpdate");
 
-            var localVarPath = "/webhooks/{uuid}/";
+            var localVarPath = "./webhooks/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1234,7 +1234,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<WebhookSubscription>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (WebhookSubscription) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookSubscription)));
         }
 
@@ -1268,7 +1268,7 @@ namespace SignRequest.Api
             if (data == null)
                 throw new ApiException(400, "Missing required parameter 'data' when calling WebhooksApi->WebhooksUpdate");
 
-            var localVarPath = "/webhooks/{uuid}/";
+            var localVarPath = "./webhooks/{uuid}/";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1320,7 +1320,7 @@ namespace SignRequest.Api
             }
 
             return new ApiResponse<WebhookSubscription>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
                 (WebhookSubscription) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookSubscription)));
         }
 

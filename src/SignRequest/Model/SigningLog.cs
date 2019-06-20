@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// SigningLog
     /// </summary>
     [DataContract]
-    public partial class SigningLog :  IEquatable<SigningLog>, IValidatableObject
+    public partial class SigningLog :  IEquatable<SigningLog>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SigningLog" /> class.
@@ -123,22 +121,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.SecurityHash.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // SecurityHash (string) minLength
-            if(this.SecurityHash != null && this.SecurityHash.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SecurityHash, length must be greater than 1.", new [] { "SecurityHash" });
-            }
-
-            yield break;
         }
     }
 

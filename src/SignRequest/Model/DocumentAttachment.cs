@@ -12,14 +12,12 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
 using SwaggerDateConverter = SignRequest.Client.SwaggerDateConverter;
 
 namespace SignRequest.Model
@@ -28,7 +26,7 @@ namespace SignRequest.Model
     /// DocumentAttachment
     /// </summary>
     [DataContract]
-    public partial class DocumentAttachment :  IEquatable<DocumentAttachment>, IValidatableObject
+    public partial class DocumentAttachment :  IEquatable<DocumentAttachment>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentAttachment" /> class.
@@ -38,11 +36,12 @@ namespace SignRequest.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentAttachment" /> class.
         /// </summary>
+        /// <param name="name">Defaults to filename, including extension.</param>
         /// <param name="fileFromContent">Base64 encoded document content.</param>
         /// <param name="fileFromContentName">Filename, including extension. Required when using &#x60;file_from_content&#x60;..</param>
         /// <param name="fileFromUrl">Publicly accessible URL of document to be downloaded by SignRequest.</param>
         /// <param name="document">document (required).</param>
-        public DocumentAttachment(string fileFromContent = default(string), string fileFromContentName = default(string), string fileFromUrl = default(string), string document = default(string))
+        public DocumentAttachment(string name = default(string), string fileFromContent = default(string), string fileFromContentName = default(string), string fileFromUrl = default(string), string document = default(string))
         {
             // to ensure "document" is required (not null)
             if (document == null)
@@ -53,6 +52,7 @@ namespace SignRequest.Model
             {
                 this.Document = document;
             }
+            this.Name = name;
             this.FileFromContent = fileFromContent;
             this.FileFromContentName = fileFromContentName;
             this.FileFromUrl = fileFromUrl;
@@ -71,11 +71,11 @@ namespace SignRequest.Model
         public string Uuid { get; private set; }
 
         /// <summary>
-        /// Defaults to filename
+        /// Defaults to filename, including extension
         /// </summary>
-        /// <value>Defaults to filename</value>
+        /// <value>Defaults to filename, including extension</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Temporary URL to document attachment, expires in five minutes
@@ -230,34 +230,6 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Document.GetHashCode();
                 return hashCode;
             }
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            // Uuid (string) minLength
-            if(this.Uuid != null && this.Uuid.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Uuid, length must be greater than 1.", new [] { "Uuid" });
-            }
-
-            // Name (string) minLength
-            if(this.Name != null && this.Name.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Name, length must be greater than 1.", new [] { "Name" });
-            }
-
-            // FileFromUrl (string) maxLength
-            if(this.FileFromUrl != null && this.FileFromUrl.Length > 2100)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FileFromUrl, length must be less than 2100.", new [] { "FileFromUrl" });
-            }
-
-            yield break;
         }
     }
 
