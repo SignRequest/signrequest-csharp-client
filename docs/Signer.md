@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **EmbedUrl** | **string** |  | [optional] 
 **Attachments** | [**List&lt;SignerAttachment&gt;**](SignerAttachment.md) |  | [optional] 
 **RedirectUrl** | **string** |  | [optional] 
+**RedirectUrlDeclined** | **string** |  | [optional] 
 **AfterDocument** | **string** |  | [optional] 
 **Integrations** | [**List&lt;InlineDocumentSignerIntegrationData&gt;**](InlineDocumentSignerIntegrationData.md) |  | [optional] 
 **Password** | **string** | Require the signer to enter this password before signing a document. This field is write only. | [optional] 

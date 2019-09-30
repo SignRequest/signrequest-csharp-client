@@ -177,7 +177,7 @@ namespace SignRequest.Api
         /// </remarks>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
-        /// <returns>Task of ApiResponse (SignRequest)</returns>
+        /// <returns>Task of ApiResponse (Model.SignRequest)</returns>
         System.Threading.Tasks.Task<ApiResponse<Model.SignRequest>> SignrequestsCreateAsyncWithHttpInfo (Model.SignRequest data);
         /// <summary>
         /// Retrieve a list of SignRequests
@@ -225,7 +225,7 @@ namespace SignRequest.Api
         /// </remarks>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
-        /// <returns>Task of ApiResponse (SignRequest)</returns>
+        /// <returns>Task of ApiResponse (Model.SignRequest)</returns>
         System.Threading.Tasks.Task<ApiResponse<Model.SignRequest>> SignrequestsReadAsyncWithHttpInfo (string uuid);
         /// <summary>
         /// Resend a SignRequest
@@ -590,7 +590,7 @@ namespace SignRequest.Api
         /// </summary>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="data"></param>
-        /// <returns>Task of ApiResponse (SignRequest)</returns>
+        /// <returns>Task of ApiResponse (Model.SignRequest)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Model.SignRequest>> SignrequestsCreateAsyncWithHttpInfo (Model.SignRequest data)
         {
             // verify the required parameter 'data' is set
@@ -899,7 +899,7 @@ namespace SignRequest.Api
         /// </summary>
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="uuid"></param>
-        /// <returns>Task of ApiResponse (SignRequest)</returns>
+        /// <returns>Task of ApiResponse (Model.SignRequest)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<Model.SignRequest>> SignrequestsReadAsyncWithHttpInfo (string uuid)
         {
             // verify the required parameter 'uuid' is set

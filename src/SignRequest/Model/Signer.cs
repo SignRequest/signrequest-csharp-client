@@ -160,10 +160,11 @@ namespace SignRequest.Model
         /// <param name="embedUrlUserId">embedUrlUserId.</param>
         /// <param name="useStampForApproveOnly">Place an approval stamp on a document when a signer approves a document.</param>
         /// <param name="redirectUrl">redirectUrl.</param>
+        /// <param name="redirectUrlDeclined">redirectUrlDeclined.</param>
         /// <param name="afterDocument">afterDocument.</param>
         /// <param name="integrations">integrations.</param>
         /// <param name="password">Require the signer to enter this password before signing a document. This field is write only..</param>
-        public Signer(string email = default(string), string firstName = default(string), string lastName = default(string), bool? needsToSign = true, bool? approveOnly = default(bool?), bool? notifyOnly = default(bool?), bool? inPerson = default(bool?), int? order = default(int?), LanguageEnum? language = default(LanguageEnum?), bool? forceLanguage = default(bool?), string verifyPhoneNumber = default(string), string verifyBankAccount = default(string), string embedUrlUserId = default(string), bool? useStampForApproveOnly = default(bool?), string redirectUrl = default(string), string afterDocument = default(string), List<InlineDocumentSignerIntegrationData> integrations = default(List<InlineDocumentSignerIntegrationData>), string password = default(string))
+        public Signer(string email = default(string), string firstName = default(string), string lastName = default(string), bool? needsToSign = true, bool? approveOnly = default(bool?), bool? notifyOnly = default(bool?), bool? inPerson = default(bool?), int? order = default(int?), LanguageEnum? language = default(LanguageEnum?), bool? forceLanguage = default(bool?), string verifyPhoneNumber = default(string), string verifyBankAccount = default(string), string embedUrlUserId = default(string), bool? useStampForApproveOnly = default(bool?), string redirectUrl = default(string), string redirectUrlDeclined = default(string), string afterDocument = default(string), List<InlineDocumentSignerIntegrationData> integrations = default(List<InlineDocumentSignerIntegrationData>), string password = default(string))
         {
             // to ensure "email" is required (not null)
             if (email == null)
@@ -196,6 +197,7 @@ namespace SignRequest.Model
             this.EmbedUrlUserId = embedUrlUserId;
             this.UseStampForApproveOnly = useStampForApproveOnly;
             this.RedirectUrl = redirectUrl;
+            this.RedirectUrlDeclined = redirectUrlDeclined;
             this.AfterDocument = afterDocument;
             this.Integrations = integrations;
             this.Password = password;
@@ -390,6 +392,12 @@ namespace SignRequest.Model
         public string RedirectUrl { get; set; }
 
         /// <summary>
+        /// Gets or Sets RedirectUrlDeclined
+        /// </summary>
+        [DataMember(Name="redirect_url_declined", EmitDefaultValue=false)]
+        public string RedirectUrlDeclined { get; set; }
+
+        /// <summary>
         /// Gets or Sets AfterDocument
         /// </summary>
         [DataMember(Name="after_document", EmitDefaultValue=false)]
@@ -448,6 +456,7 @@ namespace SignRequest.Model
             sb.Append("  EmbedUrl: ").Append(EmbedUrl).Append("\n");
             sb.Append("  Attachments: ").Append(Attachments).Append("\n");
             sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
+            sb.Append("  RedirectUrlDeclined: ").Append(RedirectUrlDeclined).Append("\n");
             sb.Append("  AfterDocument: ").Append(AfterDocument).Append("\n");
             sb.Append("  Integrations: ").Append(Integrations).Append("\n");
             sb.Append("  Password: ").Append(Password).Append("\n");
@@ -646,6 +655,11 @@ namespace SignRequest.Model
                     this.RedirectUrl.Equals(input.RedirectUrl))
                 ) && 
                 (
+                    this.RedirectUrlDeclined == input.RedirectUrlDeclined ||
+                    (this.RedirectUrlDeclined != null &&
+                    this.RedirectUrlDeclined.Equals(input.RedirectUrlDeclined))
+                ) && 
+                (
                     this.AfterDocument == input.AfterDocument ||
                     (this.AfterDocument != null &&
                     this.AfterDocument.Equals(input.AfterDocument))
@@ -735,6 +749,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Attachments.GetHashCode();
                 if (this.RedirectUrl != null)
                     hashCode = hashCode * 59 + this.RedirectUrl.GetHashCode();
+                if (this.RedirectUrlDeclined != null)
+                    hashCode = hashCode * 59 + this.RedirectUrlDeclined.GetHashCode();
                 if (this.AfterDocument != null)
                     hashCode = hashCode * 59 + this.AfterDocument.GetHashCode();
                 if (this.Integrations != null)
