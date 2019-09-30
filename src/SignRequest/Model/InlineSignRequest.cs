@@ -104,6 +104,13 @@ namespace SignRequest.Model
         public string RedirectUrl { get; private set; }
 
         /// <summary>
+        /// URL at which SignRequest will redirect to when a document is declined
+        /// </summary>
+        /// <value>URL at which SignRequest will redirect to when a document is declined</value>
+        [DataMember(Name="redirect_url_declined", EmitDefaultValue=false)]
+        public string RedirectUrlDeclined { get; private set; }
+
+        /// <summary>
         /// Gets or Sets RequiredAttachments
         /// </summary>
         [DataMember(Name="required_attachments", EmitDefaultValue=false)]
@@ -212,6 +219,7 @@ namespace SignRequest.Model
             sb.Append("  IsBeingPrepared: ").Append(IsBeingPrepared).Append("\n");
             sb.Append("  PrepareUrl: ").Append(PrepareUrl).Append("\n");
             sb.Append("  RedirectUrl: ").Append(RedirectUrl).Append("\n");
+            sb.Append("  RedirectUrlDeclined: ").Append(RedirectUrlDeclined).Append("\n");
             sb.Append("  RequiredAttachments: ").Append(RequiredAttachments).Append("\n");
             sb.Append("  DisableAttachments: ").Append(DisableAttachments).Append("\n");
             sb.Append("  DisableTextSignatures: ").Append(DisableTextSignatures).Append("\n");
@@ -285,6 +293,11 @@ namespace SignRequest.Model
                     this.RedirectUrl == input.RedirectUrl ||
                     (this.RedirectUrl != null &&
                     this.RedirectUrl.Equals(input.RedirectUrl))
+                ) && 
+                (
+                    this.RedirectUrlDeclined == input.RedirectUrlDeclined ||
+                    (this.RedirectUrlDeclined != null &&
+                    this.RedirectUrlDeclined.Equals(input.RedirectUrlDeclined))
                 ) && 
                 (
                     this.RequiredAttachments == input.RequiredAttachments ||
@@ -382,6 +395,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.PrepareUrl.GetHashCode();
                 if (this.RedirectUrl != null)
                     hashCode = hashCode * 59 + this.RedirectUrl.GetHashCode();
+                if (this.RedirectUrlDeclined != null)
+                    hashCode = hashCode * 59 + this.RedirectUrlDeclined.GetHashCode();
                 if (this.RequiredAttachments != null)
                     hashCode = hashCode * 59 + this.RequiredAttachments.GetHashCode();
                 if (this.DisableAttachments != null)
