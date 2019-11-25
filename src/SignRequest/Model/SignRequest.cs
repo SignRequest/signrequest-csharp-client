@@ -90,13 +90,7 @@ namespace SignRequest.Model
             /// Enum Zapier for value: zapier
             /// </summary>
             [EnumMember(Value = "zapier")]
-            Zapier = 4,
-            
-            /// <summary>
-            /// Enum Txhash for value: txhash
-            /// </summary>
-            [EnumMember(Value = "txhash")]
-            Txhash = 5
+            Zapier = 4
         }
 
         /// <summary>
@@ -134,7 +128,7 @@ namespace SignRequest.Model
         /// <param name="document">document (required).</param>
         /// <param name="integration">integration.</param>
         /// <param name="integrationData">integrationData.</param>
-        public SignRequest(string fromEmail = default(string), string fromEmailName = default(string), bool? isBeingPrepared = default(bool?), string redirectUrl = default(string), string redirectUrlDeclined = default(string), List<RequiredAttachment> requiredAttachments = default(List<RequiredAttachment>), bool? disableAttachments = default(bool?), bool? disableTextSignatures = default(bool?), bool? disableText = default(bool?), bool? disableDate = default(bool?), bool? disableEmails = default(bool?), bool? disableUploadSignatures = default(bool?), bool? disableBlockchainProof = default(bool?), bool? textMessageVerificationLocked = default(bool?), string subject = default(string), string message = default(string), WhoEnum? who = WhoEnum.O, bool? sendReminders = default(bool?), List<Signer> signers = default(List<Signer>), string document = default(string), IntegrationEnum? integration = default(IntegrationEnum?), string integrationData = default(string))
+        public SignRequest(string fromEmail = default(string), string fromEmailName = default(string), bool? isBeingPrepared = default(bool?), string redirectUrl = default(string), string redirectUrlDeclined = default(string), List<RequiredAttachment> requiredAttachments = default(List<RequiredAttachment>), bool? disableAttachments = default(bool?), bool? disableTextSignatures = default(bool?), bool? disableText = default(bool?), bool? disableDate = default(bool?), bool? disableEmails = default(bool?), bool? disableUploadSignatures = default(bool?), bool? disableBlockchainProof = default(bool?), bool? textMessageVerificationLocked = default(bool?), string subject = default(string), string message = default(string), WhoEnum? who = WhoEnum.O, bool? sendReminders = default(bool?), List<Signer> signers = default(List<Signer>), string document = default(string), IntegrationEnum? integration = default(IntegrationEnum?), Object integrationData = default(Object))
         {
             // to ensure "signers" is required (not null)
             if (signers == null)
@@ -339,7 +333,7 @@ namespace SignRequest.Model
         /// Gets or Sets IntegrationData
         /// </summary>
         [DataMember(Name="integration_data", EmitDefaultValue=false)]
-        public string IntegrationData { get; set; }
+        public Object IntegrationData { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

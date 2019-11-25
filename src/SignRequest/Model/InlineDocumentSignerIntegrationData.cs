@@ -57,13 +57,7 @@ namespace SignRequest.Model
             /// Enum Zapier for value: zapier
             /// </summary>
             [EnumMember(Value = "zapier")]
-            Zapier = 4,
-            
-            /// <summary>
-            /// Enum Txhash for value: txhash
-            /// </summary>
-            [EnumMember(Value = "txhash")]
-            Txhash = 5
+            Zapier = 4
         }
 
         /// <summary>
@@ -76,7 +70,7 @@ namespace SignRequest.Model
         /// </summary>
         /// <param name="integration">integration.</param>
         /// <param name="integrationData">integrationData.</param>
-        public InlineDocumentSignerIntegrationData(IntegrationEnum? integration = default(IntegrationEnum?), string integrationData = default(string))
+        public InlineDocumentSignerIntegrationData(IntegrationEnum? integration = default(IntegrationEnum?), Object integrationData = default(Object))
         {
             this.Integration = integration;
             this.IntegrationData = integrationData;
@@ -87,7 +81,7 @@ namespace SignRequest.Model
         /// Gets or Sets IntegrationData
         /// </summary>
         [DataMember(Name="integration_data", EmitDefaultValue=false)]
-        public string IntegrationData { get; set; }
+        public Object IntegrationData { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

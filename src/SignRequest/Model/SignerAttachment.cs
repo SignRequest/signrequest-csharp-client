@@ -51,10 +51,10 @@ namespace SignRequest.Model
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets File
+        /// Gets or Sets _File
         /// </summary>
         [DataMember(Name="file", EmitDefaultValue=false)]
-        public string File { get; private set; }
+        public string _File { get; private set; }
 
         /// <summary>
         /// Gets or Sets ForAttachment
@@ -72,7 +72,7 @@ namespace SignRequest.Model
             sb.Append("class SignerAttachment {\n");
             sb.Append("  Uuid: ").Append(Uuid).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  File: ").Append(File).Append("\n");
+            sb.Append("  _File: ").Append(_File).Append("\n");
             sb.Append("  ForAttachment: ").Append(ForAttachment).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -119,9 +119,9 @@ namespace SignRequest.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.File == input.File ||
-                    (this.File != null &&
-                    this.File.Equals(input.File))
+                    this._File == input._File ||
+                    (this._File != null &&
+                    this._File.Equals(input._File))
                 ) && 
                 (
                     this.ForAttachment == input.ForAttachment ||
@@ -143,8 +143,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Uuid.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.File != null)
-                    hashCode = hashCode * 59 + this.File.GetHashCode();
+                if (this._File != null)
+                    hashCode = hashCode * 59 + this._File.GetHashCode();
                 if (this.ForAttachment != null)
                     hashCode = hashCode * 59 + this.ForAttachment.GetHashCode();
                 return hashCode;
