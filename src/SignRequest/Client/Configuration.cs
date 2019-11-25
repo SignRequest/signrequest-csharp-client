@@ -29,7 +29,7 @@ namespace SignRequest.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "3.1.0";
+        public const string Version = "4.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -110,7 +110,7 @@ namespace SignRequest.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "Swagger-Codegen/3.1.0/csharp";
+            UserAgent = "Swagger-Codegen/4.0.0/csharp";
             BasePath = "https://signrequest.com/api/v1";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -183,7 +183,7 @@ namespace SignRequest.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Swagger-Codegen/3.1.0/csharp"
+            string userAgent = "Swagger-Codegen/4.0.0/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -416,7 +416,7 @@ namespace SignRequest.Client
             String report = "C# SDK (SignRequest) Debug Report:\n";
             report += "    OS: " + System.Runtime.InteropServices.RuntimeInformation.OSDescription + "\n";
             report += "    Version of the API: v1\n";
-            report += "    SDK Package Version: 3.1.0\n";
+            report += "    SDK Package Version: 4.0.0\n";
 
             return report;
         }

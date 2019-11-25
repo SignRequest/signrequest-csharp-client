@@ -82,7 +82,7 @@ namespace SignRequest.Model
         /// </summary>
         /// <value>Temporary URL to document attachment, expires in five minutes</value>
         [DataMember(Name="file", EmitDefaultValue=false)]
-        public string File { get; private set; }
+        public string _File { get; private set; }
 
         /// <summary>
         /// Base64 encoded document content
@@ -122,7 +122,7 @@ namespace SignRequest.Model
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Uuid: ").Append(Uuid).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  File: ").Append(File).Append("\n");
+            sb.Append("  _File: ").Append(_File).Append("\n");
             sb.Append("  FileFromContent: ").Append(FileFromContent).Append("\n");
             sb.Append("  FileFromContentName: ").Append(FileFromContentName).Append("\n");
             sb.Append("  FileFromUrl: ").Append(FileFromUrl).Append("\n");
@@ -177,9 +177,9 @@ namespace SignRequest.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.File == input.File ||
-                    (this.File != null &&
-                    this.File.Equals(input.File))
+                    this._File == input._File ||
+                    (this._File != null &&
+                    this._File.Equals(input._File))
                 ) && 
                 (
                     this.FileFromContent == input.FileFromContent ||
@@ -218,8 +218,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Uuid.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.File != null)
-                    hashCode = hashCode * 59 + this.File.GetHashCode();
+                if (this._File != null)
+                    hashCode = hashCode * 59 + this._File.GetHashCode();
                 if (this.FileFromContent != null)
                     hashCode = hashCode * 59 + this.FileFromContent.GetHashCode();
                 if (this.FileFromContentName != null)

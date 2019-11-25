@@ -90,13 +90,7 @@ namespace SignRequest.Model
             /// Enum Zapier for value: zapier
             /// </summary>
             [EnumMember(Value = "zapier")]
-            Zapier = 4,
-            
-            /// <summary>
-            /// Enum Txhash for value: txhash
-            /// </summary>
-            [EnumMember(Value = "txhash")]
-            Txhash = 5
+            Zapier = 4
         }
 
         /// <summary>
@@ -146,7 +140,7 @@ namespace SignRequest.Model
         /// <param name="fileFromSf">fileFromSf.</param>
         /// <param name="autoDeleteDays">Number of days after which a finished document (signed/cancelled/declined) will be automatically deleted.</param>
         /// <param name="autoExpireDays">Number of days after which a non finished document will be automatically expired.</param>
-        public SignRequestQuickCreate(string fromEmail = default(string), string fromEmailName = default(string), bool? isBeingPrepared = default(bool?), string redirectUrl = default(string), string redirectUrlDeclined = default(string), List<RequiredAttachment> requiredAttachments = default(List<RequiredAttachment>), bool? disableAttachments = default(bool?), bool? disableTextSignatures = default(bool?), bool? disableText = default(bool?), bool? disableDate = default(bool?), bool? disableEmails = default(bool?), bool? disableUploadSignatures = default(bool?), bool? disableBlockchainProof = default(bool?), bool? textMessageVerificationLocked = default(bool?), string subject = default(string), string message = default(string), WhoEnum? who = WhoEnum.O, bool? sendReminders = default(bool?), List<Signer> signers = default(List<Signer>), IntegrationEnum? integration = default(IntegrationEnum?), string integrationData = default(string), string name = default(string), string externalId = default(string), string frontendId = default(string), string fileFromUrl = default(string), string eventsCallbackUrl = default(string), string fileFromContent = default(string), string fileFromContentName = default(string), string template = default(string), List<InlinePrefillTags> prefillTags = default(List<InlinePrefillTags>), List<InlineIntegrationData> integrations = default(List<InlineIntegrationData>), FileFromSf fileFromSf = default(FileFromSf), int? autoDeleteDays = default(int?), int? autoExpireDays = default(int?))
+        public SignRequestQuickCreate(string fromEmail = default(string), string fromEmailName = default(string), bool? isBeingPrepared = default(bool?), string redirectUrl = default(string), string redirectUrlDeclined = default(string), List<RequiredAttachment> requiredAttachments = default(List<RequiredAttachment>), bool? disableAttachments = default(bool?), bool? disableTextSignatures = default(bool?), bool? disableText = default(bool?), bool? disableDate = default(bool?), bool? disableEmails = default(bool?), bool? disableUploadSignatures = default(bool?), bool? disableBlockchainProof = default(bool?), bool? textMessageVerificationLocked = default(bool?), string subject = default(string), string message = default(string), WhoEnum? who = WhoEnum.O, bool? sendReminders = default(bool?), List<Signer> signers = default(List<Signer>), IntegrationEnum? integration = default(IntegrationEnum?), Object integrationData = default(Object), string name = default(string), string externalId = default(string), string frontendId = default(string), string fileFromUrl = default(string), string eventsCallbackUrl = default(string), string fileFromContent = default(string), string fileFromContentName = default(string), string template = default(string), List<InlinePrefillTags> prefillTags = default(List<InlinePrefillTags>), List<InlineIntegrationData> integrations = default(List<InlineIntegrationData>), FileFromSf fileFromSf = default(FileFromSf), int? autoDeleteDays = default(int?), int? autoExpireDays = default(int?))
         {
             // to ensure "signers" is required (not null)
             if (signers == null)
@@ -355,7 +349,7 @@ namespace SignRequest.Model
         /// Gets or Sets IntegrationData
         /// </summary>
         [DataMember(Name="integration_data", EmitDefaultValue=false)]
-        public string IntegrationData { get; set; }
+        public Object IntegrationData { get; set; }
 
         /// <summary>
         /// Defaults to filename, including extension
@@ -383,7 +377,7 @@ namespace SignRequest.Model
         /// </summary>
         /// <value>Temporary URL to original file, expires in five minutes</value>
         [DataMember(Name="file", EmitDefaultValue=false)]
-        public string File { get; private set; }
+        public string _File { get; private set; }
 
         /// <summary>
         /// Publicly accessible URL of document to be downloaded by SignRequest
@@ -488,7 +482,7 @@ namespace SignRequest.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  FrontendId: ").Append(FrontendId).Append("\n");
-            sb.Append("  File: ").Append(File).Append("\n");
+            sb.Append("  _File: ").Append(_File).Append("\n");
             sb.Append("  FileFromUrl: ").Append(FileFromUrl).Append("\n");
             sb.Append("  EventsCallbackUrl: ").Append(EventsCallbackUrl).Append("\n");
             sb.Append("  FileFromContent: ").Append(FileFromContent).Append("\n");
@@ -674,9 +668,9 @@ namespace SignRequest.Model
                     this.FrontendId.Equals(input.FrontendId))
                 ) && 
                 (
-                    this.File == input.File ||
-                    (this.File != null &&
-                    this.File.Equals(input.File))
+                    this._File == input._File ||
+                    (this._File != null &&
+                    this._File.Equals(input._File))
                 ) && 
                 (
                     this.FileFromUrl == input.FileFromUrl ||
@@ -795,8 +789,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.FrontendId != null)
                     hashCode = hashCode * 59 + this.FrontendId.GetHashCode();
-                if (this.File != null)
-                    hashCode = hashCode * 59 + this.File.GetHashCode();
+                if (this._File != null)
+                    hashCode = hashCode * 59 + this._File.GetHashCode();
                 if (this.FileFromUrl != null)
                     hashCode = hashCode * 59 + this.FileFromUrl.GetHashCode();
                 if (this.EventsCallbackUrl != null)

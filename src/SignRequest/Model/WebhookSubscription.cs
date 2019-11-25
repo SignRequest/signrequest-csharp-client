@@ -172,13 +172,7 @@ namespace SignRequest.Model
             /// Enum Zapier for value: zapier
             /// </summary>
             [EnumMember(Value = "zapier")]
-            Zapier = 4,
-            
-            /// <summary>
-            /// Enum Txhash for value: txhash
-            /// </summary>
-            [EnumMember(Value = "txhash")]
-            Txhash = 5
+            Zapier = 4
         }
 
         /// <summary>

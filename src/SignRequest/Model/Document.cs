@@ -213,7 +213,7 @@ namespace SignRequest.Model
         /// </summary>
         /// <value>Temporary URL to original file, expires in five minutes</value>
         [DataMember(Name="file", EmitDefaultValue=false)]
-        public string File { get; private set; }
+        public string _File { get; private set; }
 
         /// <summary>
         /// Publicly accessible URL of document to be downloaded by SignRequest
@@ -344,6 +344,13 @@ namespace SignRequest.Model
         public DateTime? AutoExpireAfter { get; private set; }
 
         /// <summary>
+        /// Indicates whether a change to the document is processing and the PDF may be out of date. It is recommended to wait until processing has finished before downloading the PDF. Webhooks are not sent until processing has been completed.
+        /// </summary>
+        /// <value>Indicates whether a change to the document is processing and the PDF may be out of date. It is recommended to wait until processing has finished before downloading the PDF. Webhooks are not sent until processing has been completed.</value>
+        [DataMember(Name="processing", EmitDefaultValue=false)]
+        public bool? Processing { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -359,7 +366,7 @@ namespace SignRequest.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  FrontendId: ").Append(FrontendId).Append("\n");
-            sb.Append("  File: ").Append(File).Append("\n");
+            sb.Append("  _File: ").Append(_File).Append("\n");
             sb.Append("  FileFromUrl: ").Append(FileFromUrl).Append("\n");
             sb.Append("  EventsCallbackUrl: ").Append(EventsCallbackUrl).Append("\n");
             sb.Append("  FileFromContent: ").Append(FileFromContent).Append("\n");
@@ -380,6 +387,7 @@ namespace SignRequest.Model
             sb.Append("  AutoDeleteAfter: ").Append(AutoDeleteAfter).Append("\n");
             sb.Append("  Sandbox: ").Append(Sandbox).Append("\n");
             sb.Append("  AutoExpireAfter: ").Append(AutoExpireAfter).Append("\n");
+            sb.Append("  Processing: ").Append(Processing).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -455,9 +463,9 @@ namespace SignRequest.Model
                     this.FrontendId.Equals(input.FrontendId))
                 ) && 
                 (
-                    this.File == input.File ||
-                    (this.File != null &&
-                    this.File.Equals(input.File))
+                    this._File == input._File ||
+                    (this._File != null &&
+                    this._File.Equals(input._File))
                 ) && 
                 (
                     this.FileFromUrl == input.FileFromUrl ||
@@ -558,6 +566,11 @@ namespace SignRequest.Model
                     this.AutoExpireAfter == input.AutoExpireAfter ||
                     (this.AutoExpireAfter != null &&
                     this.AutoExpireAfter.Equals(input.AutoExpireAfter))
+                ) && 
+                (
+                    this.Processing == input.Processing ||
+                    (this.Processing != null &&
+                    this.Processing.Equals(input.Processing))
                 );
         }
 
@@ -586,8 +599,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.FrontendId != null)
                     hashCode = hashCode * 59 + this.FrontendId.GetHashCode();
-                if (this.File != null)
-                    hashCode = hashCode * 59 + this.File.GetHashCode();
+                if (this._File != null)
+                    hashCode = hashCode * 59 + this._File.GetHashCode();
                 if (this.FileFromUrl != null)
                     hashCode = hashCode * 59 + this.FileFromUrl.GetHashCode();
                 if (this.EventsCallbackUrl != null)
@@ -628,6 +641,8 @@ namespace SignRequest.Model
                     hashCode = hashCode * 59 + this.Sandbox.GetHashCode();
                 if (this.AutoExpireAfter != null)
                     hashCode = hashCode * 59 + this.AutoExpireAfter.GetHashCode();
+                if (this.Processing != null)
+                    hashCode = hashCode * 59 + this.Processing.GetHashCode();
                 return hashCode;
             }
         }
