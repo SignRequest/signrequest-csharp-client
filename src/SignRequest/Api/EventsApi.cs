@@ -47,7 +47,7 @@ namespace SignRequest.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>InlineResponse2004</returns>
-        InlineResponse2004 EventsList (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null);
+        InlineResponse2004 EventsList(string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null);
 
         /// <summary>
         /// Retrieve a list of Events
@@ -72,7 +72,7 @@ namespace SignRequest.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>ApiResponse of InlineResponse2004</returns>
-        ApiResponse<InlineResponse2004> EventsListWithHttpInfo (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null);
+        ApiResponse<InlineResponse2004> EventsListWithHttpInfo(string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null);
         /// <summary>
         /// Retrieve an Event
         /// </summary>
@@ -82,7 +82,18 @@ namespace SignRequest.Api
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
         /// <returns>Event</returns>
-        Event EventsRead (int? id);
+        Event EventsRead(int? id);
+
+        /// <summary>
+        /// Retrieve an Event
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">A unique uudi value identifying this event.</param>
+        /// <returns>Event</returns>
+        Event EventsRead(string uuid);
 
         /// <summary>
         /// Retrieve an Event
@@ -93,7 +104,18 @@ namespace SignRequest.Api
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
         /// <returns>ApiResponse of Event</returns>
-        ApiResponse<Event> EventsReadWithHttpInfo (int? id);
+        ApiResponse<Event> EventsReadWithHttpInfo(int? id);
+
+        /// <summary>
+        /// Retrieve an Event
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">A unique uuid value identifying this event.</param>
+        /// <returns>ApiResponse of Event</returns>
+        ApiResponse<Event> EventsReadWithHttpInfo(string uuid);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -119,7 +141,7 @@ namespace SignRequest.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>Task of InlineResponse2004</returns>
-        System.Threading.Tasks.Task<InlineResponse2004> EventsListAsync (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null);
+        System.Threading.Tasks.Task<InlineResponse2004> EventsListAsync(string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null);
 
         /// <summary>
         /// Retrieve a list of Events
@@ -144,7 +166,7 @@ namespace SignRequest.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2004)</returns>
-        System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> EventsListAsyncWithHttpInfo (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null);
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> EventsListAsyncWithHttpInfo(string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null);
         /// <summary>
         /// Retrieve an Event
         /// </summary>
@@ -154,7 +176,18 @@ namespace SignRequest.Api
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
         /// <returns>Task of Event</returns>
-        System.Threading.Tasks.Task<Event> EventsReadAsync (int? id);
+        System.Threading.Tasks.Task<Event> EventsReadAsync(int? id);
+
+        /// <summary>
+        /// Retrieve an Event
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">A unique uuid value identifying this event.</param>
+        /// <returns>Task of Event</returns>
+        System.Threading.Tasks.Task<Event> EventsReadAsync(string uuid);
 
         /// <summary>
         /// Retrieve an Event
@@ -165,7 +198,18 @@ namespace SignRequest.Api
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
         /// <returns>Task of ApiResponse (Event)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Event>> EventsReadAsyncWithHttpInfo (int? id);
+        System.Threading.Tasks.Task<ApiResponse<Event>> EventsReadAsyncWithHttpInfo(int? id);
+
+        /// <summary>
+        /// Retrieve an Event
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">A unique uuid value identifying this event.</param>
+        /// <returns>Task of ApiResponse (Event)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Event>> EventsReadAsyncWithHttpInfo(string uuid);
         #endregion Asynchronous Operations
     }
 
@@ -226,7 +270,7 @@ namespace SignRequest.Api
         /// Gets or sets the configuration object
         /// </summary>
         /// <value>An instance of the Configuration</value>
-        public SignRequest.Client.Configuration Configuration {get; set;}
+        public SignRequest.Client.Configuration Configuration { get; set; }
 
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
@@ -286,10 +330,10 @@ namespace SignRequest.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>InlineResponse2004</returns>
-        public InlineResponse2004 EventsList (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
+        public InlineResponse2004 EventsList(string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
         {
-             ApiResponse<InlineResponse2004> localVarResponse = EventsListWithHttpInfo(documentUuid, documentExternalId, documentSignrequestWho, documentSignrequestFromEmail, documentStatus, documentUserEmail, documentUserFirstName, documentUserLastName, delivered, deliveredOn, timestamp, status, eventType, page, limit);
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2004> localVarResponse = EventsListWithHttpInfo(documentUuid, documentExternalId, documentSignrequestWho, documentSignrequestFromEmail, documentStatus, documentUserEmail, documentUserFirstName, documentUserLastName, delivered, deliveredOn, timestamp, status, eventType, page, limit);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -312,7 +356,7 @@ namespace SignRequest.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>ApiResponse of InlineResponse2004</returns>
-        public ApiResponse< InlineResponse2004 > EventsListWithHttpInfo (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
+        public ApiResponse<InlineResponse2004> EventsListWithHttpInfo(string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
         {
 
             var localVarPath = "./events/";
@@ -360,11 +404,11 @@ namespace SignRequest.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -374,7 +418,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<InlineResponse2004>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
+                (InlineResponse2004)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
         }
 
         /// <summary>
@@ -397,10 +441,10 @@ namespace SignRequest.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>Task of InlineResponse2004</returns>
-        public async System.Threading.Tasks.Task<InlineResponse2004> EventsListAsync (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
+        public async System.Threading.Tasks.Task<InlineResponse2004> EventsListAsync(string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
         {
-             ApiResponse<InlineResponse2004> localVarResponse = await EventsListAsyncWithHttpInfo(documentUuid, documentExternalId, documentSignrequestWho, documentSignrequestFromEmail, documentStatus, documentUserEmail, documentUserFirstName, documentUserLastName, delivered, deliveredOn, timestamp, status, eventType, page, limit);
-             return localVarResponse.Data;
+            ApiResponse<InlineResponse2004> localVarResponse = await EventsListAsyncWithHttpInfo(documentUuid, documentExternalId, documentSignrequestWho, documentSignrequestFromEmail, documentStatus, documentUserEmail, documentUserFirstName, documentUserLastName, delivered, deliveredOn, timestamp, status, eventType, page, limit);
+            return localVarResponse.Data;
 
         }
 
@@ -424,7 +468,7 @@ namespace SignRequest.Api
         /// <param name="page">A page number within the paginated result set. (optional)</param>
         /// <param name="limit">Number of results to return per page. (optional)</param>
         /// <returns>Task of ApiResponse (InlineResponse2004)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> EventsListAsyncWithHttpInfo (string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse2004>> EventsListAsyncWithHttpInfo(string documentUuid = null, string documentExternalId = null, string documentSignrequestWho = null, string documentSignrequestFromEmail = null, string documentStatus = null, string documentUserEmail = null, string documentUserFirstName = null, string documentUserLastName = null, string delivered = null, string deliveredOn = null, string timestamp = null, string status = null, string eventType = null, int? page = null, int? limit = null)
         {
 
             var localVarPath = "./events/";
@@ -472,11 +516,11 @@ namespace SignRequest.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -486,7 +530,7 @@ namespace SignRequest.Api
 
             return new ApiResponse<InlineResponse2004>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (InlineResponse2004) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
+                (InlineResponse2004)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse2004)));
         }
 
         /// <summary>
@@ -495,10 +539,22 @@ namespace SignRequest.Api
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
         /// <returns>Event</returns>
-        public Event EventsRead (int? id)
+        public Event EventsRead(int? id)
         {
-             ApiResponse<Event> localVarResponse = EventsReadWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Event> localVarResponse = EventsReadWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve an Event 
+        /// </summary>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">A unique uuid value identifying this event.</param>
+        /// <returns>Event</returns>
+        public Event EventsRead(string uuid)
+        {
+            ApiResponse<Event> localVarResponse = EventsReadWithHttpInfo(uuid);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -507,7 +563,7 @@ namespace SignRequest.Api
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
         /// <returns>ApiResponse of Event</returns>
-        public ApiResponse< Event > EventsReadWithHttpInfo (int? id)
+        public ApiResponse<Event> EventsReadWithHttpInfo(int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -544,11 +600,11 @@ namespace SignRequest.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -558,7 +614,67 @@ namespace SignRequest.Api
 
             return new ApiResponse<Event>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (Event) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
+                (Event)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
+        }
+
+        /// <summary>
+        /// Retrieve an Event 
+        /// </summary>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">A unique uuid value identifying this event.</param>
+        /// <returns>ApiResponse of Event</returns>
+        public ApiResponse<Event> EventsReadWithHttpInfo(string uuid)
+        {
+            // verify the required parameter 'id' is set
+            if (string.IsNullOrEmpty(uuid))
+                throw new ApiException(400, "Missing required parameter 'uuid' when calling EventsApi->EventsRead");
+
+            var localVarPath = "./events/{id}/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uuid != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(uuid)); // path parameter
+
+            // authentication (Token) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("EventsRead", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Event>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (Event)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
         }
 
         /// <summary>
@@ -567,11 +683,22 @@ namespace SignRequest.Api
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
         /// <returns>Task of Event</returns>
-        public async System.Threading.Tasks.Task<Event> EventsReadAsync (int? id)
+        public async System.Threading.Tasks.Task<Event> EventsReadAsync(int? id)
         {
-             ApiResponse<Event> localVarResponse = await EventsReadAsyncWithHttpInfo(id);
-             return localVarResponse.Data;
+            ApiResponse<Event> localVarResponse = await EventsReadAsyncWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
 
+        /// <summary>
+        /// Retrieve an Event 
+        /// </summary>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">A unique uuid value identifying this event.</param>
+        /// <returns>Task of Event</returns>
+        public async System.Threading.Tasks.Task<Event> EventsReadAsync(string uuid)
+        {
+            ApiResponse<Event> localVarResponse = await EventsReadAsyncWithHttpInfo(uuid);
+            return localVarResponse.Data;
         }
 
         /// <summary>
@@ -580,7 +707,7 @@ namespace SignRequest.Api
         /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id">A unique integer value identifying this event.</param>
         /// <returns>Task of ApiResponse (Event)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Event>> EventsReadAsyncWithHttpInfo (int? id)
+        public async System.Threading.Tasks.Task<ApiResponse<Event>> EventsReadAsyncWithHttpInfo(int? id)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -617,11 +744,11 @@ namespace SignRequest.Api
             }
 
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
@@ -631,7 +758,67 @@ namespace SignRequest.Api
 
             return new ApiResponse<Event>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (Event) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
+                (Event)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
+        }
+
+        /// <summary>
+        /// Retrieve an Event 
+        /// </summary>
+        /// <exception cref="SignRequest.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="uuid">A unique uuid value identifying this event.</param>
+        /// <returns>Task of ApiResponse (Event)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Event>> EventsReadAsyncWithHttpInfo(string uuid)
+        {
+            // verify the required parameter 'id' is set
+            if (uuid == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling EventsApi->EventsRead");
+
+            var localVarPath = "./events/{id}/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (uuid != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(uuid)); // path parameter
+
+            // authentication (Token) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse)await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int)localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("EventsRead", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Event>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (Event)this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Event)));
         }
 
     }
